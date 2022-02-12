@@ -35,7 +35,7 @@ String msg;
 void setup() {
   // put your setup code here, to run once:
   comm_init();
-  current_state = Init;
+  current_state = Off;
 }
 
 void loop() {
@@ -55,7 +55,7 @@ void loop() {
     case Wait:
       // Waiting for the Camera or the stop of the cage signal
       msg = get_msg();
-      if (should_stop(msg) == true)
+      if (should_end(msg) == true)
       {
         send_msg("Cage arretee");
         current_state = Off;
