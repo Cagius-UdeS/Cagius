@@ -1,17 +1,17 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QApplication
+from PyQt5.QtWidgets import *
 import sys
 import mainWindow_geometry
 import popup_geometry
 
-class ExampleApp(QtWidgets.QMainWindow, mainWindow_geometry.Ui_MainWindow):
+class MainWindow(QtWidgets.QMainWindow, mainWindow_geometry.Ui_MainWindow):
     def __init__(self, parent=None):
-        super(ExampleApp, self).__init__(parent)
+        super(MainWindow, self).__init__(parent)
         self.setupUi(self)
 
 def main():
     app = QApplication(sys.argv)
-    form = ExampleApp()
+    form = MainWindow()
     form.show()
     app.exec_()
 
