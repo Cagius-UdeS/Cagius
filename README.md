@@ -1,6 +1,6 @@
 # Cagius
 
-Cagius est un projet open source ayant comme objectif de concevoir et construire le mécanisme de gestion de la litière pour une cage à petits animaux automatisé et créer un interface programmable pour gérer les cycles de nettoyages.
+Cagius est un projet open source ayant comme objectif de concevoir et construire le mécanisme de gestion de la litière pour une cage à petits animaux automatisée et créer un interface programmable pour gérer les cycles de nettoyages.
 
 ## Table des matieres
 
@@ -30,15 +30,18 @@ La section suivante couvre l'installation des logiciels et des librairies necess
 
 ### Installation sur Ordinateur
 
-Il est necessaire de compiler et d'envoyer le code de la carte OpenCR a partir d'un ordinateur, car le pi ne prend pas en charge les librairies de la carte OpenCR et des moteurs Dynamixel.
+Il est necessaire de compiler et d'envoyer le code de la carte OpenCR a partir d'un ordinateur, car le Pi ne prend pas en charge les librairies de la carte OpenCR et des moteurs Dynamixel.
 
 #### Installation de Arduino IDE
 
 ### Installation sur Pi
 
-Le Pi agit comme le cerveau de la cage. En effet, le pi analyse la camera et l'interface utilisateur.
+Le Pi agit comme le cerveau de la cage. En effet, le pi analyse la caméra et l'interface utilisateur.
 
 #### Installation de PyQt
+
+Pour concevoir le HMI nous avons utilisé PyQt qui est un module libre qui permet de lier le langage Python avec la bibliothèque Qt. L'installation se fait sur le Raspberry Pi et consiste à faire rouler la ligne de commande suivante :
+
 
 
 #### Installation des librairies Open CV
