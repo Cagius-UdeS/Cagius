@@ -20,6 +20,9 @@ Cagius est un projet open source ayant comme objectif de concevoir et construire
 
 ## Assemblage
 
+Pour ce qui est de l'assemblage de la structure de base, il suffit de respecter l'assemblage de la pièce PoubelleV3.sldprt. En fait, un mélange de colle et de clou à finition ont été utilisé pour avoir un structure solide. De plus, le prototype actuelle est fait avec des planche de bois 1/4" découpé au laser et assembler par la suite. Ensuite, la pièce rail.sldprt et trape_horizontal.sldprt sont collé ensemble et forme la trappe en avant de la poubelle au niveau du plancher médian.
+
+Pour ce qui est de l'assemblage du convoyeur, ...
 
 ## Installation logiciel
 
