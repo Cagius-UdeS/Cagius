@@ -13,7 +13,13 @@ Cagius est un projet open source ayant comme objectif de concevoir et construire
 7. [License](#license)
 
 ## Composantes mecaniques et electroniques
-
+### Mécaniques
+- Courroie Synchrone : McMaster **1679K55** 
+- Tige Filletée : Mcmaster **98957A154**
+### Électroniques
+- RaspberryPi 4
+- RaspberryPi Caméra
+- 
 
 ## Composantes informatiques
 
