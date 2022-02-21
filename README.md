@@ -43,12 +43,13 @@ Le Pi agit comme le cerveau de la cage. En effet, le pi analyse la caméra et l'
 Pour concevoir le HMI nous avons utilisé PyQt qui est un module libre qui permet de lier le langage Python avec la bibliothèque Qt. 
 L'installation se fait sur le Raspberry Pi et consiste à faire rouler la ligne de commande suivante :
 
-$ sudo apt-get install python3-pyqt5 !!!!
+  $ sudo apt-get install python3-pyqt5 !!!!
 
 Si votre Pi n'est pas à jour, rouler ces lignes de commande au préalable :
 
-$ sudo apt-get update !!!!!
-$ sudo apt-get upgrade
+  $ sudo apt-get update !!!!!
+  $ sudo apt-get upgrade
+
 
 
 #### Installation des librairies Open CV
