@@ -1,6 +1,6 @@
 # Cagius
 
-Cagius est un projet en source ouverte ayant comme objectif de concevoir et construire le mécanismede gestion de la litière pour une cage à petits animaux automatisé et créer un interface programmable pour gérer les cycles de nettoyages.
+Cagius est un projet open source ayant comme objectif de concevoir et construire le mécanisme de gestion de la litière pour une cage à petits animaux automatisé et créer un interface programmable pour gérer les cycles de nettoyages.
 
 ## Table des matieres
 
