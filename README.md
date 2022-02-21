@@ -53,7 +53,9 @@ Si votre Pi n'est pas à jour, rouler ces lignes de commande au préalable :
 
 
 #### Installation des librairies Open CV
-
+Afin d'installer OpenCV sur votre RaspberryPi, 
+il suffit de suivre le guide **Setting Up Open-CV for Object Detection** sur ce site:
+[Guide d'installation OpenCV](https://core-electronics.com.au/tutorials/object-identify-raspberry-pi.html)
 
 ## Initialisation de la cage
 
