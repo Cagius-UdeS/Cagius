@@ -1,6 +1,6 @@
 # *PiQt* folder
 
-Le dossier main est celui à exécuter sur la carte Open CR àpartir de l'application Arduino IDE dont l'installation est expliquée [ici](../../README.md).
+Il y a deux de fichiers dans ce dossier, des .py et des .ui. Les fichiers .ui peuvent être ouverts avec QT 5 Designer sur le Pi et les fichiers .py avec Visual Studio Code. 
 
 ## Fichiers
 
