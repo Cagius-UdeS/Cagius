@@ -47,13 +47,13 @@ Afin d'installer Arduino IDE et les librairies nécessaires pour coder les moteu
 1. Télécharger l'application Arduino IDE [ici](https://www.arduino.cc/en/software)
 2. Ouvrir dans l'application et se rendre dans *Fichier*, puis *Préférences*
 3. Dans la section *URL de gestionnaire de cartes supplémentaires*, rajouter la ligne suivante:
-	` https://raw.githubusercontent.com/ROBOTIS-GIT/OpenCR/master/arduino/opencr_release/package_opencr_index.json `
+	`https://raw.githubusercontent.com/ROBOTIS-GIT/OpenCR/master/arduino/opencr_release/package_opencr_index.json`
 4. Confirmer les changements en pressant *OK* dans le bas à droite de l'écran.
 5. Enfin, installer les librairies Motorcontrole dans la section *Outils* puis *Type de carte* et *Gestionnaire de carte*. Taper OpenCR dans la barre de recherche et installer les librairies.
 
 ### Installation sur Pi
 
-Le Pi agit comme le cerveau de la cage. En effet, le pi analyse la caméra et l'interface utilisateur.
+Le Pi agit comme le cerveau de la cage. En effet, le Pi analyse la caméra et l'interface utilisateur.
 
 #### Installation de PyQt
 
@@ -67,6 +67,7 @@ Si votre Pi n'est pas à jour, rouler ces lignes de commande au préalable :
 	`$ sudo apt-get update
 	$ sudo apt-get upgrade`
 
+À partir de là, pour coder l'interphase graphique on utilise Qt 5 Designer avec le PiQt intégré.
 
 #### Installation des librairies Open CV
 Afin d'installer OpenCV sur votre RaspberryPi, 
