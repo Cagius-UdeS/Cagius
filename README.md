@@ -48,7 +48,9 @@ Afin d'installer Arduino IDE et les librairies nécessaires pour coder les moteu
 1. Télécharger l'application Arduino IDE [ici](https://www.arduino.cc/en/software)
 2. Ouvrir l'application et se rendre dans *Fichier*, puis *Préférences*
 3. Dans la section *URL de gestionnaire de cartes supplémentaires*, rajouter la ligne suivante:
-	`https://raw.githubusercontent.com/ROBOTIS-GIT/OpenCR/master/arduino/opencr_release/package_opencr_index.json`
+	```
+  https://raw.githubusercontent.com/ROBOTIS-GIT/OpenCR/master/arduino/opencr_release/package_opencr_index.json
+  ```
 4. Confirmer les changements en pressant *OK* dans le bas à droite de l'écran.
 5. Enfin, installer les librairies Motorcontrole dans la section *Outils* puis *Type de carte* et *Gestionnaire de carte*. Taper OpenCR dans la barre de recherche et installer les librairies.
 
