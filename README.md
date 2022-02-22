@@ -67,7 +67,7 @@ Si votre Pi n'est pas à jour, rouler ces lignes de commande au préalable :
 	`$ sudo apt-get update
 	$ sudo apt-get upgrade`
 
-À partir de là, pour coder l'interphase graphique on utilise Qt 5 Designer avec le PiQt intégré.
+À partir de là, pour coder l'interphase graphique on utilise Qt 5 Designer avec le PyQt intégré.
 
 #### Installation des librairies Open CV
 Afin d'installer OpenCV sur votre RaspberryPi, 
