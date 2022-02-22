@@ -1,6 +1,6 @@
 # *OpenCR\main* folder
 
-Le dossier main est celui à exécuter sur la carte Open CR àpartir de l'application Arduino IDE dont l'installation est expliquée [ici](../../README.md).
+Le dossier main est celui à exécuter sur la carte Open CR àpartir de l'application Arduino IDE dont l'installation est expliquée [ici](../../../README.md).
 
 ## Fichiers
 
