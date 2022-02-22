@@ -30,6 +30,8 @@ Pour ce qui est de l'assemblage de la structure de base, il suffit de respecter 
 
 Pour ce qui est de l'assemblage du convoyeur, ...
 
+[Pour les détails concernants les CAD's et leurs pertinances](https://github.com/Cagius-UdeS/Cagius/blob/main/Documentation/Solidwork_hierarchy.md)
+
 ## Installation logiciel
 
 La section suivante couvre l'installation des logiciels et des librairies necessaires a la compilation du code.
