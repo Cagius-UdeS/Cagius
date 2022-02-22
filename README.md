@@ -60,8 +60,10 @@ Le Pi agit comme le cerveau de la cage. En effet, le Pi analyse la caméra et l'
 
 Si vous voulez modifier l'interface utilisateur (modifier les fichiers .ui), vous devez télécharger Qtdesigner (fait parti de Qtcreator)
 
+  ```
   $ sudo apt-get install qttools5-dev-tools
   $ sudo apt-get install qttools5-dev
+  ```
 
 #### Installation de PyQt
 
