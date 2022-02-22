@@ -19,7 +19,8 @@ Cagius est un projet open source ayant comme objectif de concevoir et construire
 ### Électroniques
 - RaspberryPi 4
 - RaspberryPi Caméra
-- 
+- 3 x Dynamixel 
+- 1 x Dynamixel
 
 ## Composantes informatiques
 
@@ -55,17 +56,24 @@ Afin d'installer Arduino IDE et les librairies nécessaires pour coder les moteu
 
 Le Pi agit comme le cerveau de la cage. En effet, le Pi analyse la caméra et l'interface utilisateur.
 
+#### Installation de Qt designer
+
+Si vous voulez modifier l'interface utilisateur (modifier les fichiers .ui), vous devez télécharger Qtdesigner (fait parti de Qtcreator)
+
+  $ sudo apt-get install qttools5-dev-tools
+  $ sudo apt-get install qttools5-dev
+
 #### Installation de PyQt
 
 Pour concevoir le HMI nous avons utilisé PyQt qui est un module libre qui permet de lier le langage Python avec la bibliothèque Qt. 
 L'installation se fait sur le Raspberry Pi et consiste à faire rouler la ligne de commande suivante :
 
-	`$ sudo apt-get install python3-pyqt5`
+	$ sudo apt-get install python3-pyqt5
 
 Si votre Pi n'est pas à jour, rouler ces lignes de commande au préalable :
 
-	`$ sudo apt-get update
-	$ sudo apt-get upgrade`
+	$ sudo apt-get update
+	$ sudo apt-get upgrade
 
 À partir de là, pour coder l'interphase graphique on utilise Qt 5 Designer avec le PyQt intégré.
 
