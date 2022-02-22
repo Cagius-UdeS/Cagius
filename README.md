@@ -42,6 +42,15 @@ Il est necessaire de compiler et d'envoyer le code de la carte OpenCR a partir d
 
 #### Installation de Arduino IDE
 
+Afin d'installer Arduino IDE et les librairies nécessaires pour coder les moteurs, il suffit de suivre les étapes suivantes :
+
+1. Télécharger l'application Arduino [ici](https://www.arduino.cc/en/software)
+2. Ouvrir dans l'application et se rendre dans *Fichier*, puis *Préférences*
+3. Dans la section *URL de gestionnaire de cartes supplémentaires*, rajouter la ligne suivante:
+	`https://raw.githubusercontent.com/ROBOTIS-GIT/OpenCR/master/arduino/opencr_release/package_opencr_index.json`
+4. Confirmer les changements en pressant *OK* dans le bas à droite de l'écran.
+5. Enfin, installer les librairies Motorcontrole dans la section *Outils* puis *Type de carte* et *Gestionnaire de carte*. Taper OpenCR dans la barre de recherche et installer les librairies.
+
 ### Installation sur Pi
 
 Le Pi agit comme le cerveau de la cage. En effet, le pi analyse la caméra et l'interface utilisateur.
@@ -51,13 +60,12 @@ Le Pi agit comme le cerveau de la cage. En effet, le pi analyse la caméra et l'
 Pour concevoir le HMI nous avons utilisé PyQt qui est un module libre qui permet de lier le langage Python avec la bibliothèque Qt. 
 L'installation se fait sur le Raspberry Pi et consiste à faire rouler la ligne de commande suivante :
 
-  $ sudo apt-get install python3-pyqt5 !!!!
+	`$ sudo apt-get install python3-pyqt5`
 
 Si votre Pi n'est pas à jour, rouler ces lignes de commande au préalable :
 
-  $ sudo apt-get update !!!!!
-  $ sudo apt-get upgrade
-
+	`$ sudo apt-get update
+	$ sudo apt-get upgrade`
 
 
 #### Installation des librairies Open CV
