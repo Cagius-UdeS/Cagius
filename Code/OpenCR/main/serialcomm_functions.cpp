@@ -10,11 +10,6 @@
 #include "serialcomm_functions.hpp"
 #include <Arduino.h>
 
-// ========= Constant =========
-
-const char OPENCR_ID = '1';
-const int BAUDRATE = 9600;
-
 // ========= Functions ========
 
 void comm_init()

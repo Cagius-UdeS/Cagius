@@ -10,11 +10,19 @@
 // ========= Libraries ========
 #include <Arduino.h>
 #include <DynamixelWorkbench.h>
+#include <vector>
 #include "serialcomm_functions.hpp"
-
+#include "motor_functions.hpp"
 
 // ========= Constant =========
 
+//----------motor--------------
+
+#if defined(__OPENCM904__)
+  #define DEVICE_NAME "3" //Dynamixel on Serial3(USART3)  <-OpenCM 485EXP
+#elif defined(__OPENCR__)
+  #define DEVICE_NAME ""
+#endif  
 
 
 // ========= Enumerations =====

@@ -10,6 +10,13 @@
 #ifndef serailcomm_functions_h
 #define serialcomm_functions_h
 
+// ========= Constant =========
+
+const char OPENCR_ID = '1';
+const int BAUDRATE = 9600;
+
+// ========= Variables =========
+
 class String;
 
 // ========= Functions prototype ========
