@@ -100,17 +100,13 @@ void loop() {
     
       // nettoyage de la cage
       send_msg("Nettoyage en cours");
-      msg = get_msg();
 
-      // pi dit stop
-      if (should_end(msg) == true)
-      {
-        send_msg("Cage arretee");
-        current_state = Off;
-        break;
-      }
+      // etape 1: ouverture de la trappe de la poubelle
 
-     
+      // etape 2: ouverture des trapes du convoyeur
+      
+
+      current_state = Wait;
       break;
   }
 
