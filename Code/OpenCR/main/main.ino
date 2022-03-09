@@ -14,6 +14,7 @@
 #include <vector>
 #include "serialcomm_functions.hpp"
 #include "motor_functions.hpp"
+#include "action_functions.hpp"
 
 // ========= Constant =========
 
@@ -36,14 +37,7 @@ enum State {
 
 // ========= Constant =========
 
-//uint8_t get_id[16];
-//uint8_t scan_cnt = 0;
-//uint8_t ping_cnt = 0;
-const uint8_t MOTOR1_ID = 1;
-const uint8_t MOTOR2_ID = 2;
-const uint8_t MOTOR3_ID = 3;
-const uint8_t MOTOR4_ID = 4;
-const uint8_t DELTA_POS = 20;
+
 
 // ========= Variables ========
 
