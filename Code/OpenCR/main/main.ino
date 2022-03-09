@@ -18,6 +18,8 @@
 
 // ========= Constant =========
 
+
+
 //----------motor--------------
 
 #if defined(__OPENCM904__)
@@ -47,6 +49,7 @@ String msg;
 // ========= Variables =========
 
 DynamixelWorkbench dyna;
+int percent;
 
 // ========= Functions ========
 
@@ -72,20 +75,42 @@ void loop() {
       break;
     case Wait:
       // Waiting for the Camera or the stop of the cage signal
+      send_msg("En attente dinstruction");
       msg = get_msg();
+
+      // pi dit stop
       if (should_end(msg) == true)
       {
         send_msg("Cage arretee");
         current_state = Off;
+        break;
       }
 
-      // statement sur la camera
+      // statement sur la camera (envoye du pi)
+      percent = should_wash(msg);
+      if (percent != 0)
+      {
+        send_msg("Nettoyage amorcé a " + String(percent) + " percent");
+        current_state = Washing;
+      }
 
       break;
+      
     case Washing:
     
       // nettoyage de la cage
-      
+      send_msg("Nettoyage en cours");
+      msg = get_msg();
+
+      // pi dit stop
+      if (should_end(msg) == true)
+      {
+        send_msg("Cage arretee");
+        current_state = Off;
+        break;
+      }
+
+     
       break;
   }
 
