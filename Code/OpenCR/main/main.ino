@@ -45,9 +45,6 @@ enum State {
 
 enum State current_state;
 String msg;
-
-// ========= Variables =========
-
 DynamixelWorkbench dyna;
 int percent;
 
@@ -102,10 +99,21 @@ void loop() {
       send_msg("Nettoyage en cours");
 
       // etape 1: ouverture de la trappe de la poubelle
-
+      open_poubelle();
       // etape 2: ouverture des trapes du convoyeur
+      open_trappes();
+      // etape 3: convoyeur (avec %)
+      convoyeur(percent);
+      // etape 4: fermeture trapes du convoyeur
+      close_trappes();
+      // etape 4: fermeture trape de la poubelle
+      close_poubelle();
+      // etape 5: compression de la litiere
+      compression_litiere();
+      // etape 6: retour de la pelle
+      home_litiere();
       
-
+      send_msg("Nettoyage fini");
       current_state = Wait;
       break;
   }
