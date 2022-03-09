@@ -9,17 +9,23 @@
 
 #ifndef motor_functions_h
 #define motor_functions_h
-
-// ========= Constant =========
-
-uint8_t get_id[16];
-uint8_t scan_cnt = 0;
-uint8_t ping_cnt = 0;
-
-// ========= Variables =========
+#include <stdint.h>
+#include <DynamixelWorkbench.h>
 
 class DynamixelWorkbench;
 
 // ========= Functions prototype ========
 
-bool isAvailableID(uint8_t id);
+void init_motors(DynamixelWorkbench&  motor, uint8_t motor_IDs);
+
+bool tourne_continu_NMBTours(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb_tours);
+
+bool tourne_continu_NMBTours_goBack(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb_tours);
+
+bool tourne_continu_Torque(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb_tours);
+
+bool tourne_continu_Torque_goBack(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb_tours);
+
+void stop_motors(DynamixelWorkbench&  motor, uint8_t motor_IDs);
+
+#endif

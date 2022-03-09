@@ -9,6 +9,7 @@
 
 // ========= Libraries ========
 #include <Arduino.h>
+#include <stdint.h>
 #include <DynamixelWorkbench.h>
 #include <vector>
 #include "serialcomm_functions.hpp"
@@ -33,10 +34,25 @@ enum State {
   Washing, // cycle de nettoyage
 };
 
+// ========= Constant =========
+
+//uint8_t get_id[16];
+//uint8_t scan_cnt = 0;
+//uint8_t ping_cnt = 0;
+const uint8_t MOTOR1_ID = 1;
+const uint8_t MOTOR2_ID = 2;
+const uint8_t MOTOR3_ID = 3;
+const uint8_t MOTOR4_ID = 4;
+const uint8_t DELTA_POS = 20;
+
 // ========= Variables ========
 
 enum State current_state;
 String msg;
+
+// ========= Variables =========
+
+DynamixelWorkbench dyna;
 
 // ========= Functions ========
 

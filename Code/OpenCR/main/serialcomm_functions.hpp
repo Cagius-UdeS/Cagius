@@ -7,7 +7,7 @@
                 Laurie Croteau
 */
 
-#ifndef serailcomm_functions_h
+#ifndef serialcomm_functions_h
 #define serialcomm_functions_h
 
 // ========= Constant =========
