@@ -8,4 +8,4 @@ Il y a deux types de fichiers dans ce dossier, des .py et des .ui. Les fichiers 
 - **mainWindow_geometry.ui** : Fichier représentant graphiquement la fenêtre principale du HMI.
 - **popup_geometry.py** : Fichier contenant la fenêtre pop-up (qui s'ouvre lorsque la poubelle doit être vidée) du HMI en Python.
 - **popup_geometry.ui** : Fichier représentant graphiquement la fenêtre pop-up du HMI.
-- **userInterface.py** : Fichier main gérant la communication entre l'interface graphique et les autres composantes du système. (À FAIRE)
+- **main.py** : Fichier main gérant la communication entre l'interface graphique et les autres composantes du système et entre les fenêtres de l'interface.
