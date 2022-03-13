@@ -9,6 +9,9 @@
 
 #include "serialcomm_functions.hpp"
 #include <Arduino.h>
+#include <iostream>
+#include <string>
+#include <vector>
 
 // ========= Functions ========
 
@@ -33,6 +36,38 @@ String get_msg()
     }
   }
   return msg;
+}
+
+int should_wash(String& state)
+{
+
+  String words[2];
+  int StringCount = 0;
+
+  while (state.length() > 0)
+  {
+    int index = state.indexOf(' ');
+    if (index == -1) // No space found
+    {
+      words[StringCount++] = state;
+      break;
+    }
+    else
+    {
+      words[StringCount++] = state.substring(0, index);
+      state = state.substring(index+1);
+    }
+  }
+  
+  if (words[0] == "WASH")
+  {
+    return words[1].toInt();
+  }
+  else
+  {
+    return 0;
+  }
+  
 }
 
 String send_msg(const String& msg)

@@ -14,8 +14,11 @@
 #include <vector>
 #include "serialcomm_functions.hpp"
 #include "motor_functions.hpp"
+#include "action_functions.hpp"
 
 // ========= Constant =========
+
+
 
 //----------motor--------------
 
@@ -36,23 +39,14 @@ enum State {
 
 // ========= Constant =========
 
-//uint8_t get_id[16];
-//uint8_t scan_cnt = 0;
-//uint8_t ping_cnt = 0;
-const uint8_t MOTOR1_ID = 1;
-const uint8_t MOTOR2_ID = 2;
-const uint8_t MOTOR3_ID = 3;
-const uint8_t MOTOR4_ID = 4;
-const uint8_t DELTA_POS = 20;
+
 
 // ========= Variables ========
 
 enum State current_state;
 String msg;
-
-// ========= Variables =========
-
 DynamixelWorkbench dyna;
+int percent;
 
 // ========= Functions ========
 
@@ -78,20 +72,49 @@ void loop() {
       break;
     case Wait:
       // Waiting for the Camera or the stop of the cage signal
+      send_msg("En attente dinstruction");
       msg = get_msg();
+
+      // pi dit stop
       if (should_end(msg) == true)
       {
         send_msg("Cage arretee");
         current_state = Off;
+        break;
       }
 
-      // statement sur la camera
+      // statement sur la camera (envoye du pi)
+      percent = should_wash(msg);
+      if (percent != 0)
+      {
+        send_msg("Nettoyage amorcé a " + String(percent) + " percent");
+        current_state = Washing;
+      }
 
       break;
+      
     case Washing:
     
       // nettoyage de la cage
+      send_msg("Nettoyage en cours");
+
+      // etape 1: ouverture de la trappe de la poubelle
+      open_poubelle();
+      // etape 2: ouverture des trapes du convoyeur
+      open_trappes();
+      // etape 3: convoyeur (avec %)
+      convoyeur(percent);
+      // etape 4: fermeture trapes du convoyeur
+      close_trappes();
+      // etape 4: fermeture trape de la poubelle
+      close_poubelle();
+      // etape 5: compression de la litiere
+      compression_litiere();
+      // etape 6: retour de la pelle
+      home_litiere();
       
+      send_msg("Nettoyage fini");
+      current_state = Wait;
       break;
   }
 
