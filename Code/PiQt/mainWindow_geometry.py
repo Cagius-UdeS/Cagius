@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/home/pi/Desktop/S4GRO-Cagius/Cagius/Code/PiQt/mainWindow_geometry.ui'
+# Form implementation generated from reading ui file 'mainWindow_geometry.ui'
 #
 # Created by: PyQt5 UI code generator 5.11.3
 #
@@ -44,20 +44,14 @@ class Ui_MainWindow(object):
         self.gridLayout_9.setObjectName("gridLayout_9")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.Animal1 = QtWidgets.QRadioButton(self.gridLayoutWidget)
-        self.Animal1.setChecked(True)
+        self.Animal1 = QtWidgets.QCheckBox(self.gridLayoutWidget)
         self.Animal1.setObjectName("Animal1")
-        self.buttonGroup = QtWidgets.QButtonGroup(MainWindow)
-        self.buttonGroup.setObjectName("buttonGroup")
-        self.buttonGroup.addButton(self.Animal1)
         self.horizontalLayout_2.addWidget(self.Animal1)
-        self.Animal2 = QtWidgets.QRadioButton(self.gridLayoutWidget)
+        self.Animal2 = QtWidgets.QCheckBox(self.gridLayoutWidget)
         self.Animal2.setObjectName("Animal2")
-        self.buttonGroup.addButton(self.Animal2)
         self.horizontalLayout_2.addWidget(self.Animal2)
-        self.Animal3 = QtWidgets.QRadioButton(self.gridLayoutWidget)
+        self.Animal3 = QtWidgets.QCheckBox(self.gridLayoutWidget)
         self.Animal3.setObjectName("Animal3")
-        self.buttonGroup.addButton(self.Animal3)
         self.horizontalLayout_2.addWidget(self.Animal3)
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem)
@@ -160,4 +154,14 @@ class Ui_MainWindow(object):
         self.Desactivation.setText(_translate("MainWindow", "Désactivation"))
         self.Activation.setText(_translate("MainWindow", "Activation"))
         self.label_7.setText(_translate("MainWindow", "Mode automatique de nettoyage"))
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_())
 
