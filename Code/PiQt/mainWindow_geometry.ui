@@ -65,36 +65,24 @@
          <item row="1" column="0">
           <layout class="QHBoxLayout" name="horizontalLayout_2">
            <item>
-            <widget class="QRadioButton" name="Animal1">
+            <widget class="QCheckBox" name="Animal1">
              <property name="text">
               <string>1</string>
              </property>
-             <property name="checked">
-              <bool>true</bool>
-             </property>
-             <attribute name="buttonGroup">
-              <string notr="true">buttonGroup</string>
-             </attribute>
             </widget>
            </item>
            <item>
-            <widget class="QRadioButton" name="Animal2">
+            <widget class="QCheckBox" name="Animal2">
              <property name="text">
               <string>2</string>
              </property>
-             <attribute name="buttonGroup">
-              <string notr="true">buttonGroup</string>
-             </attribute>
             </widget>
            </item>
            <item>
-            <widget class="QRadioButton" name="Animal3">
+            <widget class="QCheckBox" name="Animal3">
              <property name="text">
               <string>3</string>
              </property>
-             <attribute name="buttonGroup">
-              <string notr="true">buttonGroup</string>
-             </attribute>
             </widget>
            </item>
            <item>

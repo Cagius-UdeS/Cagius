@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>348</width>
+    <width>352</width>
     <height>188</height>
    </rect>
   </property>
@@ -66,7 +66,7 @@
      </spacer>
     </item>
     <item row="3" column="1">
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="Fait">
       <property name="text">
        <string>Fait</string>
       </property>
