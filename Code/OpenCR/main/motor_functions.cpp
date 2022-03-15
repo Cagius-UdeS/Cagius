@@ -14,15 +14,6 @@
 
 void init_motors(DynamixelWorkbench& motor)
 {
-        const char* motor_name = 1+"";
-        uint16_t model_number = 0;
-        const char* error_message;
-        motor.init(motor_name, 57600, &error_message);
-        motor.ping(motor_IDs, &model_number, &error_message);
-        motor.ledOn(motor_IDs);                              //test
-        motor.setNormalDirection(motor_IDs);                 //setReverseDirection
-        motor.  
-
 
         for (int i = 1; i <= 4; ++i)
     {
@@ -34,24 +25,32 @@ void init_motors(DynamixelWorkbench& motor)
         if (i == 1)
         {
           motor.ping(MOTOR_TRAPPES_ID, &model_number, &error_message);
+          motor.ledOn(MOTOR_TRAPPES_ID);                              //test
+          motor.setNormalDirection(MOTOR_TRAPPES_ID);                 //setReverseDirection
           motor.setPositionControlMode(MOTOR_TRAPPES_ID, &error_message);
           //motor.torqueOn(MOTOR_TRAPPES_ID);
         }
         else if (i == 2)
         {
           motor.ping(MOTOR_POUBELLE_ID, &model_number, &error_message);
+          motor.ledOn(MOTOR_POUBELLE_ID);                              //test
+          motor.setNormalDirection(MOTOR_POUBELLE_ID);                 //setReverseDirection
           motor.setPositionControlMode(MOTOR_POUBELLE_ID, &error_message);
           //motor.torqueOn(MOTOR_POUBELLE_ID);
         }
         else if (i == 3)
         {
           motor.ping(MOTOR_CONVOYEUR_ID, &model_number, &error_message);
+          motor.ledOn(MOTOR_CONVOYEUR_ID);                              //test
+          motor.setNormalDirection(MOTOR_CONVOYEUR_ID);                 //setReverseDirection
           motor.setVelocityControlMode(MOTOR_CONVOYEUR_ID, &error_message);
           //motor.torqueOn(MOTOR_CONVOYEUR_ID);
         }
         else if (i == 4)
         {
           motor.ping(MOTOR_VIS_ID, &model_number, &error_message);
+          motor.ledOn(MOTOR_VIS_ID);                              //test
+          motor.setNormalDirection(MOTOR_VIS_ID);                 //setReverseDirection
           motor.setTorqueControlMode(MOTOR_VIS_ID, &error_message);
           //motor.torqueOn(MOTOR_VIS_ID);
         }

@@ -67,7 +67,6 @@ void loop() {
       if (should_start(msg) == true)
       {
         send_msg("Cage armee");
-        start_motors(dyna, MOTOR_IDS);
         current_state = Wait;
       }
 

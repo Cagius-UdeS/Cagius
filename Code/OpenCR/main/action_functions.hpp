@@ -17,10 +17,10 @@ Authors:      Florence Millette
 //uint8_t get_id[16];
 //uint8_t scan_cnt = 0;
 //uint8_t ping_cnt = 0;
-const uint8_t MOTOR_TRAPPES_ID = 1;
-const uint8_t MOTOR_POUBELLE_ID = 2;
-const uint8_t MOTOR_CONVOYEUR_ID = 3;
-const uint8_t MOTOR_VIS_ID = 4;
+//const uint8_t MOTOR_TRAPPES_ID = 1;
+//const uint8_t MOTOR_POUBELLE_ID = 2;
+//const uint8_t MOTOR_CONVOYEUR_ID = 3;
+//const uint8_t MOTOR_VIS_ID = 4;
 
 // ========= Functions prototype ========
 

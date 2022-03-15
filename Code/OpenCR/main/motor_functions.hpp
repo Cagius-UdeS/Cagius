@@ -22,7 +22,7 @@ const uint8_t DELTA_POS = 20;
 
 // ========= Functions prototype ========
 
-void init_motors(DynamixelWorkbench&  motor, uint8_t motor_IDs);
+void init_motors(DynamixelWorkbench&  motor);
 
 bool tourne_continu_NMBTours(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb_tours);
 
