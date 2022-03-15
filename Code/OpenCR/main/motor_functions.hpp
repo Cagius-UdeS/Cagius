@@ -14,6 +14,12 @@
 
 class DynamixelWorkbench;
 
+const uint8_t MOTOR_TRAPPES_ID = 1;
+const uint8_t MOTOR_POUBELLE_ID = 2;
+const uint8_t MOTOR_CONVOYEUR_ID = 3;
+const uint8_t MOTOR_VIS_ID = 4;
+const uint8_t DELTA_POS = 20;
+
 // ========= Functions prototype ========
 
 void init_motors(DynamixelWorkbench&  motor, uint8_t motor_IDs);

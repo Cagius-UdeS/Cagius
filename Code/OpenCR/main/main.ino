@@ -54,6 +54,7 @@ void setup() {
   // put your setup code here, to run once:
   comm_init();
   current_state = Off;
+  init_motors(dyna);
 }
 
 void loop() {
@@ -66,6 +67,7 @@ void loop() {
       if (should_start(msg) == true)
       {
         send_msg("Cage armee");
+        start_motors(dyna, MOTOR_IDS);
         current_state = Wait;
       }
 
