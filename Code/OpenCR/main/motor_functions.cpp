@@ -86,7 +86,7 @@ float tourne_Xrad_and_Stop(DynamixelWorkbench&  motor, uint8_t motor_IDs, float 
   motor.torqueOn(motor_IDs);
   
   bool move_complete = false;
-  motor.goalPosition(motor_IDs, nmb_rad);
+  motor.goalPosition(motor_IDs, nmb_rad); 
   float nmb_rad_temp = 0.0;
 
   while ( move_complete != true )

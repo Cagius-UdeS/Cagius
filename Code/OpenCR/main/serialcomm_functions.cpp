@@ -58,7 +58,7 @@ int should_wash(String& state)
       state = state.substring(index+1);
     }
   }
-  
+   
   if (words[0] == "WASH")
   {
     return words[1].toInt();

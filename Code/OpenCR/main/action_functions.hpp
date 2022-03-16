@@ -12,7 +12,7 @@ Authors:      Florence Millette
 
 #include <Arduino.h>
 #include <stdint.h>
-#include <DynamixelWorkbench.h>
+#include <DynamixelWorkbench.h> 
 #include <vector>
 
 // ========= Constant =========
@@ -20,12 +20,18 @@ Authors:      Florence Millette
 //uint8_t get_id[16];
 //uint8_t scan_cnt = 0;
 //uint8_t ping_cnt = 0;
-//const uint8_t MOTOR_TRAPPES_ID = 1;
-//const uint8_t MOTOR_POUBELLE_ID = 2;
-//const uint8_t MOTOR_CONVOYEUR_ID = 3;
-//const uint8_t MOTOR_VIS_ID = 4;
+const uint8_t MOTOR_TRAPPES_ID_Action = 1;
+const uint8_t MOTOR_POUBELLE_ID_Action = 2;
+const uint8_t MOTOR_CONVOYEUR_ID_Action = 3;
+const uint8_t MOTOR_VIS_ID_Action = 4;
+
+const float RAD_TRAPPES_Action = 2*PI;
+
+
 
 // ========= Functions prototype ========
+
+void init_motors_action(void);
 
 // etape 1: ouverture de la trappe de la poubelle
 void open_poubelle(void);

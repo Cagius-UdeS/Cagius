@@ -39,13 +39,13 @@ enum State {
 
 // ========= Constant =========
 
-
+ 
 
 // ========= Variables ========
 
 enum State current_state;
 String msg;
-DynamixelWorkbench dyna;
+//DynamixelWorkbench dyna;
 int percent;
 
 // ========= Functions ========
@@ -54,7 +54,7 @@ void setup() {
   // put your setup code here, to run once:
   comm_init();
   current_state = Off;
-  init_motors(dyna);
+  init_motors_action();
 }
 
 void loop() {

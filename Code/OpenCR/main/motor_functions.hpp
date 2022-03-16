@@ -15,9 +15,7 @@
 #include <DynamixelWorkbench.h>
 #include <vector>
 
-class DynamixelWorkbench;
-
-const uint8_t MOTOR_TRAPPES_ID = 1;
+const uint8_t MOTOR_TRAPPES_ID = 1; 
 const uint8_t MOTOR_POUBELLE_ID = 2;
 const uint8_t MOTOR_CONVOYEUR_ID = 3;
 const uint8_t MOTOR_VIS_ID = 4;
@@ -36,9 +34,9 @@ bool tourne_continu_Torque(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nm
 
 bool tourne_continu_Torque_goBack(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb_tours);
 
-float tourne_Xrad(DynamixelWorkbench&  motor, uint8_t motor_IDs, float nmb_rad);
-
 bool tourne_Xrad_ReturnPos(DynamixelWorkbench&  motor, uint8_t motor_IDs, float nmb_rad);
+
+float tourne_Xrad_and_Stop(DynamixelWorkbench&  motor, uint8_t motor_IDs, float nmb_rad);
 
 void stop_motors(DynamixelWorkbench&  motor, uint8_t motor_IDs);
 
