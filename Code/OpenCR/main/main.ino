@@ -5,6 +5,7 @@
               Aissatou
               Alexandre
               Laurie Croteau
+              Natael Laroche-Latulippe
 */
 
 // ========= Libraries ========

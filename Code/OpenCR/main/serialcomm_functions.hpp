@@ -5,6 +5,7 @@
                 Aissatou
                 Alexandre
                 Laurie Croteau
+                Natael Laroche-Latulippe
 */
 
 #ifndef serialcomm_functions_h 

@@ -5,6 +5,7 @@
                 Aissatou
                 Alexandre
                 Laurie Croteau
+                Natael Laroche-Latulippe
 */
 
 #ifndef motor_functions_h
@@ -30,7 +31,7 @@ bool tourne_continu_NMBTours(DynamixelWorkbench&  motor, uint8_t motor_IDs, int 
 
 bool tourne_continu_NMBTours_goBack(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb_tours);
 
-bool tourne_continu_Torque(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb_tours);
+bool tourne_continu_Torque(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb_torque);
 
 bool tourne_continu_Torque_goBack(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb_tours);
 
