@@ -32,6 +32,10 @@ bool tourne_continu_Torque(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nm
 
 bool tourne_continu_Torque_goBack(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb_tours);
 
+float tourne_Xrad(DynamixelWorkbench&  motor, uint8_t motor_IDs, float nmb_rad);
+
+bool tourne_Xrad_ReturnPos(DynamixelWorkbench&  motor, uint8_t motor_IDs, float nmb_rad);
+
 void stop_motors(DynamixelWorkbench&  motor, uint8_t motor_IDs);
 
 #endif

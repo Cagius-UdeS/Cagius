@@ -81,6 +81,21 @@ bool tourne_continu_Torque_goBack(DynamixelWorkbench&  motor, uint8_t motor_IDs,
   return 1;
 }
 
+float tourne_Xrad_and_Stop(DynamixelWorkbench&  motor, uint8_t motor_IDs, float nmb_rad)
+{
+  motor.torqueOn(motor_IDs);
+
+  return nmb_rad;  
+}
+
+bool tourne_Xrad_ReturnPos(DynamixelWorkbench&  motor, uint8_t motor_IDs, float nmb_rad)
+{
+  
+  motor.torqueOn(motor_IDs);
+  
+  return 1;  
+}
+
 void stop_motors(DynamixelWorkbench&  motor, uint8_t motor_IDs)
 {
 

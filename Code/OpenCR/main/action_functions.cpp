@@ -33,7 +33,7 @@ void convoyeur(int percent)
 // etape 4: fermeture trapes du convoyeur
 void close_trappes()
 {
-
+  
   
 }
 // etape 4: fermeture trape de la poubelle
