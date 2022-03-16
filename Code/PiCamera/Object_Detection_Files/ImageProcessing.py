@@ -52,7 +52,7 @@ for c in contours:
 
 #Initialise la valeux de la distance du convoyeur
 Xmax = 0
-#Affiche les zones souillées
+#Affiche les zones souillées et calcul la plus loin dela poubelle
 for z in ListeSouille:
     if z.getCentreX() > Xmax:
         Xmax = z.getCentreX()
