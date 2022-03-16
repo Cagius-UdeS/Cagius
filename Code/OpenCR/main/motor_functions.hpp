@@ -9,8 +9,11 @@
 
 #ifndef motor_functions_h
 #define motor_functions_h
+
+#include <Arduino.h>
 #include <stdint.h>
 #include <DynamixelWorkbench.h>
+#include <vector>
 
 class DynamixelWorkbench;
 

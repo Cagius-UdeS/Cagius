@@ -9,8 +9,11 @@ Authors:      Florence Millette
 
 #ifndef action_functions_h
 #define action_functions_h
+
+#include <Arduino.h>
 #include <stdint.h>
 #include <DynamixelWorkbench.h>
+#include <vector>
 
 // ========= Constant =========
 

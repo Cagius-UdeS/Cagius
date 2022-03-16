@@ -86,14 +86,13 @@ float tourne_Xrad_and_Stop(DynamixelWorkbench&  motor, uint8_t motor_IDs, float 
   motor.torqueOn(motor_IDs);
   
   bool move_complete = false;
-  bool goalPosition(motor_IDs, nmb_rad);
-  bool move_complete = false;
+  motor.goalPosition(motor_IDs, nmb_rad);
   float nmb_rad_temp = 0.0;
 
   while ( move_complete != true )
   {
-    getRadian(motor_IDs, &nmb_rad_temp);
-    if (abs(nmb_ras_temp - nmb_rad) < DELTA_RAD))
+    motor.getRadian(motor_IDs, &nmb_rad_temp);
+    if (abs(nmb_rad_temp - nmb_rad) < DELTA_RAD)
     {
       move_complete = true;
     }
@@ -105,7 +104,20 @@ float tourne_Xrad_and_Stop(DynamixelWorkbench&  motor, uint8_t motor_IDs, float 
 
 bool tourne_Xrad_ReturnPos(DynamixelWorkbench&  motor, uint8_t motor_IDs, float nmb_rad)
 {
-  
+  bool move_complete = false;
+  motor.goalPosition(motor_IDs, 0);   //possiblement -nmb_rad ???
+  float nmb_rad_temp = 0.0;
+
+  while ( move_complete != true )
+  {
+    motor.getRadian(motor_IDs, &nmb_rad_temp);
+    if (abs(nmb_rad_temp) < DELTA_RAD)
+    {
+      move_complete = true;
+      motor.torqueOff(motor_IDs);
+    }
+    delay(10);
+  }
 
   
   return 1;  
