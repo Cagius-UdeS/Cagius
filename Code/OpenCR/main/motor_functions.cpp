@@ -87,21 +87,18 @@ float tourne_Xrad_and_Stop(DynamixelWorkbench&  motor, uint8_t motor_IDs, float 
   
   bool move_complete = false;
   bool goalPosition(motor_IDs, nmb_rad);
-  
-    for (int i = 0; i < 100 && !move_complete; ++i)
+  bool move_complete = false;
+  float nmb_rad_temp = 0.0;
+
+  while ( move_complete != true )
+  {
+    getRadian(motor_IDs, &nmb_rad_temp);
+    if (abs(nmb_ras_temp - nmb_rad) < DELTA_RAD))
     {
-        
-         
-        int32_t pos0 = 0;
-        int32_t pos1 = 0;
-
-        motor.getPresentPositionData(motor_IDs[0], &pos0);
-        motor.getPresentPositionData(motor_IDs[1], &pos1);
-
-        move_complete = abs(degrees_to_int(angles[0]) - pos0) < 10 && abs(degrees_to_int(angles[1]) - pos1) < 10;
-        
-        delay(10);
+      move_complete = true;
     }
+    delay(10);
+  }
 
   return nmb_rad;  
 }
@@ -109,7 +106,7 @@ float tourne_Xrad_and_Stop(DynamixelWorkbench&  motor, uint8_t motor_IDs, float 
 bool tourne_Xrad_ReturnPos(DynamixelWorkbench&  motor, uint8_t motor_IDs, float nmb_rad)
 {
   
-  motor.torqueOn(motor_IDs);
+
   
   return 1;  
 }
