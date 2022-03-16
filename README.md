@@ -91,3 +91,5 @@ il suffit de suivre le guide **Setting Up Open-CV for Object Detection** sur ce 
 
 
 ## License
+
+License de [Apache](LICENSE).

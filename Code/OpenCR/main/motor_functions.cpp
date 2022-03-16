@@ -84,6 +84,24 @@ bool tourne_continu_Torque_goBack(DynamixelWorkbench&  motor, uint8_t motor_IDs,
 float tourne_Xrad_and_Stop(DynamixelWorkbench&  motor, uint8_t motor_IDs, float nmb_rad)
 {
   motor.torqueOn(motor_IDs);
+  
+  bool move_complete = false;
+  bool goalPosition(motor_IDs, nmb_rad);
+  
+    for (int i = 0; i < 100 && !move_complete; ++i)
+    {
+        
+         
+        int32_t pos0 = 0;
+        int32_t pos1 = 0;
+
+        motor.getPresentPositionData(motor_IDs[0], &pos0);
+        motor.getPresentPositionData(motor_IDs[1], &pos1);
+
+        move_complete = abs(degrees_to_int(angles[0]) - pos0) < 10 && abs(degrees_to_int(angles[1]) - pos1) < 10;
+        
+        delay(10);
+    }
 
   return nmb_rad;  
 }
