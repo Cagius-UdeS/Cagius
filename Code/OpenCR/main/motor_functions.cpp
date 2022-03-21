@@ -66,13 +66,15 @@ void init_motors(DynamixelWorkbench& motor)
 
 bool tourne_continu_NMBTours(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb_tours)
 {
+  int temp_time = 0;
 
+  
   return true;
 }
 
 bool tourne_continu_NMBTours_goBack(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb_tours)
 {
-
+  //ne devrait pas etre utilisée, le convoyeur n'a pas de position initiale juste un zero a vitesse = 0
   return true;
 }
 
@@ -96,7 +98,7 @@ bool tourne_Xrad_and_Stop(DynamixelWorkbench&  motor, uint8_t motor_IDs, float n
   motor.goalPosition(motor_IDs, pos); 
 
   Serial.println("1Mouvement fini");
-  delay(300);
+  delay(4000);
 
   return true;  
 }
@@ -109,7 +111,7 @@ bool tourne_Xrad_ReturnPos(DynamixelWorkbench&  motor, uint8_t motor_IDs, float 
   Serial.println("1Mouvement fini");
 
   //motor.setNormalDirection(motor_IDs);
-  delay(300);
+  delay(4000);
   
   return true;  
 }
