@@ -26,8 +26,8 @@ const uint8_t MOTOR_POUBELLE_ID_Action = 2;
 const uint8_t MOTOR_CONVOYEUR_ID_Action = 3;
 const uint8_t MOTOR_VIS_ID_Action = 4;
 
-const float RAD_TRAPPES_Action = 2*PI;
-const float RAD_POUBELLE_Action = PI;
+const float RAD_TRAPPES_Action = 2;
+const float RAD_POUBELLE_Action = 1;
 const float NMB_TOURS_CONVOYEUR_10percent = 5.2;
 const float NMB_TORQUE_Retour = 0.02;
 const float NMB_TORQUE_Compression = 0.02;

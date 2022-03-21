@@ -21,7 +21,7 @@ const uint8_t MOTOR_POUBELLE_ID = 2;
 const uint8_t MOTOR_CONVOYEUR_ID = 3;
 const uint8_t MOTOR_VIS_ID = 4;
 const uint8_t DELTA_POS = 20;
-const float DELTA_RAD = 0.01;
+const int32_t V_Trappes = 150;
 
 // ========= Functions prototype ========
 
@@ -37,7 +37,7 @@ bool tourne_continu_Torque_goBack(DynamixelWorkbench&  motor, uint8_t motor_IDs,
 
 bool tourne_Xrad_ReturnPos(DynamixelWorkbench&  motor, uint8_t motor_IDs, float nmb_rad);
 
-float tourne_Xrad_and_Stop(DynamixelWorkbench&  motor, uint8_t motor_IDs, float nmb_rad);
+bool tourne_Xrad_and_Stop(DynamixelWorkbench&  motor, uint8_t motor_IDs, float nmb_rad);
 
 void stop_motors(DynamixelWorkbench&  motor, uint8_t motor_IDs);
 

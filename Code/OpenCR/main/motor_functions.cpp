@@ -28,24 +28,29 @@ void init_motors(DynamixelWorkbench& motor)
           motor.ping(MOTOR_TRAPPES_ID, &model_number, &error_message);
           motor.ledOn(MOTOR_TRAPPES_ID);                              //test
           motor.setNormalDirection(MOTOR_TRAPPES_ID);                 //setReverseDirection
-          motor.setPositionControlMode(MOTOR_TRAPPES_ID, &error_message);
-          //motor.torqueOn(MOTOR_TRAPPES_ID);
+          //motor.setPositionControlMode(MOTOR_TRAPPES_ID, &error_message);
+          motor.jointMode(MOTOR_TRAPPES_ID, V_Trappes, 0, &error_message);
+          motor.torqueOn(MOTOR_TRAPPES_ID);
+          Serial.println("1Moteur 1 initialise (TRAPPES)");
         }
         else if (i == 2)
         {
           motor.ping(MOTOR_POUBELLE_ID, &model_number, &error_message);
           motor.ledOn(MOTOR_POUBELLE_ID);                              //test
           motor.setNormalDirection(MOTOR_POUBELLE_ID);                 //setReverseDirection
-          motor.setPositionControlMode(MOTOR_POUBELLE_ID, &error_message);
-          //motor.torqueOn(MOTOR_POUBELLE_ID);
+          //motor.setPositionControlMode(MOTOR_POUBELLE_ID, &error_message);
+          motor.jointMode(MOTOR_POUBELLE_ID, V_Trappes, 0, &error_message);
+          motor.torqueOn(MOTOR_POUBELLE_ID);
+          Serial.println("1Moteur 2 initialise (POUBELLE)");
         }
         else if (i == 3)
         {
           motor.ping(MOTOR_CONVOYEUR_ID, &model_number, &error_message);
           motor.ledOn(MOTOR_CONVOYEUR_ID);                              //test
           motor.setNormalDirection(MOTOR_CONVOYEUR_ID);                 //setReverseDirection
-          motor.setVelocityControlMode(MOTOR_CONVOYEUR_ID, &error_message);
+          motor.wheelMode(MOTOR_CONVOYEUR_ID,0, &error_message);
           //motor.torqueOn(MOTOR_CONVOYEUR_ID);
+          Serial.println("1Moteur 3 initialise (CONVOYEUR)");
         }
         else if (i == 4)
         {
@@ -53,7 +58,8 @@ void init_motors(DynamixelWorkbench& motor)
           motor.ledOn(MOTOR_VIS_ID);                              //test
           motor.setNormalDirection(MOTOR_VIS_ID);                 //setReverseDirection
           motor.setTorqueControlMode(MOTOR_VIS_ID, &error_message);
-          //motor.torqueOn(MOTOR_VIS_ID);
+          motor.torqueOn(MOTOR_VIS_ID);
+          Serial.println("1Moteur 4 initialise (VIS)");
         }
     }
 }
@@ -61,67 +67,51 @@ void init_motors(DynamixelWorkbench& motor)
 bool tourne_continu_NMBTours(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb_tours)
 {
 
-  return 1;
+  return true;
 }
 
 bool tourne_continu_NMBTours_goBack(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb_tours)
 {
 
-  return 1;
+  return true;
 }
 
 bool tourne_continu_Torque(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb_torque)
 {
 
-  return 1;
+  return true;
 }
 
 bool tourne_continu_Torque_goBack(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb_tours)
 {
 
-  return 1;
+  return true;
 }
 
-float tourne_Xrad_and_Stop(DynamixelWorkbench&  motor, uint8_t motor_IDs, float nmb_rad)
+bool tourne_Xrad_and_Stop(DynamixelWorkbench&  motor, uint8_t motor_IDs, float nmb_rad)
 {
-  motor.torqueOn(motor_IDs);
   
-  bool move_complete = false;
-  motor.goalPosition(motor_IDs, nmb_rad); 
-  float nmb_rad_temp = 0.0;
+  int32_t pos = 1023*nmb_rad;
 
-  while ( move_complete != true )
-  {
-    motor.getRadian(motor_IDs, &nmb_rad_temp);
-    if (abs(nmb_rad_temp - nmb_rad) < DELTA_RAD)
-    {
-      move_complete = true;
-    }
-    delay(10);
-  }
+  motor.goalPosition(motor_IDs, pos); 
 
-  return nmb_rad;  
+  Serial.println("1Mouvement fini");
+  delay(300);
+
+  return true;  
 }
 
 bool tourne_Xrad_ReturnPos(DynamixelWorkbench&  motor, uint8_t motor_IDs, float nmb_rad)
 {
-  bool move_complete = false;
-  motor.goalPosition(motor_IDs, 0);   //possiblement -nmb_rad ???
-  float nmb_rad_temp = 0.0;
+  //motor.setReverseDirection(motor_IDs);                 //setNormalDirection
+  motor.goalPosition(motor_IDs, (int32_t)0);   //possiblement pos ???
 
-  while ( move_complete != true )
-  {
-    motor.getRadian(motor_IDs, &nmb_rad_temp);
-    if (abs(nmb_rad_temp) < DELTA_RAD)
-    {
-      move_complete = true;
-      motor.torqueOff(motor_IDs);
-    }
-    delay(10);
-  }
+  Serial.println("1Mouvement fini");
 
+  //motor.setNormalDirection(motor_IDs);
+  delay(300);
   
-  return 1;  
+  return true;  
 }
 
 void stop_motors(DynamixelWorkbench&  motor, uint8_t motor_IDs)
