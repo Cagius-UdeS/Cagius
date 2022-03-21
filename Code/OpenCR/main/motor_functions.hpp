@@ -22,8 +22,8 @@ const uint8_t MOTOR_CONVOYEUR_ID = 3;
 const uint8_t MOTOR_VIS_ID = 4;
 const uint8_t DELTA_POS = 20;
 const int32_t V_Trappes = 50;
-const int DIX_PERCENT_CONV = 500;     //Valeur a ajouter et ajuster (idk what it is, va dependre du compteur je crois)
 const int32_t V_Convoyeur = 25;
+const int TIME_PER_TROURS = 6000;
 
 // ========= Functions prototype ========
 

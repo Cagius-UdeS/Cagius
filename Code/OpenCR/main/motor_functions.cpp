@@ -66,9 +66,9 @@ void init_motors(DynamixelWorkbench& motor)
 
 bool tourne_continu_NMBTours(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb_tours)
 {
-  int temp_time = 0;
-
-  
+  motor.goalVelocity(motor_IDs, V_Convoyeur);
+  delay(nmb_tours*TIME_PER_TROURS);
+  motor.goalVelocity(motor_IDs, 0);
   return true;
 }
 
