@@ -5,7 +5,10 @@ from PyQt5.QtCore    import *
 from PyQt5           import *
 
 from mainWindow_geometry import Ui_MainWindow
-from popup_geometry     import Ui_Dialog
+from popup_geometry      import Ui_Dialog
+from commFunctions       import *
+
+ID_OPENCR = 1;
 
 class MyDialog(QDialog):
     def __init__(self):
@@ -26,6 +29,8 @@ class MyWindow(QMainWindow):
         super().__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        self.messageIO = MessageIO()
+        self.messageIO.addDevice(SerialComm("/dev/ttyACM0", 57600))
 
         ##Initialisation de la fenêtre principale
         self.initAnimals()
@@ -45,6 +50,8 @@ class MyWindow(QMainWindow):
     
     def activeCage(self):
         ##Activer les moteurs et attendre fin de mouvement
+        self.messageIO.sendMessage(ID_OPENCR,"0START")
+        self.messageIO.readMessage(ID_OPENCR)
         print('Cage en mouvement')
 
     def buttonstopCage(self):
@@ -88,6 +95,7 @@ class MyWindow(QMainWindow):
         timeF = QTime()
         timeF.setHMS(20,00,00)
         self.ui.Fin.setTime(timeF)
+
 
 
 if __name__ == '__main__':
