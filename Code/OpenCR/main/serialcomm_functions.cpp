@@ -39,10 +39,11 @@ String get_msg()
   return msg;
 }
 
-int should_wash(String& state)
+String should_wash(String& state)
 {
 
-  String words[2];
+  String words[3];
+  String out;
   int StringCount = 0;
 
   while (state.length() > 0)
@@ -61,14 +62,28 @@ int should_wash(String& state)
   }
    
   if (words[0] == "WASH")
-  {
-    return words[1].toInt();
+  { 
+    out = words[1] + " " + words[2];
+    return out;
   }
   else
   {
-    return 0;
+    return out;
   }
   
+}
+
+int should_trash(String& state)
+{
+  if (state == "TRASH")
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+   
 }
 
 String send_msg(const String& msg)

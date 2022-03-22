@@ -54,13 +54,13 @@ void close_poubelle()
   Serial.println("1Poubelle fermee");
 }
 // etape 5: compression de la litiere
-void compression_litiere()
+void compression_litiere(int percent)
 {
   tourne_continu_Torque(dyna, MOTOR_VIS_ID_Action, NMB_TORQUE_Compression);
   Serial.println("1Compression de la litiere terminee");
 }
 // etape 6: retour de la pelle
-void home_litiere()
+void home_litiere(int percent)
 {
   tourne_continu_Torque_goBack(dyna, MOTOR_VIS_ID_Action, NMB_TORQUE_Retour);
   Serial.println("1Compresseur de litiere home");

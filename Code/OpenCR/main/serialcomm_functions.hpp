@@ -28,7 +28,9 @@ bool should_start(const String& state);
 
 bool should_end(const String& state);
 
-int should_wash(String& state);
+String should_wash(String& state);
+
+int should_trash(String& state);
 
 String get_msg();
 

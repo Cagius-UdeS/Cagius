@@ -49,9 +49,9 @@ void close_trappes(void);
 // etape 4: fermeture trape de la poubelle
 void close_poubelle(void);
 // etape 5: compression de la litiere
-void compression_litiere(void);
+void compression_litiere(int percent);
 // etape 6: retour de la pelle
-void home_litiere(void);
+void home_litiere(int percent);
 
 
 
