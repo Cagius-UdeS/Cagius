@@ -115,7 +115,7 @@ void loop()
 
     if (percent[1] != 0)
     {
-      send_msg("Nettoyage amorcé a " + String(percent[0]) + " percent");
+      send_msg("Nettoyage amorcé a " + String(percent[0]) + " percent de convoyeur et " + String(percent[1]) + " percent de poubelle");
       current_state = Washing;
     }
 
