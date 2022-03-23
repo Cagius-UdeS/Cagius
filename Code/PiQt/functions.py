@@ -10,21 +10,13 @@ class SerialError(Exception):
     """ Raised when an error occurs with the OpenCR. """
     pass
 
-def init_comm(port, baudrate):
-    """Initialize the communication with the wanted serial device.
-    """
-    print("Opening Serial communication with {0}.".format(port))
-    ser = serial.Serial(port, baudrate)
-    ser.flush()
-    return ser
-
 
 def print_received_data(data):
     print("Received : '{0}'\n".format(data))
 
 
 def print_sent_data(data):
-    print("Sent : '{0}'".format(data))
+    print("Sent : '{0}'\n".format(data))
 
 
 def get_data(ser):
@@ -49,7 +41,7 @@ def send_data(ser, data):
     Prepend the ID of the sender to the message.
     Return the sent message.
     """
-    message = "{0}{1}\n".format(ID_PI, data)
+    message = "{0}{1}".format(ID_PI, data)
     ser.write(message.encode())
     return message
 
