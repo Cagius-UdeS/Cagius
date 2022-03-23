@@ -1,6 +1,6 @@
 /*
 Project:      CAGIUS
-Description:  Header: Function Action de la cage
+Description:  Header: Function des actions de la cage
 Authors:      Florence Millette
               Aissatou
               Alexandre
@@ -18,17 +18,17 @@ Authors:      Florence Millette
 
 // ========= Constant =========
 
-//uint8_t get_id[16];
-//uint8_t scan_cnt = 0;
-//uint8_t ping_cnt = 0;
-const uint8_t MOTOR_TRAPPES_ID_Action = 1;
-const uint8_t MOTOR_POUBELLE_ID_Action = 2;
-const uint8_t MOTOR_CONVOYEUR_ID_Action = 3;
-const uint8_t MOTOR_VIS_ID_Action = 4;
+//----------motor--------------
+const uint8_t MOTOR_TRAPPES_ID_Action = 2;
+const uint8_t MOTOR_POUBELLE_ID_Action = 1;
+const uint8_t MOTOR_CONVOYEUR_ID_Action = 4;
+const uint8_t MOTOR_VIS_ID_Action = 3;
 
-const float RAD_TRAPPES_Action = 2;
+//----------utilisateion--------------
+const float RAD_TRAPPES_Action = 2;           // nombre de pi/2 necessaire pour l'ouverture des trappes
 const float RAD_POUBELLE_Action = 1;
-const int NMB_TOURS_CONVOYEUR_10percent = 5;
+const int NMB_TOURS_CONVOYEUR_10percent = 5;  // nombre de tour nécessaire au convoyeur pour faire 10%  
+
 const float NMB_TORQUE_Retour = 0.02;
 const float NMB_TORQUE_Compression = 0.02;
 

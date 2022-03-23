@@ -16,14 +16,19 @@
 #include <DynamixelWorkbench.h>
 #include <vector>
 
-const uint8_t MOTOR_TRAPPES_ID = 1; 
-const uint8_t MOTOR_POUBELLE_ID = 2;
+// ========= Constant =========
+
+//----------motor--------------
+const uint8_t MOTOR_TRAPPES_ID = 2; 
+const uint8_t MOTOR_POUBELLE_ID = 1;
 const uint8_t MOTOR_CONVOYEUR_ID = 4;
 const uint8_t MOTOR_VIS_ID = 3;
+
+//----------utilisateion--------------
 const uint8_t DELTA_POS = 20;
-const int32_t V_Trappes = 50;
-const int32_t V_Convoyeur = 25;
-const int TIME_PER_TROURS = 6000;
+const int32_t V_Trappes = 50;     // vitesse des trappes
+const int32_t V_Convoyeur = 25;   // vitesse du convoyeur
+const int TIME_PER_TROURS = 6000; // temps nécessaire pour effectuer un tour de convoyeur
 
 // ========= Functions prototype ========
 
