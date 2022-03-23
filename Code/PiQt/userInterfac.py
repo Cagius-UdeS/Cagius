@@ -7,6 +7,7 @@ from PyQt5           import *
 from mainWindow_geometry import Ui_MainWindow
 from popup_geometry      import Ui_Dialog
 from functions           import *
+from init_stop_Cmds      import *
 
 
 class MyDialog(QDialog):
@@ -28,7 +29,10 @@ class MyWindow(QMainWindow):
         super().__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        init_comm("/dev/ttyACM0", 57600)
+        
+        
+        #Initialisation de la commuication
+        port, ser = init_sequence()
         
 
         ##Initialisation de la fenêtre principale
@@ -36,31 +40,45 @@ class MyWindow(QMainWindow):
         self.commWindows()
         self.setActivityHours()
         
+        
         #Fonctions de communication
         self.numAnimals()
-        self.buttonactiveCage()
-        self.buttonstopCage()
+        self.buttonactiveCage(ser)
+        self.buttonstopCage(ser)
+        self.buttontrash(ser)
 
 
-    def buttonactiveCage(self):
-        self.ui.Activation.clicked.connect(self.activeCage)
-        self.ui.Nettoyage.clicked.connect(self.activeCage)
+    def buttonactiveCage(self, ser):
+        self.ui.Activation.clicked.connect(lambda:self.activeCage(ser))
+        self.ui.Nettoyage.clicked.connect(lambda:self.activeCage(ser))
 
 
     
-    def activeCage(self):
+    def activeCage(self, ser):
         ##Activer les moteurs et attendre fin de mouvement
-        print_sent_data(send_data(serial.Serial("/dev/ttyACM0", 57600), "START"))
-        print_received_data(get_data(serial.Serial("/dev/ttyACM0", 57600)))
-        print('Cage en mouvement')
+        #print_sent_data(send_data(serial.Serial("/dev/ttyACM0", 57600), "START"))
+        #print_received_data(get_data(serial.Serial("/dev/ttyACM0", 57600)))
+        #print('Cage en mouvement')
 
-    def buttonstopCage(self):
-        self.ui.Desactivation.clicked.connect(self.stopCage)
+        activate_state(ser)
+
+    def buttonstopCage(self, ser):
+        self.ui.Desactivation.clicked.connect(lambda:self.stopCage(ser))
 
     
-    def stopCage(self):
+    def stopCage(self, ser):
         ##Arreter les moteurs et attendre fin de mouvement
-        print('Cage en cours darret')
+        #print('Cage en cours darret')
+
+        stop_state(ser)
+
+    
+    def buttontrash(self, ser):
+        self.ui.Viderpoubelle.clicked.connect(lambda:self.trashCage(ser))
+
+
+    def trashCage(self, ser):
+        trash_state(ser)
 
 
     def initAnimals(self):

@@ -36,9 +36,11 @@ class MessageIO:
         self.devices.append(dev)
         print('Adding device')
 
+
     def sendMessage(self,deviceIndex,msg):
         #print('Sending message')
         self.devices[deviceIndex].sendMsg(msg)
+
 
     def readMessage(self, deviceIndex):
         dev = self.devices[deviceIndex]
