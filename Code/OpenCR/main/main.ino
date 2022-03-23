@@ -42,8 +42,7 @@ enum State
 // ========= Variables ========
 
 enum State current_state;
-String msg;
-// DynamixelWorkbench dyna;
+String msg;       // messsage lu du Pi
 int percent[2];
 
 // ========= Functions ========
@@ -54,6 +53,7 @@ void setup()
   comm_init();
   current_state = Off;
   init_motors_action();
+  send_msg("1En attente du lancement de la cage");
 }
 
 void loop()
@@ -63,13 +63,15 @@ void loop()
   {
   case Off:
   {
-    // waiting for the start signal
+    // waiting for the start signal, if received, state = Wait
     send_msg("En attente du lancement de la cage");
     msg = get_msg();
     if (should_start(msg) == true)
     {
-      send_msg("Cage armee");
+      send_msg("1Cage armee");
       current_state = Wait;
+      send_msg("1En attente dinstruction");
+      break;
     }
 
     break;
@@ -77,19 +79,28 @@ void loop()
 
   case Wait:
   {
-    // Waiting for the Camera or the stop of the cage signal
-    send_msg("En attente dinstruction");
+    // Waiting for the Pi to send the instruction Wash, Trash or the stop of the cage signal
     msg = get_msg();
 
     // pi dit stop
     if (should_end(msg) == true)
     {
-      send_msg("Cage arretee");
+      send_msg("1Cage arretee");
       current_state = Off;
       break;
     }
 
-    // statement sur la camera (envoye du pi)
+    // pi dit de débuter le nettoyage de ta poubelle
+    if (should_trash(msg) == true)
+    {
+      current_state = Trash;
+      break;
+    }
+
+    // statement sur la camera (envoye du pi), lecture de deux int, premier %
+    // de la cage a nettoyer (convoyeur), second % de la poubelle a compresser
+
+    // séparation du string qui est recu en deux integer entre 0 et 100
     String temporaire1 = should_wash(msg);
 
     String words1[3];
@@ -113,15 +124,11 @@ void loop()
     percent[0] = words1[0].toInt();
     percent[1] = words1[1].toInt();
 
-    if (percent[1] != 0)
+    if (percent[0] != 0 && percent[1] != 0)
     {
-      send_msg("Nettoyage amorcé a " + String(percent[0]) + " percent de convoyeur et " + String(percent[1]) + " percent de poubelle");
+      send_msg("Nettoyage amorcé a " + String(percent[0]) + " percent de convoyeur et " + String(percent[1]) + " percent de poubelle"); // message feedback
       current_state = Washing;
-    }
-
-    if (should_trash(msg) == true)
-    {
-      current_state = Trash;
+      break;
     }
 
     break;
@@ -131,7 +138,7 @@ void loop()
   {
 
     // nettoyage de la cage
-    send_msg("Nettoyage en cours");
+    send_msg("1Nettoyage en cours");
 
     // etape 1: ouverture de la trappe de la poubelle
     open_poubelle();
@@ -148,20 +155,23 @@ void loop()
     // etape 6: retour de la pelle
     home_litiere(percent[1]);
 
-    send_msg("Nettoyage fini");
+    send_msg("1Nettoyage fini");
     current_state = Wait;
+    send_msg("1En attente dinstruction");
     break;
   }
 
   case Trash:
   {
-
+    // nettoyage de la poubelle (compression de la litiere a la limite de la boite, car utilisateur met un sac a la sortie
+    send_msg("1Nettoyage de la poubelle amorce");
     compression_litiere(100);
 
     home_litiere(100);
 
-    send_msg("Nettoyage de la poubelle fini");
+    send_msg("1Nettoyage de la poubelle fini");
     current_state = Wait;
+    send_msg("1En attente dinstruction");
 
     break;
   }
