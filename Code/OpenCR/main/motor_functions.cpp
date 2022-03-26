@@ -81,7 +81,7 @@ bool tourne_continu_NMBTours(DynamixelWorkbench&  motor, uint8_t motor_IDs, int 
   return true;
 }
 
-bool tourne_continu_Torque(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb_torque)
+bool tourne_continu_Torque(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb_torque, int percent)
 {
  /**
  * Fonction de rotation de moteur en continu selon le torque et le courant
@@ -90,12 +90,15 @@ bool tourne_continu_Torque(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nm
  * @param { int } nmb_torque
  * @return { bool }
  */
+  //motor.goalCurrent(motor_IDs, nmb_torque);
 
+  //Serial.println("Mouvement fini");
+  //delay(DELAY_CONV_10Percent*percent/10);
  
   return true;
 }
 
-bool tourne_continu_Torque_goBack(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb_torque)
+bool tourne_continu_Torque_goBack(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb_torque,  int percent)
 {
  /**
  * Fonction de rotation de moteur en continu dans la meme sequence que la fonction en torque et courant
@@ -105,6 +108,13 @@ bool tourne_continu_Torque_goBack(DynamixelWorkbench&  motor, uint8_t motor_IDs,
  * @return { bool }
  */
 
+  //motor.setReverseDirection(motor_IDs);
+  //motor.goalCurrent(motor_IDs, nmb_torque);
+
+  //Serial.println("Mouvement fini");
+  //delay(DELAY_CONV_10Percent*percent/10);
+  
+  //motor.setNormalDirection(motor_IDs);
 
   return true;
 }

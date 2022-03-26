@@ -91,7 +91,7 @@ void compression_litiere(int percent)
  * @param { int } percent         (pourcentage de compression selon des bonds de 10%, presentement pas utilisé)
  * @return { void }
  */
-  tourne_continu_Torque(dyna, MOTOR_VIS_ID_Action, NMB_TORQUE_Compression);
+  tourne_continu_Torque(dyna, MOTOR_VIS_ID_Action, NMB_TORQUE_Compression, percent);
   Serial.println("Compression de la litiere terminee");
 }
 // etape 6: retour de la pelle
@@ -102,6 +102,6 @@ void home_litiere(int percent)
  * @param { int } percent         (pourcentage de compression selon des bonds de 10%, presentement pas utilisé)
  * @return { void }
  */
-  tourne_continu_Torque_goBack(dyna, MOTOR_VIS_ID_Action, NMB_TORQUE_Retour);
+  tourne_continu_Torque_goBack(dyna, MOTOR_VIS_ID_Action, NMB_TORQUE_Retour, percent);
   Serial.println("Compresseur de litiere home");
 }

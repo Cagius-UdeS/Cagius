@@ -31,6 +31,7 @@ const int32_t V_Convoyeur = 25;   // vitesse du convoyeur
 const int TIME_PER_TROURS = 6000; // temps nécessaire pour effectuer un tour de convoyeur
 const int32_t PI_SUR_2 = 1023;          // position de pi/2 rad
 const unsigned long DELAY_PI_SUR_2 = 3000;  // temps nécessaire a faire PI/2 avec vitesse des trappes
+const unsigned long DELAY_CONV_10Percent = 7000;  // temps nécessaire a faire 10 pourcentde l'allé du convoyeur
 const int32_t HOME = 0;
 
 // ========= Functions prototype ========
@@ -39,9 +40,9 @@ void init_motors(DynamixelWorkbench&  motor);
 
 bool tourne_continu_NMBTours(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb_tours);
 
-bool tourne_continu_Torque(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb_torque);
+bool tourne_continu_Torque(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb_torque, int percent);
 
-bool tourne_continu_Torque_goBack(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb_tours);
+bool tourne_continu_Torque_goBack(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb_tours, int percent);
 
 bool tourne_Xrad_ReturnPos(DynamixelWorkbench&  motor, uint8_t motor_IDs, float nmb_rad);
 
