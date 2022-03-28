@@ -15,7 +15,7 @@ def init_sequence():
     port = "/dev/ttyACM0"
     ser = init_comm(port, baudrate)
     init_opencr(ser)
-    off_state(ser)
+    #off_state(ser)
     return port, ser
 
 
@@ -48,13 +48,24 @@ def off_state(ser):
 
 def activate_state(ser):
     print_sent_data(send_data(ser, "START"))
-    print_received_data(get_data(ser))
+    #print_received_data(get_data(ser))
+
+    msg = get_data(ser)
+    print_received_data(msg)
+
+    """if msg == "En attente dinstruction":
+        print_received_data(msg)
+    else:
+        send_data(ser, "START")"""
 
 
 def clean_state(ser):
     print_sent_data(send_data(ser, "WASH 50 50"))
     print_received_data(get_data(ser))
-
+    
+    #msg = wait_for_data(ser, "Nettoyage fini")
+    #off_state()
+    
 
 def trash_state(ser):
     print_sent_data(send_data(ser, "TRASH"))
@@ -69,7 +80,7 @@ def stop_state(ser):
     Release the camera.
     Close the communication with the serial device.
     """
-    print_sent_data(send_data(ser, "STOP"))
+    print_sent_data(send_data(ser, "END"))
     print_received_data(get_data(ser))
 
     #print("Closing Serial communication with {0}.".format(port))

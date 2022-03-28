@@ -1,3 +1,4 @@
+from distutils.command.clean import clean
 import sys
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui     import *
@@ -44,13 +45,14 @@ class MyWindow(QMainWindow):
         #Fonctions de communication
         self.numAnimals()
         self.buttonactiveCage(ser)
+        self.buttonclean(ser)
         self.buttonstopCage(ser)
         self.buttontrash(ser)
 
 
     def buttonactiveCage(self, ser):
         self.ui.Activation.clicked.connect(lambda:self.activeCage(ser))
-        self.ui.Nettoyage.clicked.connect(lambda:self.activeCage(ser))
+        #self.ui.Nettoyage.clicked.connect(lambda:self.activeCage(ser))
 
 
     
@@ -79,6 +81,14 @@ class MyWindow(QMainWindow):
 
     def trashCage(self, ser):
         trash_state(ser)
+
+
+    def buttonclean(self, ser):
+        self.ui.Nettoyage.clicked.connect(lambda:self.cleanCage(ser))
+
+    
+    def cleanCage(self, ser):
+        clean_state(ser)
 
 
     def initAnimals(self):
