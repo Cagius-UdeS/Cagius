@@ -48,10 +48,12 @@ def off_state(ser):
 
 def activate_state(ser):
     print_sent_data(send_data(ser, "START"))
-    #print_received_data(get_data(ser))
+    #msg = wait_for_data(ser, "Cage armee")
+    print_received_data(get_data(ser))
 
-    msg = get_data(ser)
-    print_received_data(msg)
+    """print_sent_data(send_data(ser, "START"))
+    msg2 = wait_for_data(ser, "En attente dinstruction")
+    print_received_data(msg2)"""
 
     """if msg == "En attente dinstruction":
         print_received_data(msg)
@@ -61,15 +63,15 @@ def activate_state(ser):
 
 def clean_state(ser):
     print_sent_data(send_data(ser, "WASH 50 50"))
+    #msg = wait_for_data("Nettoyage fini")
     print_received_data(get_data(ser))
-    
-    #msg = wait_for_data(ser, "Nettoyage fini")
-    #off_state()
+    #off_state(ser)
     
 
 def trash_state(ser):
     print_sent_data(send_data(ser, "TRASH"))
     print_received_data(get_data(ser))
+    #off_state(ser)
 
 
 

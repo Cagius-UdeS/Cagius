@@ -1,4 +1,5 @@
-from distutils.command.clean import clean
+#from distutils.command.clean import clean
+from glob            import glob
 import sys
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui     import *
@@ -10,13 +11,23 @@ from popup_geometry      import Ui_Dialog
 from functions           import *
 from init_stop_Cmds      import *
 
+COMPTEUR = 0
 
 class MyDialog(QDialog):
     def __init__(self):
         super().__init__()
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
-        self.ui.Fait.clicked.connect(self.change)
+
+        self.button()
+
+
+    def button(self):
+        global COMPTEUR
+        if  self.ui.Fait.isChecked():
+            self.change
+            COMPTEUR = 0
+            print("Réinistialisation du compteur")
 
 
     def change(self):
@@ -41,6 +52,10 @@ class MyWindow(QMainWindow):
         self.commWindows()
         self.setActivityHours()
         
+
+        ##Initialisation du compteur
+        #COMPTEUR = 0
+
         
         #Fonctions de communication
         self.numAnimals()
@@ -52,17 +67,12 @@ class MyWindow(QMainWindow):
 
     def buttonactiveCage(self, ser):
         self.ui.Activation.clicked.connect(lambda:self.activeCage(ser))
-        #self.ui.Nettoyage.clicked.connect(lambda:self.activeCage(ser))
 
 
     
     def activeCage(self, ser):
-        ##Activer les moteurs et attendre fin de mouvement
-        #print_sent_data(send_data(serial.Serial("/dev/ttyACM0", 57600), "START"))
-        #print_received_data(get_data(serial.Serial("/dev/ttyACM0", 57600)))
-        #print('Cage en mouvement')
-
         activate_state(ser)
+
 
     def buttonstopCage(self, ser):
         self.ui.Desactivation.clicked.connect(lambda:self.stopCage(ser))
@@ -78,13 +88,23 @@ class MyWindow(QMainWindow):
     def buttontrash(self, ser):
         self.ui.Viderpoubelle.clicked.connect(lambda:self.trashCage(ser))
 
+        global COMPTEUR
+        if  COMPTEUR >= 7: 
+            self.dialogbox
+            print("Lancement de la vidange")
+            lambda:self.trashCage(ser)
+
 
     def trashCage(self, ser):
         trash_state(ser)
 
 
     def buttonclean(self, ser):
-        self.ui.Nettoyage.clicked.connect(lambda:self.cleanCage(ser))
+        global COMPTEUR
+        if self.ui.Nettoyage.isChecked():
+            lambda:self.cleanCage(ser)
+            COMPTEUR = COMPTEUR + 1
+            print("Nettoyage numéro " + str(COMPTEUR))
 
     
     def cleanCage(self, ser):
