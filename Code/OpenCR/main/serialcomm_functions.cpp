@@ -120,6 +120,23 @@ String send_msg(const String& msg)
   return msg_envoye;
 }
 
+bool should_init(const String& state)
+{
+ /**
+ * Fonction de lecture de message et détermine si on active la cage
+ * @param { String& } state     // state = message à analyser 1 mots, exemple: {"INIT"}
+ * @return { bool }     
+ */
+  if (state == "INIT")
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+}
+
 bool should_start(const String& state)
 {
  /**

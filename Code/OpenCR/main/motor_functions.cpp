@@ -31,8 +31,9 @@ void init_motors(DynamixelWorkbench& motor)
         if (i == 2)   // initialisation moteur trappes
         {
           motor.ping(MOTOR_TRAPPES_ID, &model_number, &error_message);
-          motor.ledOn(MOTOR_TRAPPES_ID);                              
-          motor.setNormalDirection(MOTOR_TRAPPES_ID);                       //setReverseDirection
+          motor.ledOn(MOTOR_TRAPPES_ID);        
+          //motor.torque(MOTOR_TRAPPES_ID,                       
+          motor.setReverseDirection(MOTOR_TRAPPES_ID);                       //setNormalDirection
           motor.jointMode(MOTOR_TRAPPES_ID, V_Trappes, 0, &error_message);  
           motor.torqueOn(MOTOR_TRAPPES_ID);
           Serial.println("Moteur 1 initialise (TRAPPES)");
@@ -41,7 +42,7 @@ void init_motors(DynamixelWorkbench& motor)
         {
           motor.ping(MOTOR_POUBELLE_ID, &model_number, &error_message);
           motor.ledOn(MOTOR_POUBELLE_ID);                              
-          motor.setNormalDirection(MOTOR_POUBELLE_ID);                 //setReverseDirection
+          motor.setNormalDirection(MOTOR_POUBELLE_ID);                 //setNormalDirection
           motor.jointMode(MOTOR_POUBELLE_ID, V_Trappes, 0, &error_message);
           motor.torqueOn(MOTOR_POUBELLE_ID);
           Serial.println("Moteur 2 initialise (POUBELLE)");
@@ -139,7 +140,7 @@ bool tourne_Xrad_and_Stop(DynamixelWorkbench&  motor, uint8_t motor_IDs, float n
   return true;  
 }
 
-bool tourne_Xrad_ReturnPos(DynamixelWorkbench&  motor, uint8_t motor_IDs, float nmb_rad)
+bool tourne_Xrad_ReturnPos(DynamixelWorkbench&  motor, uint8_t motor_IDs, float nmb_rad, uint8_t elmt)
 {
  /**
  * Fonction de rotation de moteur retour a position home
@@ -148,7 +149,15 @@ bool tourne_Xrad_ReturnPos(DynamixelWorkbench&  motor, uint8_t motor_IDs, float 
  * @param { float } nmb_rad
  * @return { bool }
  */
-  motor.goalPosition(motor_IDs, HOME);
+ if (elmt == ELMT_POUBELLE)
+ {
+  motor.goalPosition(motor_IDs, HOME_POUBELLE);
+ }
+
+ if (elmt == ELMT_TRAPPES)
+ {
+  motor.goalPosition(motor_IDs, HOME_TRAPPES);
+ }
 
   Serial.println("Mouvement fini");
   delay(DELAY_PI_SUR_2*nmb_rad);

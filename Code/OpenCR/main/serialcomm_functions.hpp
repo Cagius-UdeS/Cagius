@@ -24,6 +24,8 @@ class String;
 
 void comm_init();
 
+bool should_init(const String& state);
+
 bool should_start(const String& state);
 
 bool should_end(const String& state);

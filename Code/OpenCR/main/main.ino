@@ -144,10 +144,12 @@ void loop()
     open_poubelle();
     // etape 2: ouverture des trapes du convoyeur
     open_trappes();
+    //close_trappes();
     // etape 3: convoyeur (avec %)
     convoyeur(percent[0]);
     // etape 4: fermeture trapes du convoyeur
     close_trappes();
+    //open_trappes();
     // etape 4: fermeture trape de la poubelle
     close_poubelle();
     // etape 5: compression de la litiere

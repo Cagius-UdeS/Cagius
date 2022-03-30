@@ -32,7 +32,10 @@ const int TIME_PER_TROURS = 6000; // temps nécessaire pour effectuer un tour de
 const int32_t PI_SUR_2 = 1023;          // position de pi/2 rad
 const unsigned long DELAY_PI_SUR_2 = 3000;  // temps nécessaire a faire PI/2 avec vitesse des trappes
 const unsigned long DELAY_CONV_10Percent = 7000;  // temps nécessaire a faire 10 pourcentde l'allé du convoyeur
-const int32_t HOME = 0;
+const int32_t HOME_TRAPPES = 0;
+const int32_t HOME_POUBELLE = 0;
+const int32_t ELMT_TRAPPES = 2;
+const int32_t ELMT_POUBELLE = 1;
 
 // ========= Functions prototype ========
 
@@ -44,7 +47,7 @@ bool tourne_continu_Torque(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nm
 
 bool tourne_continu_Torque_goBack(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb_tours, int percent);
 
-bool tourne_Xrad_ReturnPos(DynamixelWorkbench&  motor, uint8_t motor_IDs, float nmb_rad);
+bool tourne_Xrad_ReturnPos(DynamixelWorkbench&  motor, uint8_t motor_IDs, float nmb_rad, uint8_t elmt);
 
 bool tourne_Xrad_and_Stop(DynamixelWorkbench&  motor, uint8_t motor_IDs, float nmb_rad);
 
