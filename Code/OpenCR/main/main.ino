@@ -53,7 +53,7 @@ void setup()
   comm_init();
   current_state = Off;
   init_motors_action();
-  send_msg("1En attente du lancement de la cage");
+  send_msg("En attente du lancement de la cage");
 }
 
 void loop()
@@ -64,13 +64,13 @@ void loop()
   case Off:
   {
     // waiting for the start signal, if received, state = Wait
-    send_msg("En attente du lancement de la cage");
+    // send_msg("En attente du lancement de la cage");
     msg = get_msg();
     if (should_start(msg) == true)
     {
-      send_msg("1Cage armee");
+      send_msg("Cage armee");
       current_state = Wait;
-      send_msg("1En attente dinstruction");
+      send_msg("En attente dinstruction");
       break;
     }
 
@@ -85,7 +85,7 @@ void loop()
     // pi dit stop
     if (should_end(msg) == true)
     {
-      send_msg("1Cage arretee");
+      send_msg("Cage arretee");
       current_state = Off;
       break;
     }
@@ -138,7 +138,7 @@ void loop()
   {
 
     // nettoyage de la cage
-    send_msg("1Nettoyage en cours");
+    send_msg("Nettoyage en cours");
 
     // etape 1: ouverture de la trappe de la poubelle
     open_poubelle();
@@ -155,9 +155,9 @@ void loop()
     // etape 6: retour de la pelle
     home_litiere(percent[1]);
 
-    send_msg("1Nettoyage fini");
+    send_msg("Nettoyage fini");
     current_state = Wait;
-    send_msg("1En attente dinstruction");
+    send_msg("En attente dinstruction");
     break;
   }
 
@@ -169,9 +169,9 @@ void loop()
 
     home_litiere(100);
 
-    send_msg("1Nettoyage de la poubelle fini");
+    send_msg("Nettoyage de la poubelle fini");
     current_state = Wait;
-    send_msg("1En attente dinstruction");
+    send_msg("En attente dinstruction");
 
     break;
   }

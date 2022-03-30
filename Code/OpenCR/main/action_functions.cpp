@@ -23,7 +23,7 @@ void init_motors_action()
  * @return { void }
  */
   init_motors(dyna);
-  Serial.println("1Moteur initialise");
+  Serial.println("Moteur initialise");
 }
 
 // etape 1: ouverture de la trappe de la poubelle
