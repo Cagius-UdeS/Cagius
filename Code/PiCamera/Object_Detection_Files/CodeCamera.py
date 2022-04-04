@@ -1,6 +1,8 @@
 #Importation des librairies
 import FonctionsCam as funcam
 
-
-P = funcam.Scan()
+funcam.InitGPIO()
+P,N = funcam.Scan()
 print(P)
+print(N)
+ 
