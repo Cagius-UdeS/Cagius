@@ -94,7 +94,7 @@ def Scan():
 
   "Démarage du scan de l'image"
   #Code pour tests sans cam
-  im = cv.imread("Rouge0.jpg",1)
+  im = cv.imread("Rouge10.jpg",1)
   im = undistort(im)
 
   """ #Prise de la photo de la litière

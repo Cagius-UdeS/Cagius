@@ -44,6 +44,8 @@ rms, _, _, _, _ = \
         (cv2.TERM_CRITERIA_EPS+cv2.TERM_CRITERIA_MAX_ITER, 30, 1e-6)
     )
 print("Found " + str(N_OK) + " valid images for calibration")
+
+#Noter les valeurs suivante:
 print("DIM=" + str(_img_shape[::-1]))
 print("K=np.array(" + str(K.tolist()) + ")")
 print("D=np.array(" + str(D.tolist()) + ")")

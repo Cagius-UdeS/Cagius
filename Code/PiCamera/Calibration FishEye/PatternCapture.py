@@ -5,13 +5,13 @@ import numpy as np
 
 cam = cv.VideoCapture(0)
 
-for index in range(0,1):
+for index in range(0,35):
     print(str(index) + ": Prise de photo dans 3 seconde")
     cv.waitKey(3000)
 
     result, image = cam.read()
 
-    filename = 'Vert' + str(index) + '.jpg'
+    filename = 'Pattern' + str(index) + '.jpg'
     print(filename)
     if result:
     
@@ -20,5 +20,7 @@ for index in range(0,1):
     
         # save the image
         cv.imwrite(filename, image)
-        
+    
+cv.imshow('Image', image)
+cv.waitKey(0)        
 cv.destroyAllWindows()
