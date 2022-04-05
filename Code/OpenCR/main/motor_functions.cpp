@@ -32,7 +32,7 @@ void init_motors(DynamixelWorkbench& motor)
         {
           motor.ping(MOTOR_TRAPPES_ID, &model_number, &error_message);
           motor.ledOn(MOTOR_TRAPPES_ID);        
-          //motor.torque(MOTOR_TRAPPES_ID,                       
+          motor.torqueOff(MOTOR_TRAPPES_ID);                       
           motor.setReverseDirection(MOTOR_TRAPPES_ID);                       //setNormalDirection
           motor.jointMode(MOTOR_TRAPPES_ID, V_Trappes, 0, &error_message);  
           motor.torqueOn(MOTOR_TRAPPES_ID);
@@ -41,7 +41,8 @@ void init_motors(DynamixelWorkbench& motor)
         else if (i == 1)   // initialisation moteur poubelle
         {
           motor.ping(MOTOR_POUBELLE_ID, &model_number, &error_message);
-          motor.ledOn(MOTOR_POUBELLE_ID);                              
+          motor.ledOn(MOTOR_POUBELLE_ID);   
+          motor.torqueOff(MOTOR_TRAPPES_ID);                             
           motor.setNormalDirection(MOTOR_POUBELLE_ID);                 //setNormalDirection
           motor.jointMode(MOTOR_POUBELLE_ID, V_Trappes, 0, &error_message);
           motor.torqueOn(MOTOR_POUBELLE_ID);
@@ -133,10 +134,10 @@ bool tourne_Xrad_and_Stop(DynamixelWorkbench&  motor, uint8_t motor_IDs, float n
   int32_t pos = PI_SUR_2*nmb_rad;
 
   motor.goalPosition(motor_IDs, pos); 
-
-  Serial.println("Mouvement fini");
+ 
   delay(DELAY_PI_SUR_2*nmb_rad);
-
+  Serial.println("Mouvement fini");
+  
   return true;  
 }
 
