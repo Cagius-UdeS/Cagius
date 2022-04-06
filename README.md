@@ -24,6 +24,9 @@ Cagius est un projet open source ayant comme objectif de concevoir et construire
 
 ## Composantes informatiques
 
+//*********************************************************
+À FAIRE (FLORENCE ???????)
+//*********************************************************
 
 ## Assemblage
 
