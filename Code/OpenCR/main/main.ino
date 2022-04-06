@@ -54,6 +54,9 @@ void setup()
   // put your setup code here, to run once:
   comm_init();
 
+  pinMode(1,OUTPUT);
+  digitalWrite(1,HIGH);
+
   send_msg("En attente d'initialisation");
 }
 
@@ -70,7 +73,7 @@ void loop()
     {
       init_motors_action();
       current_state = Off;
-      send_msg("Cage initialisee");
+      send_msg("En attente du lancement de la cage");
       break;
     }
     break;
