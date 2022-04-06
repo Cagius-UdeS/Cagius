@@ -19,11 +19,14 @@ Cagius est un projet open source ayant comme objectif de concevoir et construire
 ### Électroniques
 - RaspberryPi 4
 - RaspberryPi Caméra
-- 3 x Dynamixel 
-- 1 x Dynamixel
+- 2 x Dynamixel XL-430-w250-t
+- 2 x Dynamixel XM-430-w350-t
 
 ## Composantes informatiques
 
+//*********************************************************
+À FAIRE (FLORENCE ???????)
+//*********************************************************
 
 ## Assemblage
 
@@ -96,9 +99,15 @@ il suffit de suivre le guide **Setting Up Open-CV for Object Detection** sur ce 
 
 ## Initialisation de la cage
 
+//*********************************************************
+À FAIRE (BIBI ???????)
+//*********************************************************
 
 ## Autres informations
 
+//*********************************************************
+À FAIRE (???????)
+//*********************************************************
 
 ## License
 
