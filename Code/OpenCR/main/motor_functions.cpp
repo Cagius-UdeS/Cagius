@@ -78,7 +78,7 @@ bool tourne_continu_NMBTours(DynamixelWorkbench&  motor, uint8_t motor_IDs, int 
  * @return { bool }
  */
   motor.goalVelocity(motor_IDs, V_Convoyeur);
-  delay(nmb_tours*TIME_PER_TROURS);           // temps que prend un tour aavec la vitesse definie dans les constantes
+  delay(nmb_tours*TIME_PER_TROURS);           // temps que prend un tour avec la vitesse definie dans les constantes
   motor.goalVelocity(motor_IDs, 0);
   return true;
 }
