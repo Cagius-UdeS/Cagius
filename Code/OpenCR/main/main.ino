@@ -31,11 +31,12 @@
 
 enum State
 {
-  Init,    // attente du message d'initialisation de la cage
+  Init,
   Off,     // attente du start de la cage
   Wait,    // en attente de message de la camera
   Washing, // cycle de nettoyage
   Trash,   // nettoyage de la poubelle, donc uniquement vis sans fin
+  Test
 };
 
 // ========= Constant =========
@@ -52,7 +53,8 @@ void setup()
 {
   // put your setup code here, to run once:
   comm_init();
-  current_state = Init;
+
+  send_msg("En attente d'initialisation");
 }
 
 void loop()
@@ -60,20 +62,19 @@ void loop()
   // put your main code here, to run repeatedly:
   switch (current_state)
   {
+    
   case Init:
   {
     msg = get_msg();
     if (should_init(msg) == true)
     {
       init_motors_action();
-      send_msg("En attente du lancement de la cage");
       current_state = Off;
+      send_msg("Cage initialisee");
       break;
     }
-
     break;
-  }
-  
+  }    
   case Off:
   {
     // waiting for the start signal, if received, state = Wait
@@ -84,6 +85,12 @@ void loop()
       send_msg("Cage armee");
       current_state = Wait;
       send_msg("En attente dinstruction");
+      break;
+    }
+    if (msg == "TEST")
+    {
+      current_state = Test;
+      send_msg("Mode Test");
       break;
     }
 
@@ -190,5 +197,63 @@ void loop()
 
     break;
   }
-  }
+  case Test:
+  {
+    msg = get_msg();
+    if (msg == "OpenTrappes")
+    {
+      open_trappes();
+    }
+    if (msg == "CloseTrappes")
+    {
+      close_trappes();
+    }
+    if (msg == "OpenPoubelle")
+    {
+      open_poubelle();
+    }
+    if (msg == "ClosePoubelle")
+    {
+      close_trappes();
+    }
+    if (msg == "Convoyeur10")
+    {
+      convoyeur(10);
+    }
+    if (msg == "Convoyeur100")
+    {
+      convoyeur(100);
+    }
+    if (msg == "Litiere10")
+    {
+      compression_litiere(10);
+    }
+    if (msg == "LitiereRetour10")
+    {
+      home_litiere(10);
+    }
+    if (msg == "LitiereRetour100")
+    {
+      home_litiere(100);
+    } 
+    if (msg == "HomePoubelle")
+    {
+      home_motorAction1();
+    }
+    if (msg == "HomeTrappes")
+    {
+      home_motorAction2();
+    }
+    
+    if (msg == "Off")
+    {
+      current_state = Off;
+      send_msg("Cage mode Off");
+      break;
+    }
+
+    
+    break;
+  } 
+}
 }
