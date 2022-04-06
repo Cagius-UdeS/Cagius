@@ -57,7 +57,7 @@ void setup()
   pinMode(1,OUTPUT);
   digitalWrite(1,HIGH);
 
-  send_msg("En attente d'initialisation");
+  current_state = Init;
 }
 
 void loop()
