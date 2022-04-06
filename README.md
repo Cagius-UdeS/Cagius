@@ -19,11 +19,14 @@ Cagius est un projet open source ayant comme objectif de concevoir et construire
 ### Électroniques
 - RaspberryPi 4
 - RaspberryPi Caméra
-- 3 x Dynamixel 
-- 1 x Dynamixel
+- 2 x Dynamixel XL-430-w250-t
+- 2 x Dynamixel XM-430-w350-t
 
 ## Composantes informatiques
 
+//*********************************************************
+À FAIRE (FLORENCE ???????)
+//*********************************************************
 
 ## Assemblage
 
@@ -51,6 +54,16 @@ Afin d'installer Arduino IDE et les librairies nécessaires pour coder les moteu
 	`https://raw.githubusercontent.com/ROBOTIS-GIT/OpenCR/master/arduino/opencr_release/package_opencr_index.json`
 4. Confirmer les changements en pressant *OK* dans le bas à droite de l'écran.
 5. Enfin, installer les librairies Motorcontrole dans la section *Outils* puis *Type de carte* et *Gestionnaire de carte*. Taper OpenCR dans la barre de recherche et installer les librairies.
+
+#### Installation des librairies pour OpenCR
+
+Afin de pouvoir compiler le code de la carte OpenCR, il est nécessaire d'installer quelques librairies selon les étapes suivantes :
+
+1. Ouvrir l'application Arduino IDE et se rendre dans *Croquis*, puis *Inclure une bibliothèque* et sélectionner *Gestionnaires de bibliothèques*
+
+2. Rentrer *Dynamixel* dans la barre de recherche
+
+3. Installer les libraires À COMPLÉTER
 
 ### Installation sur Pi
 
@@ -86,9 +99,15 @@ il suffit de suivre le guide **Setting Up Open-CV for Object Detection** sur ce 
 
 ## Initialisation de la cage
 
+//*********************************************************
+À FAIRE (BIBI ???????)
+//*********************************************************
 
 ## Autres informations
 
+//*********************************************************
+À FAIRE (???????)
+//*********************************************************
 
 ## License
 
