@@ -53,4 +53,6 @@ bool tourne_Xrad_and_Stop(DynamixelWorkbench&  motor, uint8_t motor_IDs, float n
 
 void stop_motors(DynamixelWorkbench&  motor, uint8_t motor_IDs);
 
+void home_motor(DynamixelWorkbench&  motor, uint8_t motor_IDs);
+
 #endif

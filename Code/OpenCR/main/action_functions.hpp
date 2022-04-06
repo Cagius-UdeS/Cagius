@@ -55,6 +55,8 @@ void compression_litiere(int percent);
 void home_litiere(int percent);
 
 
+void home_motorAction1();
+void home_motorAction2();
 
 
 #endif

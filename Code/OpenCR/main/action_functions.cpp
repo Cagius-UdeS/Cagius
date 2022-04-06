@@ -105,3 +105,12 @@ void home_litiere(int percent)
   tourne_continu_Torque_goBack(dyna, MOTOR_VIS_ID_Action, NMB_TORQUE_Retour, percent);
   Serial.println("Compresseur de litiere home");
 }
+
+void home_motorAction1()
+{
+  tourne_Xrad_and_Stop(dyna, MOTOR_POUBELLE_ID_Action, 0);  // note, le zero est presentement non utilises
+}
+void home_motorAction2()
+{
+  tourne_Xrad_and_Stop(dyna, MOTOR_TRAPPES_ID_Action, 0);
+}

@@ -150,6 +150,8 @@ bool tourne_Xrad_ReturnPos(DynamixelWorkbench&  motor, uint8_t motor_IDs, float 
  * @param { float } nmb_rad
  * @return { bool }
  */
+ motor.goalPosition(motor_IDs, (int32_t)(PI_SUR_2*nmb_rad));
+ /**
  if (elmt == ELMT_POUBELLE)
  {
   motor.goalPosition(motor_IDs, HOME_POUBELLE);
@@ -159,7 +161,7 @@ bool tourne_Xrad_ReturnPos(DynamixelWorkbench&  motor, uint8_t motor_IDs, float 
  {
   motor.goalPosition(motor_IDs, HOME_TRAPPES);
  }
-
+*/
   Serial.println("Mouvement fini");
   delay(DELAY_PI_SUR_2*nmb_rad);
   
@@ -169,4 +171,10 @@ bool tourne_Xrad_ReturnPos(DynamixelWorkbench&  motor, uint8_t motor_IDs, float 
 void stop_motors(DynamixelWorkbench&  motor, uint8_t motor_IDs)
 {
 
+}
+
+void home_motor(DynamixelWorkbench&  motor, uint8_t motor_IDs)
+{
+ motor.goalPosition(motor_IDs, 0);
+  
 }
