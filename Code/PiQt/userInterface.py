@@ -1,4 +1,5 @@
 import sys
+from glob            import glob
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui     import *
 from PyQt5.QtCore    import *
@@ -6,9 +7,10 @@ from PyQt5           import *
 
 from mainWindow_geometry import Ui_MainWindow
 from popup_geometry      import Ui_Dialog
-from commFunctions       import *
+from functions           import *
+from init_stop_Cmds      import *
 
-ID_OPENCR = 1;
+COMPTEUR = 0
 
 class MyDialog(QDialog):
     def __init__(self):
@@ -20,8 +22,12 @@ class MyDialog(QDialog):
 
     def change(self):
         self.close()
-        self.myWindow = MyWindow()
-        self.myWindow.show()
+        self.mywindow = MyWindow.__new__(MyWindow)
+        self.mywindow.show()
+        
+        global COMPTEUR
+        COMPTEUR = 0
+        print("Réinistialisation du compteur\n")
 
 
 class MyWindow(QMainWindow):
@@ -29,38 +35,69 @@ class MyWindow(QMainWindow):
         super().__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.messageIO = MessageIO()
-        self.messageIO.addDevice(SerialComm("/dev/ttyACM0", 57600))
+        
+        
+        #Initialisation de la commuication
+        port, ser = init_sequence()
+        
 
         ##Initialisation de la fenêtre principale
         self.initAnimals()
         self.commWindows()
         self.setActivityHours()
         
+
+
+        
         #Fonctions de communication
         self.numAnimals()
-        self.buttonactiveCage()
-        self.buttonstopCage()
+        self.buttonactiveCage(ser)
+        self.buttonclean(ser)
+        self.buttonstopCage(ser)
+        self.buttontrash(ser)
 
 
-    def buttonactiveCage(self):
-        self.ui.Activation.clicked.connect(self.activeCage)
-        self.ui.Nettoyage.clicked.connect(self.activeCage)
+    def buttonactiveCage(self, ser):
+        self.ui.Activation.clicked.connect(lambda:self.activeCage(ser))
+
 
     
-    def activeCage(self):
-        ##Activer les moteurs et attendre fin de mouvement
-        self.messageIO.sendMessage(ID_OPENCR,"0START")
-        self.messageIO.readMessage(ID_OPENCR)
-        print('Cage en mouvement')
+    def activeCage(self, ser):
+        activate_state(ser)
 
-    def buttonstopCage(self):
-        self.ui.Desactivation.clicked.connect(self.stopCage)
+
+    def buttonstopCage(self, ser):
+        self.ui.Desactivation.clicked.connect(lambda:self.stopCage(ser))
 
     
-    def stopCage(self):
-        ##Arreter les moteurs et attendre fin de mouvement
-        print('Cage en cours darret')
+    def stopCage(self, ser):
+        stop_state(ser)
+
+    
+    def buttontrash(self, ser):
+        self.ui.Viderpoubelle.clicked.connect(lambda:self.trashCage(ser))
+
+
+    def trashCage(self, ser):
+        trash_state(ser)
+
+        """global COMPTEUR
+        if  COMPTEUR >= 7: 
+            self.dialogbox
+            print("Lancement de la vidange")
+            lambda:self.trashCage(ser)"""
+
+
+    def buttonclean(self, ser):
+        self.ui.Nettoyage.clicked.connect(lambda:self.cleanCage(ser))
+
+    
+    def cleanCage(self, ser):
+        clean_state(ser)
+
+        global COMPTEUR
+        COMPTEUR = COMPTEUR + 1
+        print("Nettoyage numéro " + str(COMPTEUR) + "\n")
 
 
     def initAnimals(self):
@@ -78,7 +115,6 @@ class MyWindow(QMainWindow):
 
 
     def commWindows(self):
-        #self.ui.Nettoyage.clicked.connect(self.dialogbox)
         self.ui.Viderpoubelle.clicked.connect(self.dialogbox)
 
 

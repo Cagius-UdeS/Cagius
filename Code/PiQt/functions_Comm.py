@@ -1,8 +1,10 @@
 import serial
 import argparse
 import time
+
 encoding = "utf-8"
 baudrate = 57600
+
 ID_PI = '0'
 ID_OPENCR = '1'
 
@@ -55,33 +57,3 @@ def wait_for_data(ser, wanted):
 
     print_received_data(data)
     return data
-
-
-"""if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-p', required=True, help='Port used for serial communication.')
-    parser.add_argument('-d', action='store_true', help='Run demo program.')
-    args = parser.parse_args()
-    port = args.p
-
-    if args.d:
-        print("Opening Serial communication with {0}.".format(port))
-        with serial.Serial(port, baudrate) as ser:
-            ser.flush()
-            print_received_data(get_data(ser))
-
-            print_sent_data(send_data(ser, "0START"))
-            print_received_data(get_data(ser))
-
-            #print_sent_data(send_data(ser, nut_to_string(0, 12, 34)))
-            #print_received_data(get_data(ser))
-            #print_sent_data(send_data(ser, nut_to_string(1, -56, -78)))
-            #print_received_data(get_data(ser))
-            print_sent_data(send_data(ser, "0WASH 50"))
-            print_received_data(get_data(ser))
-
-
-            print_sent_data(send_data(ser, "0END"))
-            print_received_data(get_data(ser))
-
-            print("Closing Serial communication with {1}.".format(port))"""
