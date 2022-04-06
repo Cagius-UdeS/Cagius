@@ -31,6 +31,7 @@
 
 enum State
 {
+  Init,    // attente du message d'initialisation de la cage
   Off,     // attente du start de la cage
   Wait,    // en attente de message de la camera
   Washing, // cycle de nettoyage
@@ -51,9 +52,7 @@ void setup()
 {
   // put your setup code here, to run once:
   comm_init();
-  current_state = Off;
-  init_motors_action();
-  send_msg("En attente du lancement de la cage");
+  current_state = Init;
 }
 
 void loop()
@@ -61,6 +60,20 @@ void loop()
   // put your main code here, to run repeatedly:
   switch (current_state)
   {
+  case Init:
+  {
+    msg = get_msg();
+    if (should_init(msg) == true)
+    {
+      init_motors_action();
+      send_msg("En attente du lancement de la cage");
+      current_state = Off;
+      break;
+    }
+
+    break;
+  }
+  
   case Off:
   {
     // waiting for the start signal, if received, state = Wait
@@ -166,7 +179,7 @@ void loop()
   case Trash:
   {
     // nettoyage de la poubelle (compression de la litiere a la limite de la boite, car utilisateur met un sac a la sortie
-    send_msg("1Nettoyage de la poubelle amorce");
+    send_msg("Nettoyage de la poubelle amorce");
     compression_litiere(100);
 
     home_litiere(100);
