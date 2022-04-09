@@ -101,15 +101,15 @@ int tourne_continu_Torque(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb
   int ii = 0;
   const char *log = NULL;
   bool result = false;
-  uint32_t *dataC;
-  uint32_t *dataCM;
+  int32_t *dataC;
+  int32_t *dataCM;
   const char *item_nameCurrent = "Present_Current";
   const char *item_nameCurrentMax = "Current_Limit";
   
   do {
     // statement block   
-    motor.readRegister(motor_IDs, &item_nameCurrent, &dataC, &log);
-    motor.readRegister(motor_IDs, &item_nameCurrentMax, &dataCM, &log);
+    motor.readRegister(motor_IDs, item_nameCurrent, dataC, &log);
+    motor.readRegister(motor_IDs, item_nameCurrentMax, dataCM, &log);
 
     delay(DELAY_POUBELLE_FREQCALCUL);
     ii ++;  
