@@ -25,7 +25,7 @@ const uint8_t MOTOR_CONVOYEUR_ID_Action = 4;
 const uint8_t MOTOR_VIS_ID_Action = 3;
 
 //----------utilisateion--------------
-const float RAD_TRAPPES_Action = 3;           // nombre de pi/2 necessaire pour l'ouverture des trappes
+const float RAD_TRAPPES_Action = 2;           // nombre de pi/2 necessaire pour l'ouverture des trappes
 const float RAD_POUBELLE_Action = 2.5;
 const int NMB_TOURS_CONVOYEUR_10percent = 1;  // nombre de tour nécessaire au convoyeur pour faire 10%  
 

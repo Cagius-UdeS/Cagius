@@ -83,7 +83,7 @@ bool tourne_continu_NMBTours(DynamixelWorkbench&  motor, uint8_t motor_IDs, int 
   return true;
 }
 
-bool tourne_continu_Torque(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb_torque, int percent)
+int tourne_continu_Torque(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb_torque, int percent)
 {
  /**
  * Fonction de rotation de moteur en continu selon le torque et le courant
@@ -96,8 +96,28 @@ bool tourne_continu_Torque(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nm
 
   //Serial.println("Mouvement fini");
   //delay(DELAY_CONV_10Percent*percent/10);
- 
-  return true;
+  
+  motor.goalVelocity(motor_IDs, V_Poubelle);
+  int ii = 0;
+  const char *log = NULL;
+  bool result = false;
+  uint32_t *dataC;
+  uint32_t *dataCM;
+  const char *item_nameCurrent = "Present_Current";
+  const char *item_nameCurrentMax = "Current_Limit";
+  
+  do {
+    // statement block   
+    motor.readRegister(motor_IDs, &item_nameCurrent, &dataC, &log);
+    motor.readRegister(motor_IDs, &item_nameCurrentMax, &dataCM, &log);
+
+    delay(DELAY_POUBELLE_FREQCALCUL);
+    ii ++;  
+  } while (*dataC <= (int32_t)((float)(*dataCM)*PERCENT_MAX_CURRENT) || ii == INCREMENT_POUBELLE_MAX);
+  
+  motor.goalVelocity(motor_IDs, 0);
+  
+  return ii;
 }
 
 bool tourne_continu_Torque_goBack(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb_torque,  int percent)

@@ -46,7 +46,8 @@ void open_trappes()
  * @param { } 
  * @return { void }
  */
-  tourne_Xrad_and_Stop(dyna, MOTOR_TRAPPES_ID_Action, RAD_TRAPPES_Action);
+  //tourne_Xrad_and_Stop(dyna, MOTOR_TRAPPES_ID_Action, RAD_TRAPPES_Action);
+  tourne_Xrad_and_Stop(dyna, MOTOR_TRAPPES_ID_Action, 0);
   Serial.println("Trappes ouvertes");
   
 }
@@ -55,10 +56,10 @@ void convoyeur(int percent)
 {
 /**
  * Action fonctionnement du convoyeur
- * @param { int } percent         (pourcentage du convoyeur a mettre a la poubelle selon des bonds de 10%)
+ * @param { int } percent         (pourcentage du convoyeur a mettre a la poubelle selon des bonds de 30%, donc 1, 2 ou 3)
  * @return { void }
  */
-  tourne_continu_NMBTours(dyna, MOTOR_CONVOYEUR_ID_Action, (NMB_TOURS_CONVOYEUR_10percent*(percent/10)));
+  tourne_continu_NMBTours(dyna, MOTOR_CONVOYEUR_ID_Action, (NMB_TOURS_CONVOYEUR_10percent*percent));
   Serial.println("Convoyeur fini");
 }
 // etape 4: fermeture trapes du convoyeur

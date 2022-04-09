@@ -45,7 +45,7 @@ enum State
 
 enum State current_state;
 String msg;       // messsage lu du Pi
-int percent[2];
+int tier[2];
 
 // ========= Functions ========
 
@@ -144,12 +144,12 @@ void loop()
       }
     }
 
-    percent[0] = words1[0].toInt();
-    percent[1] = words1[1].toInt();
+    tier[0] = words1[0].toInt();
+    tier[1] = words1[1].toInt();
 
-    if (percent[0] != 0 && percent[1] != 0)
+    if (tier[0] != 0 && tier[1] != 0)
     {
-      send_msg("Nettoyage amorcé a " + String(percent[0]) + " percent de convoyeur et " + String(percent[1]) + " percent de poubelle"); // message feedback
+      send_msg("Nettoyage amorcé a " + String(tier[0]) + " tier de convoyeur et " + String(tier[1]) + " pourcent de poubelle"); // message feedback
       current_state = Washing;
       break;
     }
@@ -169,16 +169,16 @@ void loop()
     open_trappes();
     //close_trappes();
     // etape 3: convoyeur (avec %)
-    convoyeur(percent[0]);
+    convoyeur(tier[0]);
     // etape 4: fermeture trapes du convoyeur
     close_trappes();
     //open_trappes();
     // etape 4: fermeture trape de la poubelle
     close_poubelle();
     // etape 5: compression de la litiere
-    compression_litiere(percent[1]);
+    compression_litiere(tier[1]);
     // etape 6: retour de la pelle
-    home_litiere(percent[1]);
+    home_litiere(tier[1]);
 
     send_msg("Nettoyage fini");
     current_state = Wait;
@@ -221,11 +221,11 @@ void loop()
     }
     if (msg == "Convoyeur10")
     {
-      convoyeur(10);
+      convoyeur(1);
     }
     if (msg == "Convoyeur100")
     {
-      convoyeur(100);
+      convoyeur(3);
     }
     if (msg == "Litiere10")
     {
