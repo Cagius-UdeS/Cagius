@@ -90,7 +90,7 @@ int tourne_continu_Torque(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb
  * @param { DynamixelWorkbench& } motor
  * @param { uint8_t } motor_IDs
  * @param { int } nmb_torque
- * @return { bool }
+ * @return { int }  ii
  */
   //motor.goalCurrent(motor_IDs, nmb_torque);
 
@@ -120,16 +120,43 @@ int tourne_continu_Torque(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb
   return ii;
 }
 
-bool tourne_continu_Torque_goBack(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb_torque,  int percent)
+bool tourne_continu_Torque_goBack(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb_torque,  int percent, int ii)
 {
  /**
  * Fonction de rotation de moteur en continu dans la meme sequence que la fonction en torque et courant
  * @param { DynamixelWorkbench& } motor
  * @param { uint8_t } motor_IDs
  * @param { int } nmb_torque
+ * @param { int } ii
  * @return { bool }
  */
 
+  motor.goalVelocity(motor_IDs, -V_Poubelle);
+  const char *log = NULL;
+  bool result = false;
+  int32_t *dataC;
+  int32_t *dataCM;
+  bool SwitchActive = false;
+  const char *item_nameCurrent = "Present_Current";
+  const char *item_nameCurrentMax = "Current_Limit";
+  
+  do {
+    // statement block   
+    motor.readRegister(motor_IDs, item_nameCurrent, dataC, &log);
+    motor.readRegister(motor_IDs, item_nameCurrentMax, dataCM, &log);
+
+    delay(DELAY_POUBELLE_FREQCALCUL);
+    ii --;  
+
+    //SWITCH ????????
+    SwitchActive = false;
+    
+  } while (*dataC <= (int32_t)((float)(*dataCM)*PERCENT_MAX_CURRENT) || ii >= -10 || SwitchActive == false);
+  
+  motor.goalVelocity(motor_IDs, 0);
+  
+  return ii;
+  
   //motor.setReverseDirection(motor_IDs);
   //motor.goalCurrent(motor_IDs, nmb_torque);
 

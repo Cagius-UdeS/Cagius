@@ -46,6 +46,7 @@ enum State
 enum State current_state;
 String msg;       // messsage lu du Pi
 int tier[2];
+int ii;
 
 // ========= Functions ========
 
@@ -176,9 +177,9 @@ void loop()
     // etape 4: fermeture trape de la poubelle
     close_poubelle();
     // etape 5: compression de la litiere
-    compression_litiere(tier[1]);
+    int ii = compression_litiere(tier[1]);
     // etape 6: retour de la pelle
-    home_litiere(tier[1]);
+    home_litiere(tier[1], ii);
 
     send_msg("Nettoyage fini");
     current_state = Wait;
@@ -190,9 +191,9 @@ void loop()
   {
     // nettoyage de la poubelle (compression de la litiere a la limite de la boite, car utilisateur met un sac a la sortie
     send_msg("Nettoyage de la poubelle amorce");
-    compression_litiere(100);
+    int ii = compression_litiere(100);
 
-    home_litiere(100);
+    home_litiere(100, ii);
 
     send_msg("Nettoyage de la poubelle fini");
     current_state = Wait;
@@ -202,6 +203,7 @@ void loop()
   }
   case Test:
   {
+    
     msg = get_msg();
     if (msg == "OpenTrappes")
     {
@@ -229,15 +231,15 @@ void loop()
     }
     if (msg == "Litiere10")
     {
-      compression_litiere(10);
+      ii = compression_litiere(10);
     }
     if (msg == "LitiereRetour10")
     {
-      home_litiere(10);
+      home_litiere(10, ii);
     }
     if (msg == "LitiereRetour100")
     {
-      home_litiere(100);
+      home_litiere(100, ii);
     } 
     if (msg == "HomePoubelle")
     {
