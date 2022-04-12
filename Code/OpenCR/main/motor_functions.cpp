@@ -20,6 +20,7 @@ void init_motors(DynamixelWorkbench& motor)
  * @param { DynamixelWorkbench& } motor
  * @return { void }
  */
+ motor.init(DEVICE_NAME, 57600);
  
         for (int i = 1; i <= 4; ++i)
     {
@@ -50,19 +51,21 @@ void init_motors(DynamixelWorkbench& motor)
         }
         else if (i == 4)   // initialisation moteur convoyeur
         {
-          motor.ping(MOTOR_CONVOYEUR_ID, &model_number, &error_message);
-          motor.ledOn(MOTOR_CONVOYEUR_ID);                              
-          motor.setNormalDirection(MOTOR_CONVOYEUR_ID);                 //setReverseDirection
-          motor.wheelMode(MOTOR_CONVOYEUR_ID,0, &error_message);
-          Serial.println("Moteur 3 initialise (CONVOYEUR)");
+          motor.ping(MOTOR_VIS_ID, &model_number, &error_message);
+          motor.ledOn(MOTOR_VIS_ID);   
+          //motor.torqueOff(MOTOR_VIS_ID);                              
+          //motor.setNormalDirection(MOTOR_VIS_ID);                 //setReverseDirection
+          motor.wheelMode(MOTOR_VIS_ID,0, &error_message);
+          Serial.println("Moteur 4 initialise (VIS)");
         }
         else if (i == 3)   // initialisation moteur poubelle
         {
-          motor.ping(MOTOR_VIS_ID, &model_number, &error_message);
-          motor.ledOn(MOTOR_VIS_ID);                              
-          motor.setNormalDirection(MOTOR_VIS_ID);                 //setReverseDirection
-          motor.wheelMode(MOTOR_VIS_ID,0, &error_message);
-          Serial.println("Moteur 4 initialise (VIS)");
+          motor.ping(MOTOR_CONVOYEUR_ID, &model_number, &error_message);
+          motor.ledOn(MOTOR_CONVOYEUR_ID);      
+          //motor.torqueOff(MOTOR_CONVOYEUR_ID);                           
+          //motor.setNormalDirection(MOTOR_CONVOYEUR_ID);                 //setReverseDirection
+          motor.wheelMode(MOTOR_CONVOYEUR_ID,0, &error_message);
+          Serial.println("Moteur 3 initialise (CONVOYEUR)");
         }
     }
 }

@@ -18,11 +18,17 @@
 
 // ========= Constant =========
 
+#if defined(__OPENCM904__)
+#define DEVICE_NAME "3" // Dynamixel on Serial3(USART3)  <-OpenCM 485EXP
+#elif defined(__OPENCR__)
+#define DEVICE_NAME ""
+#endif
+
 //----------motor--------------
 const uint8_t MOTOR_TRAPPES_ID = 2; 
 const uint8_t MOTOR_POUBELLE_ID = 1;
-const uint8_t MOTOR_CONVOYEUR_ID = 4;
-const uint8_t MOTOR_VIS_ID = 3;
+const uint8_t MOTOR_CONVOYEUR_ID = 3;
+const uint8_t MOTOR_VIS_ID = 4;
 
 //----------utilisateion--------------
 const uint8_t DELTA_POS = 20;

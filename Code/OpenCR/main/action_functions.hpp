@@ -21,8 +21,8 @@ Authors:      Florence Millette
 //----------motor--------------
 const uint8_t MOTOR_TRAPPES_ID_Action = 2;
 const uint8_t MOTOR_POUBELLE_ID_Action = 1;
-const uint8_t MOTOR_CONVOYEUR_ID_Action = 4;
-const uint8_t MOTOR_VIS_ID_Action = 3;
+const uint8_t MOTOR_CONVOYEUR_ID_Action = 3;
+const uint8_t MOTOR_VIS_ID_Action = 4;
 
 //----------utilisateion--------------
 const float RAD_TRAPPES_Action = 2;           // nombre de pi/2 necessaire pour l'ouverture des trappes
