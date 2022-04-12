@@ -196,20 +196,16 @@ bool tourne_Xrad_ReturnPos(DynamixelWorkbench&  motor, uint8_t motor_IDs, float 
  * @return { bool }
  */
  motor.goalPosition(motor_IDs, (int32_t)(PI_SUR_2*nmb_rad));
- /**
- if (elmt == ELMT_POUBELLE)
- {
-  motor.goalPosition(motor_IDs, HOME_POUBELLE);
- }
 
- if (elmt == ELMT_TRAPPES)
- {
-  motor.goalPosition(motor_IDs, HOME_TRAPPES);
- }
-*/
   Serial.println("Mouvement fini");
-  delay(DELAY_PI_SUR_2*nmb_rad);
-  
+  if (nmb_rad == 0)
+  {
+    delay(DELAY_PI_SUR_2*4);
+  }
+  else 
+  {
+    delay(DELAY_PI_SUR_2*nmb_rad);
+  }
   return true;  
 }
 

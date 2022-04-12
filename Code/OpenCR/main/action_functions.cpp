@@ -81,7 +81,7 @@ void close_poubelle()
  * @param { } 
  * @return { void }
  */
-  tourne_Xrad_ReturnPos(dyna, MOTOR_POUBELLE_ID_Action, RAD_POUBELLE_Action, 1);
+  tourne_Xrad_ReturnPos(dyna, MOTOR_POUBELLE_ID_Action, 0, 1);
   Serial.println("Poubelle fermee");
 }
 // etape 5: compression de la litiere

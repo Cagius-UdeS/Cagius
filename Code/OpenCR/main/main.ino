@@ -213,7 +213,7 @@ void loop()
     }
     if (msg == "ClosePoubelle")
     {
-      close_trappes();
+      close_poubelle();
     }
     if (msg == "Convoyeur10")
     {
