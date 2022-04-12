@@ -1,9 +1,9 @@
 import sys
-sys.path.insert(0, '/home/pi/Documents/Cagius/Code/PiCamera/Object_Detection_Files')
+sys.path.insert(0, '/home/pi/Cagius/Code/PiCamera/Object_Detection_Files')
 from functions_Comm          import *
 
 
-import FonctionsCam as funCam
+#import FonctionsCam as funCam
 import time
 import argparse
 import serial
@@ -22,7 +22,7 @@ def init_sequence():
     port = "/dev/ttyACM0"
     ser = init_comm(port, baudrate)
     init_opencr(ser)
-    funCam.InitGPIO()
+    #funCam.InitGPIO()
 
     return port, ser
 
@@ -53,6 +53,19 @@ def init_opencr(ser):
        raise SerialError("The OpenCR is not waiting to start. Try restarting it.")
 
 
+def start_state(ser):
+    """Activate the cage
+
+    Send starting commands to the OpenCR.
+    Wait for messages for confirmation
+    """
+
+    print_sent_data(send_data(ser, "START"))
+    # Confirm the cage is ready to start 
+    msg1 = wait_for_data(ser, "Cage armee")
+    # Confirm the cage is waiting for instructions
+    msg2 = wait_for_data(ser, "En attente dinstruction")
+
 
 def activate_state(ser):
     """Activate the cage
@@ -74,10 +87,10 @@ def clean_state(ser):
     Send cleaning commands to the OpenCR.
     Wait for messages for confirmation
     """
-    V,N = funCam.Scan()
+    #V,N = funCam.Scan()
     global qteP
-    qteP = qteP + (V/3)
-    PP = qteP/3 * 100
+    #qteP = qteP + (V/3)
+    #PP = qteP/3 * 100
     # if (N == 0):
     #     message = "WASH " + str(V) + " " + str(PP)
     #     print_sent_data(send_data(ser, message))
