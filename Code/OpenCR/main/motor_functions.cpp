@@ -61,8 +61,7 @@ void init_motors(DynamixelWorkbench& motor)
           motor.ping(MOTOR_VIS_ID, &model_number, &error_message);
           motor.ledOn(MOTOR_VIS_ID);                              
           motor.setNormalDirection(MOTOR_VIS_ID);                 //setReverseDirection
-          motor.setTorqueControlMode(MOTOR_VIS_ID, &error_message);
-          motor.torqueOn(MOTOR_VIS_ID);
+          motor.wheelMode(MOTOR_VIS_ID,0, &error_message);
           Serial.println("Moteur 4 initialise (VIS)");
         }
     }
@@ -91,30 +90,31 @@ int tourne_continu_Torque(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb
  * @param { uint8_t } motor_IDs
  * @param { int } nmb_torque
  * @return { int }  ii
- */
-  //motor.goalCurrent(motor_IDs, nmb_torque);
-
-  //Serial.println("Mouvement fini");
-  //delay(DELAY_CONV_10Percent*percent/10);
-  
+ */  
   motor.goalVelocity(motor_IDs, V_Poubelle);
   int ii = 0;
   const char *log = NULL;
   bool result = false;
-  int32_t *dataC;
-  int32_t *dataCM;
+  int32_t dataC;
+  int32_t dataCM;
   const char *item_nameCurrent = "Present_Current";
   const char *item_nameCurrentMax = "Current_Limit";
   
   do {
     // statement block   
-    motor.readRegister(motor_IDs, item_nameCurrent, dataC, &log);
-    motor.readRegister(motor_IDs, item_nameCurrentMax, dataCM, &log);
+    motor.readRegister(motor_IDs, item_nameCurrent, &dataC, &log);
+    motor.readRegister(motor_IDs, item_nameCurrentMax, &dataCM, &log);
 
+    Serial.println("I =");
+    Serial.println(dataC);
+    Serial.println(dataCM);
+    
     delay(DELAY_POUBELLE_FREQCALCUL);
     ii ++;  
-  } while (*dataC <= (int32_t)((float)(*dataCM)*PERCENT_MAX_CURRENT) || ii == INCREMENT_POUBELLE_MAX);
-  
+  } while (dataC <= (int32_t)((dataCM)*PERCENT_MAX_CURRENT) && ii <=  INCREMENT_POUBELLE_MAX); //
+
+  Serial.println(ii);
+      
   motor.goalVelocity(motor_IDs, 0);
   
   return ii;
