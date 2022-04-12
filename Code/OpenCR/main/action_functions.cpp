@@ -108,6 +108,13 @@ void home_litiere(int percent, int ii)
   Serial.println("Compresseur de litiere home");
 }
 
+
+void read_MotorVisCurrent(void)
+{
+  readCurrent(dyna, MOTOR_VIS_ID);
+  
+}
+
 void home_motorAction1()
 {
   tourne_Xrad_and_Stop(dyna, MOTOR_POUBELLE_ID_Action, 0);  // note, le zero est presentement non utilises

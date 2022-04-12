@@ -46,7 +46,7 @@ const int32_t ELMT_TRAPPES = 2;
 const int32_t ELMT_POUBELLE = 1;
 const int INCREMENT_POUBELLE_MAX = 60;
 
-const float PERCENT_MAX_CURRENT = 0.6;
+const float PERCENT_MAX_CURRENT = 0.1;
 
 // ========= Functions prototype ========
 
@@ -63,6 +63,8 @@ bool tourne_Xrad_ReturnPos(DynamixelWorkbench&  motor, uint8_t motor_IDs, float 
 bool tourne_Xrad_and_Stop(DynamixelWorkbench&  motor, uint8_t motor_IDs, float nmb_rad);
 
 void stop_motors(DynamixelWorkbench&  motor, uint8_t motor_IDs);
+
+void readCurrent(DynamixelWorkbench&  motor, uint8_t motor_IDs);
 
 void home_motor(DynamixelWorkbench&  motor, uint8_t motor_IDs);
 

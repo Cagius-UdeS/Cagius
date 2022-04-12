@@ -54,6 +54,7 @@ int compression_litiere(int percent);
 // etape 6: retour de la pelle
 void home_litiere(int percen, int ii);
 
+void read_MotorVisCurrent(void);
 
 void home_motorAction1();
 void home_motorAction2();

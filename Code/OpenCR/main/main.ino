@@ -247,6 +247,10 @@ void loop()
     {
       home_motorAction2();
     }
+    if (msg == "ReadVis")
+    {
+      read_MotorVisCurrent();
+    }
     
     if (msg == "Off")
     {
