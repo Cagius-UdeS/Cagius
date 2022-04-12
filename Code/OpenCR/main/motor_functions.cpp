@@ -152,14 +152,14 @@ bool tourne_continu_Torque_goBack(DynamixelWorkbench&  motor, uint8_t motor_IDs,
     delay(DELAY_POUBELLE_FREQCALCUL);
     
     Serial.print("I = ");
-    Serial.print(UINT16_MAX-dataC);
+    Serial.print(dataC);
     Serial.print(" sur ");
     Serial.println(dataCM);
     ii --;  
     //SWITCH ????????
     SwitchActive = false;
     
-  } while ((int32_t)(UINT16_MAX-dataC) <= (int32_t)((dataCM)*PERCENT_MAX_CURRENT) && ii >= -10 && SwitchActive == false);
+  } while ((int32_t)(dataC) <= (int32_t)((dataCM)*PERCENT_MAX_CURRENT) && ii >= -10 && SwitchActive == false);
   
   motor.goalVelocity(motor_IDs, 0);
 
