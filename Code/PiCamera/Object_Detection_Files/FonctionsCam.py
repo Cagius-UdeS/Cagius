@@ -4,6 +4,7 @@ from cmath import inf
 import cv2 as cv
 import numpy as np
 import RPi.GPIO as GPIO
+import time
 
 
 LED = 11
@@ -12,12 +13,13 @@ class Zone :
      
    
     # Une méthode utilisée pour créer l'objet (Contructor).
-    def __init__(self, largeur, hauteur, centreX, centreY):
+    def __init__(self, largeur, hauteur, centreX, centreY, aire):
         
-        self.largeur= largeur
-        self.hauteur = hauteur
-        self.centreX = centreX
-        self.centreY = centreY
+      self.largeur= largeur
+      self.hauteur = hauteur
+      self.centreX = centreX
+      self.centreY = centreY
+      self.aire    = aire
    
     
     
@@ -33,11 +35,15 @@ class Zone :
     
     def getCentreY(self):
         return self.centreY
+    
+    def getAire(self):
+        return self.aire
 
 #Initialisation GPIO
 def InitGPIO():
   GPIO.setmode(GPIO.BOARD)
   GPIO.setup(LED, GPIO.OUT)
+  GPIO.setwarnings(False)
 
 # Définition permet de coriger le fisheye de la caméra
 def undistort(img):
@@ -64,7 +70,7 @@ def findZones(contours,LimiteAireMin,LimiteAireMax,image):
     if (Aire > LimiteAireMin) & (Aire < LimiteAireMax):
       x,y,h,w = cv.boundingRect(c)
       #Ajoute la position dans la liste
-      Z = Zone(w, h, x+(w//2), y+(h//2))
+      Z = Zone(w, h, x+(w//2), y+(h//2),Aire)
       Liste.append(Z)
 
       #Affiche les zones sur l'image
@@ -76,17 +82,19 @@ def Scan():
   print("Scan en cour...")
   "Ouverture des LED:"
   GPIO.output(LED, GPIO.HIGH)
+  time.sleep(2)
   "Variables:"
   #Assignation de la caméra pi
-  #cam = cv.VideoCapture(0)
+  cam = cv.VideoCapture(0)
 
   # Définie la couleur à trouvé en HSV pour les zones souillées
-  lower_brown = np.array([10,100,100])
-  upper_brown = np.array([40,200,200])
+  lower_orange = np.array([0,30,200])
+  upper_orange = np.array([15,100,255])
+
 
   # Définie la couleur rouge à trouvé en HSV pour les ancrages
-  lower_red = np.array([160,50,50])
-  upper_red = np.array([180,255,255])
+  lower_red = np.array([160,100,50])
+  upper_red = np.array([180,200,200])
 
   # Définie la couleur bleu à trouvé en HSV pour les lapins
   lower_blue = np.array([80,200,0])
@@ -99,12 +107,11 @@ def Scan():
   #im = undistort(im)
 
   #Prise de la photo de la litière
-  #result, img = cam.read()
-  # #Nom de l'image
-  #filename = 'Litiere' + '.jpg'
-  # im = cv.imread("Litiere.jpg",1)
+  result, img = cam.read()
+  #Nom de l'image
+  filename = 'Litiere1' + '.jpg'
   #Corection du fishEye
-  #im = undistort(img) 
+  im = undistort(img) 
 
   # Enregistrement de l'image pour observation
   #cv.imwrite(filename, im) 
@@ -121,22 +128,25 @@ def Scan():
   hsv = cv.cvtColor(im, cv.COLOR_BGR2HSV)
 
   # Créer les images en binaire sur les couleurs recherchés
-  # maskSouille = cv.inRange(hsv, lower_brown, upper_brown)
+  maskSouille = cv.inRange(hsv, lower_orange, upper_orange)
   maskAncrage = cv.inRange(hsv, lower_red, upper_red)
   maskLapin = cv.inRange(hsv, lower_blue, upper_blue)
 
   #Trouve les contours dans les masks
-  # contoursSouille, hierarchy = cv.findContours(maskSouille, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
+  contoursSouille, hierarchy = cv.findContours(maskSouille, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
   contoursAncrage, hierarchy = cv.findContours(maskAncrage, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
   contoursLapin, hierarchy = cv.findContours(maskLapin, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
 
   #Trouver toute les zones souilées qui dépasse un aire minimum
-  # ListeSouille = findZones(contoursSouille,1000,inf,im)
+  print("Aire Souille")
+  ListeSouille = findZones(contoursSouille,120,8000,im)
 
   #Trouver toute les Ancrages qui dépasse un aire minimum
-  ListeAncrage = findZones(contoursAncrage,250,500,im)
+  print("Aire Ancrage")
+  ListeAncrage = findZones(contoursAncrage,150,500,im)
 
-  #Trouver toute les Ancrages qui dépasse un aire minimum
+  #Trouver toute les Lapins qui dépasse un aire minimum
+  print("Aire Lapin")
   ListeLapin = findZones(contoursLapin,400,5000,im)
 
   "Calcul du nombre de lapin dans la cage"
@@ -144,28 +154,49 @@ def Scan():
 
   "Calcul du pourcentage(%) à vider"
   #Initialise la valeux de la distance du convoyeur
-  Xmax = 0
+  Ymax = 0
+  AireSouille = 0
   #Affiche les zones souillées et calcul la plus loin de la poubelle
-  # for z in ListeSouille:
-  #   if z.getCentreX() > Xmax:
-  #     Xmax = z.getCentreX()
-  #   print('CentreX : {}, CentreY : {}'.format(z.getCentreX(),z.getCentreY()))
+  for z in ListeSouille:
+    if z.getCentreY() > Ymax:
+      Ymax = z.getCentreY()
+    AireSouille = AireSouille + z.getAire()
+    # print('CentreX : {}, CentreY : {}'.format(z.getCentreX(),z.getCentreY()))
 
-  XAncrage = 0
+  YAncrageMax = 0
+  YAncrageMin = inf
   for z in ListeAncrage:
-    if z.getCentreX() > XAncrage:
-      XAncrage = z.getCentreX()
+    if z.getCentreY() > YAncrageMax:
+      YAncrageMax = z.getCentreY()
+    if z.getCentreY() < YAncrageMin:
+      YAncrageMin = z.getCentreY() 
     print('CentreX : {}, CentreY : {}'.format(z.getCentreX(),z.getCentreY()))
   
 
   #Affiche la zone la plus loin de la poubelle
-  print('Xmax : {}'.format(Xmax))
-  Pourcentage = 25
-  #Pourcentage = Xmax/XAncrage *100
+  # print('Ymax : {}'.format(Ymax))
+  # Pourcentage = 25
+  # Pourcentage = Ymax/(YAncrageMax-YAncrageMin) * 100
+  Pourcentage = (Ymax/YAncrageMax) * 100
+  print('AireSouille : {}'.format(AireSouille))
+
+  AireTotale = 30000
+  print('PourHMI: {}'.format((AireSouille*100/AireTotale)))
+  if((AireSouille*100/AireTotale) >= 20):
+    # Vidage de la cage
+    if(Pourcentage <= 40):
+      Pourcentage = 1
+    elif((Pourcentage > 40) and (Pourcentage <= 70)):
+      Pourcentage = 2
+    else: 
+      Pourcentage = 3
+  else: 
+    Pourcentage = 0    
   
   #Affiche les images pour débugage
-  cv.imshow('Image Mask Ancrage', maskAncrage)
-  cv.imshow('Image Mask Lapin', maskLapin)
+  # cv.imshow('Image Mask Ancrage', maskAncrage)
+  # cv.imshow('Image Mask Lapin', maskLapin)
+  cv.imshow('Image Mask Souille', maskSouille)
   cv.imshow('Image HSV', hsv)
   cv.imshow('Image Contour', im)
   cv.waitKey(0)

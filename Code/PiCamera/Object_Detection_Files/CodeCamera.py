@@ -5,4 +5,4 @@ funcam.InitGPIO()
 P,N = funcam.Scan()
 print(P)
 print(N)
- 
+  
