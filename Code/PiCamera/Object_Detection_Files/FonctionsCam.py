@@ -79,10 +79,10 @@ def findZones(contours,LimiteAireMin,LimiteAireMax,image):
   return Liste
 
 def Scan():
-  print("Scan en cour...")
+  print("Scan en cours...")
   "Ouverture des LED:"
   GPIO.output(LED, GPIO.HIGH)
-  time.sleep(2)
+  time.sleep(1)
   "Variables:"
   #Assignation de la caméra pi
   cam = cv.VideoCapture(0)
@@ -138,15 +138,15 @@ def Scan():
   contoursLapin, hierarchy = cv.findContours(maskLapin, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
 
   #Trouver toute les zones souilées qui dépasse un aire minimum
-  print("Aire Souille")
+  # print("Aire Souille")
   ListeSouille = findZones(contoursSouille,120,8000,im)
 
   #Trouver toute les Ancrages qui dépasse un aire minimum
-  print("Aire Ancrage")
+  # print("Aire Ancrage")
   ListeAncrage = findZones(contoursAncrage,150,500,im)
 
   #Trouver toute les Lapins qui dépasse un aire minimum
-  print("Aire Lapin")
+  # print("Aire Lapin")
   ListeLapin = findZones(contoursLapin,400,5000,im)
 
   "Calcul du nombre de lapin dans la cage"
@@ -170,7 +170,7 @@ def Scan():
       YAncrageMax = z.getCentreY()
     if z.getCentreY() < YAncrageMin:
       YAncrageMin = z.getCentreY() 
-    print('CentreX : {}, CentreY : {}'.format(z.getCentreX(),z.getCentreY()))
+    # print('CentreX : {}, CentreY : {}'.format(z.getCentreX(),z.getCentreY()))
   
 
   #Affiche la zone la plus loin de la poubelle
@@ -178,31 +178,32 @@ def Scan():
   # Pourcentage = 25
   # Pourcentage = Ymax/(YAncrageMax-YAncrageMin) * 100
   Pourcentage = (Ymax/YAncrageMax) * 100
-  print('AireSouille : {}'.format(AireSouille))
+  # print('AireSouille : {}'.format(AireSouille))
 
   AireTotale = 30000
-  print('PourHMI: {}'.format((AireSouille*100/AireTotale)))
+  # print('PourHMI: {}'.format((AireSouille*100/AireTotale)))
   if((AireSouille*100/AireTotale) >= 20):
     # Vidage de la cage
     if(Pourcentage <= 40):
-      Pourcentage = 1
+      Vidange = 1
     elif((Pourcentage > 40) and (Pourcentage <= 70)):
-      Pourcentage = 2
+      Vidange = 2
     else: 
-      Pourcentage = 3
+      Vidange = 3
   else: 
-    Pourcentage = 0    
+    Vidange = 0    
   
   #Affiche les images pour débugage
   # cv.imshow('Image Mask Ancrage', maskAncrage)
   # cv.imshow('Image Mask Lapin', maskLapin)
-  cv.imshow('Image Mask Souille', maskSouille)
-  cv.imshow('Image HSV', hsv)
-  cv.imshow('Image Contour', im)
-  cv.waitKey(0)
-  cv.destroyAllWindows()
+  # cv.imshow('Image Mask Souille', maskSouille)
+  # cv.imshow('Image HSV', hsv)
+  # cv.imshow('Image Contour', im)
+  # cv.waitKey(0)
+  # cv.destroyAllWindows()
   "Fermeture des LED:"
   GPIO.output(LED, GPIO.LOW)
+
   print("Scan terminé!")
   "Retourne la valeur en % à vider"
-  return Pourcentage,nbrLapin
+  return Vidange,nbrLapin
