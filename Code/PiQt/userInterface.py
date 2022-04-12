@@ -1,4 +1,8 @@
 import sys
+
+sys.path.insert(0, '/home/pi/Cagius/Code/Main')
+import init_stop_Sequences as iss
+
 from glob            import glob
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui     import *
@@ -7,8 +11,6 @@ from PyQt5           import *
 
 from mainWindow_geometry           import Ui_MainWindow
 from popup_geometry                import Ui_Dialog
-from Main.functions_Comm           import *
-from Main.init_stop_Sequences      import *
 
 """ Counter of the number of cleaning cycles
 """
@@ -36,8 +38,8 @@ class MyDialog(QDialog):
         Put the counter variable at 0
         """
         self.close()
-        self.mywindow = MyWindow.__new__(MyWindow)
-        self.mywindow.show()
+        #self.mywindow = MyWindow.__new__(MyWindow)
+        #self.mywindow.show()
 
         
         global COMPTEUR
@@ -59,7 +61,7 @@ class MyWindow(QMainWindow):
         self.ui.setupUi(self)
         
 
-        port, ser = init_sequence()
+        port, ser = iss.init_sequence()
         
 
         self.initAnimals()
@@ -84,7 +86,7 @@ class MyWindow(QMainWindow):
     def activeCage(self, ser):
         """ Get the cage in the activated state
         """
-        activate_state(ser)
+        iss.activate_state(ser)
 
 
     def buttonstopCage(self, ser):
@@ -96,7 +98,7 @@ class MyWindow(QMainWindow):
     def stopCage(self, ser):
         """ Get the cage in the stop state
         """
-        stop_state(ser)
+        iss.stop_state(ser)
 
     
     def buttontrash(self, ser):
@@ -111,7 +113,7 @@ class MyWindow(QMainWindow):
         Call function opening the pop-up window
         """
         self.dialogbox
-        trash_state(ser)
+        iss.trash_state(ser)
 
 
         """global COMPTEUR
@@ -132,7 +134,7 @@ class MyWindow(QMainWindow):
 
         Increment the counter variable and print it
         """
-        clean_state(ser)
+        iss.clean_state(ser)
 
         global COMPTEUR
         COMPTEUR = COMPTEUR + 1
@@ -167,7 +169,7 @@ class MyWindow(QMainWindow):
 
         Hide the main window and open the pop-up window
         """
-        self.hide()
+        #self.hide()
         self.myDialog = MyDialog()
         self.myDialog.show()
 
