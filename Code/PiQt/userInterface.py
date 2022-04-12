@@ -1,7 +1,10 @@
 import sys
 
-sys.path.insert(0, '/home/pi/Cagius/Code/Main')
+sys.path.insert(0, '/home/pi/Documents/Cagius/Code/Main')
 import init_stop_Sequences as iss
+import threading
+import time
+import serial
 
 from glob            import glob
 from PyQt5.QtWidgets import *
@@ -63,7 +66,7 @@ class MyWindow(QMainWindow):
 
         port, ser = iss.init_sequence()
         
-
+        
         self.initAnimals()
         #self.commWindows()
         self.setActivityHours()
@@ -188,9 +191,23 @@ class MyWindow(QMainWindow):
         self.ui.Fin.setTime(timeF)
 
 
+def thread_function(name):
+    baudrate = 57600
+    port = "/dev/ttyACM0"
+    ser = serial.Serial(port, baudrate)
+    while(True):
+
+        print("Test2")
+        iss.clean_state(ser)
+        time.sleep(10)
+        
+    
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     w = MyWindow()
     w.show()
+    x = threading.Thread(target = thread_function, args =(1,), daemon=True)
+    x.start()
     sys.exit(app.exec_())
+    

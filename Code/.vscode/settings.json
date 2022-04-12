@@ -1,5 +1,6 @@
 {
     "python.analysis.extraPaths": [
-        "./Main"
+        "./Main",
+        "./PiCamera/Object_Detection_Files"
     ]
 }
