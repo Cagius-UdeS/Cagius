@@ -45,6 +45,7 @@ def undistort(img):
     K=np.array([[256.5223090219522, 0.0, 300.8492878302576], [0.0, 255.95393505302218, 200.83738221162403], [0.0, 0.0, 1.0]])
     D=np.array([[-0.03309970266931218], [-0.035713407140983686], [0.03466182058100104], [-0.014366025635664394]])
     #img = cv.imread(img_path)
+    # img = cv.imread(img)
     h,w = img.shape[:2]
     map1, map2 = cv.fisheye.initUndistortRectifyMap(K, D, np.eye(3), K, DIM, cv.CV_16SC2)
     undistorted_img = cv.remap(img, map1, map2, interpolation=cv.INTER_LINEAR, borderMode=cv.BORDER_CONSTANT)
@@ -88,27 +89,27 @@ def Scan():
   upper_red = np.array([180,255,255])
 
   # Définie la couleur bleu à trouvé en HSV pour les lapins
-  lower_blue = np.array([110,200,0])
-  upper_blue = np.array([130,255,100])
+  lower_blue = np.array([80,200,0])
+  upper_blue = np.array([130,255,255])
 
-
+  
   "Démarage du scan de l'image"
   #Code pour tests sans cam
-  im = cv.imread("Rouge10.jpg",1)
-  im = undistort(im)
+  im = cv.imread("Litiere.jpg",1)
+  #im = undistort(im)
 
-  """ #Prise de la photo de la litière
-  result, image = cam.read()
+  #Prise de la photo de la litière
+  #result, img = cam.read()
+  # #Nom de l'image
+  #filename = 'Litiere' + '.jpg'
+  # im = cv.imread("Litiere.jpg",1)
   #Corection du fishEye
-  im = undistort(image)
-  #Nom de l'image
-  filename = 'Litiere' + '.jpg'
+  #im = undistort(img) 
 
   # Enregistrement de l'image pour observation
-  cv.imwrite(filename, im) """
+  #cv.imwrite(filename, im) 
 
-  "Fermeture des LED:"
-  #GPIO.output(LED, GPIO.LOW)
+  
 
   #Application de filtre sur l'image pour facilité la recherche de zones souillées
   #image = cv.GaussianBlur(im, (5,5),1)
@@ -133,10 +134,10 @@ def Scan():
   # ListeSouille = findZones(contoursSouille,1000,inf,im)
 
   #Trouver toute les Ancrages qui dépasse un aire minimum
-  ListeAncrage = findZones(contoursAncrage,300,500,im)
+  ListeAncrage = findZones(contoursAncrage,250,500,im)
 
   #Trouver toute les Ancrages qui dépasse un aire minimum
-  ListeLapin = findZones(contoursLapin,100,800,im)
+  ListeLapin = findZones(contoursLapin,400,5000,im)
 
   "Calcul du nombre de lapin dans la cage"
   nbrLapin = len(ListeLapin)
@@ -163,7 +164,8 @@ def Scan():
   #Pourcentage = Xmax/XAncrage *100
   
   #Affiche les images pour débugage
-  cv.imshow('Image Color', maskAncrage)
+  cv.imshow('Image Mask Ancrage', maskAncrage)
+  cv.imshow('Image Mask Lapin', maskLapin)
   cv.imshow('Image HSV', hsv)
   cv.imshow('Image Contour', im)
   cv.waitKey(0)
