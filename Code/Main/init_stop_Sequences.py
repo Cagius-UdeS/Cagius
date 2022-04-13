@@ -1,9 +1,9 @@
 import sys
+
 sys.path.insert(0, '/home/pi/Documents/Cagius/Code/PiCamera/Object_Detection_Files')
+import FonctionsCam as funCam
 from functions_Comm          import *
 
-
-#import FonctionsCam as funCam
 import time
 import argparse
 import serial
@@ -13,19 +13,18 @@ qteP = 0
 def init_sequence():
     """Initialize the system.
 
-    Initialize the camera.
     Initialize the communication.
     Initialize the OpenCR.
+    Initialize the camera.
     """
 
     baudrate = 57600
     port = "/dev/ttyACM0"
     ser = init_comm(port, baudrate)
     init_opencr(ser)
-    funCam.InitGPIO()
+    init_camera()
 
     return port, ser
-
 
 
 def init_comm(port, baudrate):
@@ -45,6 +44,7 @@ def init_opencr(ser):
     Wait for message for confirmation
     """
 
+    print("Initialization the OpenCR\n")
     print_sent_data(send_data(ser, "INIT"))
     msg = wait_for_data(ser, "En attente du lancement de la cage")
     
@@ -53,18 +53,30 @@ def init_opencr(ser):
        raise SerialError("The OpenCR is not waiting to start. Try restarting it.")
 
 
+def init_camera():
+    """Initialize the OpenCR
+
+    Send initilization commands
+    Wait for message for confirmation
+    """
+
+    print("Initialization the camera\n")
+    funCam.InitGPIO()
+
+
 def start_state(ser):
-    """Activate the cage
+    """Start the cage
 
     Send starting commands to the OpenCR.
     Wait for messages for confirmation
     """
 
-    print_sent_data(send_data(ser, "START"))
+    #print_sent_data(send_data(ser, "START"))
     # Confirm the cage is ready to start 
-    msg1 = wait_for_data(ser, "Cage armee")
+    #msg1 = wait_for_data(ser, "Cage armee")
     # Confirm the cage is waiting for instructions
-    msg2 = wait_for_data(ser, "En attente dinstruction")
+    #msg2 = wait_for_data(ser, "En attente dinstruction")
+
 
 
 def activate_state(ser):
@@ -80,6 +92,9 @@ def activate_state(ser):
     # Confirm the cage is waiting for instructions
     msg2 = wait_for_data(ser, "En attente dinstruction")
 
+    return True
+
+
 
 def clean_state(ser):
     """Clean the cage
@@ -89,9 +104,10 @@ def clean_state(ser):
     """
     V,N = funCam.Scan()
     global qteP
-    qteP = qteP + (V/3)
-    PP = qteP/3 * 100
-    # if (N == 0):
+    qteP = qteP + (V/3)               # Quantité en fractions de l'usure de la litière
+    PP = qteP/3 * 100                 # Pourcentage poubelle
+
+    if (N == 0):
     #     message = "WASH " + str(V) + " " + str(PP)
     #     print_sent_data(send_data(ser, message))
     #     # Confirm the cleaning process started
@@ -100,7 +116,10 @@ def clean_state(ser):
     #     msg2 = wait_for_data(ser, "Nettoyage fini")
     #     # Confirm the cage is waiting for instructions
     #     msg3 = wait_for_data(ser, "En attente dinstruction")
-    # # else:
+        return True, V
+    else:
+        return False, V
+    
 
 
     

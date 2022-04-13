@@ -1,10 +1,14 @@
 import sys
 
+from matplotlib import animation
+
 sys.path.insert(0, '/home/pi/Documents/Cagius/Code/Main')
 import init_stop_Sequences as iss
+
 import threading
 import time
 import serial
+import datetime as dt
 
 from glob            import glob
 from PyQt5.QtWidgets import *
@@ -18,6 +22,28 @@ from popup_geometry                import Ui_Dialog
 """ Counter of the number of cleaning cycles
 """
 COMPTEUR = 0
+
+""" Counter of the number of cleaning cycles
+"""
+ANIMAUX = 0
+
+""" Counter of the number of cleaning cycles
+"""
+AUTO = False
+
+""" Counter of the number of cleaning cycles
+"""
+DEBUT = 0
+
+""" Counter of the number of cleaning cycles
+"""
+FIN = 0
+
+""" Counter of the number of cleaning cycles
+"""
+POURCENTAGE = 0
+
+
 
 # Class defining the pop-up window object
 class MyDialog(QDialog):
@@ -67,11 +93,11 @@ class MyWindow(QMainWindow):
         port, ser = iss.init_sequence()
         
         
-        self.initAnimals()
-        #self.commWindows()
-        self.setActivityHours()
+        # self.initAnimals()
+        self.commWindows(ser)
+        self.getActivityHours()
         
-
+    
         self.numAnimals()
         self.buttonstartCage(ser)
         self.buttonactiveCage(ser)
@@ -88,7 +114,10 @@ class MyWindow(QMainWindow):
     def startCage(self, ser):
         """ Get the cage in the starting state
         """
-        iss.start_state(ser)
+        #iss.start_state(ser)
+        self.numAnimals()
+        self.getActivityHours()
+        print("Les heures d'activités et le nombre d'animaux sont enregistrés")
 
 
     def buttonactiveCage(self, ser):
@@ -100,7 +129,8 @@ class MyWindow(QMainWindow):
     def activeCage(self, ser):
         """ Get the cage in the activated state
         """
-        iss.activate_state(ser)
+        global AUTO
+        AUTO = iss.activate_state(ser)
 
 
     def buttonstopCage(self, ser):
@@ -113,6 +143,9 @@ class MyWindow(QMainWindow):
         """ Get the cage in the stop state
         """
         iss.stop_state(ser)
+
+        global AUTO
+        AUTO = False
 
     
     def buttontrash(self, ser):
@@ -128,13 +161,6 @@ class MyWindow(QMainWindow):
         """
         self.dialogbox
         iss.trash_state(ser)
-
-
-        """global COMPTEUR
-        if  COMPTEUR >= 7: 
-            self.dialogbox
-            print("Lancement de la vidange")
-            lambda:self.trashCage(ser)"""
 
 
     def buttonclean(self, ser):
@@ -155,27 +181,35 @@ class MyWindow(QMainWindow):
         print("Nettoyage numéro " + str(COMPTEUR) + "\n")
 
 
-    def initAnimals(self):
-        """ Initialize the animals check-boxes
-        """
-        self.ui.Animal1.setChecked(0)
-        self.ui.Animal2.setChecked(0)
-        self.ui.Animal3.setChecked(0)
+    # def initAnimals(self):
+    #     """ Initialize the animals check-boxes
+    #     """
+    #     self.ui.Animal1.setChecked(0)
+    #     self.ui.Animal2.setChecked(0)
+    #     self.ui.Animal3.setChecked(0)
 
 
     def numAnimals(self):
         """
         """
-        if True :
-            self.ui.Animal1.setChecked(0)
-        if True :
-            self.ui.Animal2.setChecked(1)
-        if True :
-            self.ui.Animal3.setChecked(0)
+        #print(self.ui.Animal3.isChecked())
+        global ANIMAUX
+        if self.ui.Animal3.isChecked():
+            ANIMAUX = 3
+        elif self.ui.Animal2.isChecked():
+            ANIMAUX = 2
+        elif self.ui.Animal1.isChecked():
+            ANIMAUX = 1
+        else:
+            ANIMAUX = 0
 
 
-    #def commWindows(self):
-     #   self.ui.Viderpoubelle.clicked.connect(self.dialogbox)
+    def commWindows(self, ser):
+        global COMPTEUR
+        if  COMPTEUR >= 3: 
+            self.dialogbox
+            print("Lancement de la vidange")
+            #lambda:self.trashCage(ser)
 
 
     def dialogbox(self):
@@ -188,29 +222,47 @@ class MyWindow(QMainWindow):
         self.myDialog.show()
 
 
-    def setActivityHours(self):
+    def getActivityHours(self):
         """ Set the activity hours of the cage
 
         Set starting time
         Set ending time
         """
-        timeD = QTime()
-        timeD.setHMS(8,00,00)
-        self.ui.Debut.setTime(timeD)
-        timeF = QTime()
-        timeF.setHMS(20,00,00)
-        self.ui.Fin.setTime(timeF)
+        #timeD = QTime()
+        #timeD.setHMS(8,00,00)
+        timeD = self.ui.Debut.time()
+        #timeF = QTime()
+        #timeF.setHMS(20,00,00)
+        timeF = self.ui.Fin.time()
+        # print(timeD.hour(), timeF.hour())
+
+        global DEBUT, FIN
+        DEBUT = timeD.hour()
+        FIN = timeF.hour()
+        
 
 
 def thread_function(name):
     baudrate = 57600
     port = "/dev/ttyACM0"
     ser = serial.Serial(port, baudrate)
+    global ANIMAUX, AUTO, DEBUT, FIN, COMPTEUR
+    VERIF = False
     while(True):
+        DTime = dt.datetime.now().time()
+        print("L'heure actuelle est " + str(DTime.hour) + " et les intervalles sont " + str(DEBUT) + " et " + str(FIN))
+        if(AUTO and DTime.hour >= DEBUT and DTime.hour <= FIN and not VERIF):
+            bool, POURCENTAGE = iss.clean_state(ser)
+            if(bool):
+                VERIF = True
 
-        print("Test2")
-        iss.clean_state(ser)
-        time.sleep(10)
+                COMPTEUR = COMPTEUR + POURCENTAGE/3
+                print("Nettoyage numéro " + str(COMPTEUR) + "\n")
+            else:
+                time.sleep(15)    
+        elif(DTime.hour <= DEBUT and DTime.hour >= FIN):
+            VERIF = False
+        time.sleep(1)
         
     
 
