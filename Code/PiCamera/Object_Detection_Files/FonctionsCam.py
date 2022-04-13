@@ -81,8 +81,8 @@ def findZones(contours,LimiteAireMin,LimiteAireMax,image):
 def Scan():
   print("Scan en cours...")
   "Ouverture des LED:"
-  GPIO.output(LED, GPIO.LOW)
-  time.sleep(1)
+  GPIO.output(LED, GPIO.HIGH)
+  time.sleep(0.5)
   "Variables:"
   #Assignation de la caméra pi
   cam = cv.VideoCapture(0)
@@ -195,14 +195,17 @@ def Scan():
   else: 
     Vidange = 0    
   
+  print('BitVidange : {}, NbrLapin : {}'.format(Vidange,nbrLapin))
   #Affiche les images pour débugage
-  cv.imshow('Image Mask Ancrage', maskAncrage)
-  cv.imshow('Image Mask Lapin', maskLapin)
-  cv.imshow('Image Mask Souille', maskSouille)
-  cv.imshow('Image HSV', hsv)
-  cv.imshow('Image Contour', im)
-  cv.waitKey(0)
-  cv.destroyAllWindows()
+  # cv.imshow('Image Mask Ancrage', maskAncrage)
+  # cv.imshow('Image Mask Lapin', maskLapin)
+  # cv.imshow('Image Mask Souille', maskSouille)
+  # cv.imshow('Image HSV', hsv)
+  # cv.imshow('Image Contour', im)
+  # cv.waitKey(0)
+  # cv.destroyAllWindows()
+  filenameC = 'LitiereContours' + '.jpg'
+  cv.imwrite(filenameC, im) 
   "Fermeture des LED:"
   GPIO.output(LED, GPIO.LOW)
 
