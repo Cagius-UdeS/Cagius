@@ -1,6 +1,6 @@
 import sys
 
-sys.path.insert(0, '/home/pi/Cagius/Code/Main')
+sys.path.insert(0, '/home/pi/Documents/Cagius/Code/Main')
 import init_stop_Sequences as iss
 import threading
 import time

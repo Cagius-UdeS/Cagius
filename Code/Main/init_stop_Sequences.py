@@ -1,5 +1,5 @@
 import sys
-sys.path.insert(0, '/home/pi/Cagius/Code/PiCamera/Object_Detection_Files')
+sys.path.insert(0, '/home/pi/Documents/Cagius/Code/PiCamera/Object_Detection_Files')
 from functions_Comm          import *
 
 
@@ -22,7 +22,7 @@ def init_sequence():
     port = "/dev/ttyACM0"
     ser = init_comm(port, baudrate)
     init_opencr(ser)
-    #funCam.InitGPIO()
+    funCam.InitGPIO()
 
     return port, ser
 
@@ -87,10 +87,10 @@ def clean_state(ser):
     Send cleaning commands to the OpenCR.
     Wait for messages for confirmation
     """
-    #V,N = funCam.Scan()
+    V,N = funCam.Scan()
     global qteP
-    #qteP = qteP + (V/3)
-    #PP = qteP/3 * 100
+    qteP = qteP + (V/3)
+    PP = qteP/3 * 100
     # if (N == 0):
     #     message = "WASH " + str(V) + " " + str(PP)
     #     print_sent_data(send_data(ser, message))
