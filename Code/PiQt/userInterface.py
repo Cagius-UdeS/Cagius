@@ -23,23 +23,23 @@ from popup_geometry                import Ui_Dialog
 """
 COMPTEUR = 0
 
-""" Counter of the number of cleaning cycles
+""" Variable of the number of animals set
 """
 ANIMAUX = 0
 
-""" Counter of the number of cleaning cycles
+""" Boolean confirming the cage is ready to start
 """
 AUTO = False
 
-""" Counter of the number of cleaning cycles
+""" Start of the activity hours
 """
 DEBUT = 0
 
-""" Counter of the number of cleaning cycles
+""" End of the activity hours
 """
 FIN = 0
 
-""" Counter of the number of cleaning cycles
+""" Value of the quantity of ... to trash (1, 2, 3)
 """
 POURCENTAGE = 0
 
@@ -52,6 +52,7 @@ class MyDialog(QDialog):
 
         Call communication between windows function in loop
         """
+
         super().__init__()
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
@@ -66,6 +67,7 @@ class MyDialog(QDialog):
         Close pop-up window and open the main one
         Put the counter variable at 0
         """
+
         self.close()
         #self.mywindow = MyWindow.__new__(MyWindow)
         #self.mywindow.show()
@@ -85,6 +87,7 @@ class MyWindow(QMainWindow):
         Initialize the variable in the windows
         Call communication between windows and componants functions in loop
         """
+
         super().__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
@@ -96,8 +99,6 @@ class MyWindow(QMainWindow):
         # self.initAnimals()
         self.commWindows(ser)
         self.getActivityHours()
-        
-    
         self.numAnimals()
         self.buttonstartCage(ser)
         self.buttonactiveCage(ser)
@@ -108,12 +109,14 @@ class MyWindow(QMainWindow):
     def buttonstartCage(self, ser):
         """ Actions tied to the Lancement button
         """
+
         self.ui.Lancement.clicked.connect(lambda:self.startCage(ser))
 
     
     def startCage(self, ser):
         """ Get the cage in the starting state
         """
+
         #iss.start_state(ser)
         self.numAnimals()
         self.getActivityHours()
@@ -123,12 +126,14 @@ class MyWindow(QMainWindow):
     def buttonactiveCage(self, ser):
         """ Actions tied to the Activation button
         """
+
         self.ui.Activation.clicked.connect(lambda:self.activeCage(ser))
 
     
     def activeCage(self, ser):
         """ Get the cage in the activated state
         """
+
         global AUTO
         AUTO = iss.activate_state(ser)
 
@@ -136,12 +141,14 @@ class MyWindow(QMainWindow):
     def buttonstopCage(self, ser):
         """ Actions tied to the Desactivation button
         """
+
         self.ui.Desactivation.clicked.connect(lambda:self.stopCage(ser))
 
     
     def stopCage(self, ser):
         """ Get the cage in the stop state
         """
+
         iss.stop_state(ser)
 
         global AUTO
@@ -151,6 +158,7 @@ class MyWindow(QMainWindow):
     def buttontrash(self, ser):
         """ Actions tied to the Viderpoubelle button
         """
+
         self.ui.Viderpoubelle.clicked.connect(lambda:self.trashCage(ser))
 
 
@@ -159,6 +167,7 @@ class MyWindow(QMainWindow):
 
         Call function opening the pop-up window
         """
+
         self.dialogbox
         iss.trash_state(ser)
 
@@ -166,6 +175,7 @@ class MyWindow(QMainWindow):
     def buttonclean(self, ser):
         """ Actions tied to the Nettoyage button
         """
+
         self.ui.Nettoyage.clicked.connect(lambda:self.cleanCage(ser))
 
     
@@ -174,11 +184,15 @@ class MyWindow(QMainWindow):
 
         Increment the counter variable and print it
         """
-        iss.clean_state(ser)
 
-        global COMPTEUR
-        COMPTEUR = COMPTEUR + 1
+        global COMPTEUR, POURCENTAGE
+
+        bool, POURCENTAGE = iss.clean_state(ser)
+
+        COMPTEUR = COMPTEUR + POURCENTAGE/3
         print("Nettoyage numéro " + str(COMPTEUR) + "\n")
+
+        lambda:self.commWindows(ser)
 
 
     # def initAnimals(self):
@@ -190,9 +204,9 @@ class MyWindow(QMainWindow):
 
 
     def numAnimals(self):
+        """ Get the number of animals set by the user
         """
-        """
-        #print(self.ui.Animal3.isChecked())
+        
         global ANIMAUX
         if self.ui.Animal3.isChecked():
             ANIMAUX = 3
@@ -205,6 +219,9 @@ class MyWindow(QMainWindow):
 
 
     def commWindows(self, ser):
+        """ Function opening the pop-up window when the counter COMPTEUR reach a certain value
+        """
+
         global COMPTEUR
         if  COMPTEUR >= 3: 
             self.dialogbox
@@ -217,24 +234,21 @@ class MyWindow(QMainWindow):
 
         Hide the main window and open the pop-up window
         """
+
         #self.hide()
         self.myDialog = MyDialog()
         self.myDialog.show()
 
 
     def getActivityHours(self):
-        """ Set the activity hours of the cage
+        """ Get the activity hours set by the user
 
-        Set starting time
-        Set ending time
+        Get starting time
+        Get ending time
         """
-        #timeD = QTime()
-        #timeD.setHMS(8,00,00)
+        
         timeD = self.ui.Debut.time()
-        #timeF = QTime()
-        #timeF.setHMS(20,00,00)
         timeF = self.ui.Fin.time()
-        # print(timeD.hour(), timeF.hour())
 
         global DEBUT, FIN
         DEBUT = timeD.hour()
@@ -243,15 +257,21 @@ class MyWindow(QMainWindow):
 
 
 def thread_function(name):
-    baudrate = 57600
-    port = "/dev/ttyACM0"
-    ser = serial.Serial(port, baudrate)
+    """ Get the number of animals set by the user
+    """
+
+    ser = serial.Serial("/dev/ttyACM0", 57600)
+
     global ANIMAUX, AUTO, DEBUT, FIN, COMPTEUR
     VERIF = False
+
     while(True):
+
         DTime = dt.datetime.now().time()
-        print("L'heure actuelle est " + str(DTime.hour) + " et les intervalles sont " + str(DEBUT) + " et " + str(FIN))
+        #print("L'heure actuelle est " + str(DTime.hour) + " et les intervalles sont " + str(DEBUT) + " et " + str(FIN))
+        
         if(AUTO and DTime.hour >= DEBUT and DTime.hour <= FIN and not VERIF):
+            
             bool, POURCENTAGE = iss.clean_state(ser)
             if(bool):
                 VERIF = True
@@ -260,8 +280,10 @@ def thread_function(name):
                 print("Nettoyage numéro " + str(COMPTEUR) + "\n")
             else:
                 time.sleep(15)    
+        
         elif(DTime.hour <= DEBUT and DTime.hour >= FIN):
             VERIF = False
+        
         time.sleep(1)
         
     
@@ -273,4 +295,3 @@ if __name__ == '__main__':
     x = threading.Thread(target = thread_function, args =(1,), daemon=True)
     x.start()
     sys.exit(app.exec_())
-    
