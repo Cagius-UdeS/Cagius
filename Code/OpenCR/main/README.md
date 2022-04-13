@@ -12,3 +12,7 @@ Le dossier main est celui à exécuter sur la carte Open CR àpartir de l'applic
 ## Structure du programe
 
 <img src="../../../Documentation/Images/hierarchieOpenCr.png">
+
+## Structure de la séquence de nettoyage
+
+<img src="../../../Documentation/Images/Wash.png">
