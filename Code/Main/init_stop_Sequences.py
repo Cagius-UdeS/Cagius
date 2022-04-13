@@ -104,18 +104,18 @@ def clean_state(ser):
     """
     V,N = funCam.Scan()
     global qteP
-    qteP = qteP + (V/3)               # Quantité en fractions de l'usure de la litière
-    PP = qteP/3 * 100                 # Pourcentage poubelle
+    qteP = qteP + (V/3)                            # Quantité en fractions de l'usure de la litière
+    PP = round(qteP/3 * 100, None)                 # Pourcentage poubelle
 
     if (N == 0):
-    #     message = "WASH " + str(V) + " " + str(PP)
-    #     print_sent_data(send_data(ser, message))
-    #     # Confirm the cleaning process started
-    #     msg1 = wait_for_data(ser, "Nettoyage en cours")
-    #     # Confirm the cleaning process is over
-    #     msg2 = wait_for_data(ser, "Nettoyage fini")
-    #     # Confirm the cage is waiting for instructions
-    #     msg3 = wait_for_data(ser, "En attente dinstruction")
+        message = "WASH " + str(V) + " " + str(PP)
+        print_sent_data(send_data(ser, message))
+        # Confirm the cleaning process started
+        msg1 = wait_for_data(ser, "Nettoyage en cours")
+        # Confirm the cleaning process is over
+        msg2 = wait_for_data(ser, "Nettoyage fini")
+        # Confirm the cage is waiting for instructions
+        msg3 = wait_for_data(ser, "En attente dinstruction")
         return True, V
     else:
         return False, V

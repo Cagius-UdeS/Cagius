@@ -201,9 +201,9 @@ def Scan():
   # cv.imshow('Image Mask Lapin', maskLapin)
   # cv.imshow('Image Mask Souille', maskSouille)
   # cv.imshow('Image HSV', hsv)
-  # cv.imshow('Image Contour', im)
-  # cv.waitKey(0)
-  # cv.destroyAllWindows()
+  #cv.imshow('Image Contour', im)
+  #cv.waitKey(0)
+  #cv.destroyAllWindows()
   filenameC = 'LitiereContours' + '.jpg'
   cv.imwrite(filenameC, im) 
   "Fermeture des LED:"
