@@ -21,6 +21,7 @@ Cagius est un projet open source ayant comme objectif de concevoir et construire
 - RaspberryPi Caméra
 - 2 x Dynamixel XL-430-w250-t
 - 2 x Dynamixel XM-430-w350-t
+- Module à relais IDUINO - 1 Canal - 5V (ST1080)
 
 ## Composantes informatiques
 
