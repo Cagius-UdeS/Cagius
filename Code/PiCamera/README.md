@@ -1,9 +1,9 @@
 # Code Caméra
 Ce présent document comporte les détails paramétrables et les informations pertinentes sur la caméra.
-1.[Support mécanique](#Supports)
-2.[Calibration](#Étapes-de-calibration-FishEye)
-3.[Modifications des paramètres](#Paramètres-modifiables)
-4.[Valeurs de retour](#Valeurs-de-retour)
+1.  [Support mécanique](#Supports)
+2.  [Calibration](#Étapes-de-calibration-FishEye)
+3.  [Modifications des paramètres](#Paramètres-modifiables)
+4.  [Valeurs de retour](#Valeurs-de-retour)
 
 ## 1. Supports
 Si vous utiliser la même caméra que nous utilisons, c'est à dire la RaspberryPi Camera Rev 2.2, vous pouver imprimer ce support en 3D afin de pouvoir fixer votre caméra au dessus de la litière :
