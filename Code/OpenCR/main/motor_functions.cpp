@@ -106,6 +106,7 @@ int tourne_continu_Torque(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb
   int32_t dataCM = 1193;
   uint16_t model_number = 0;
   motor.ping(motor_IDs, &model_number, &log);
+  delay(DELAY_POUBELLE_FREQCALCUL);
   
   do {
     // statement block 
@@ -116,10 +117,11 @@ int tourne_continu_Torque(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb
     Serial.print("I = ");
     Serial.print(UINT16_MAX-dataC);
     Serial.print(" sur ");
-    Serial.println(dataCM);
-
+    Serial.print(dataCM);
+    Serial.print(" ii = ");
+    Serial.println(ii); 
     ii ++;  
-  } while ((int32_t)(UINT16_MAX-dataC) <= (int32_t)((dataCM)*PERCENT_MAX_CURRENT) && ii <=  INCREMENT_POUBELLE_MAX); 
+  } while ((int32_t)(UINT16_MAX-dataC) <= (int32_t)((dataCM)*PERCENT_MAX_CURRENT) && ii <=  (INCREMENT_POUBELLE_MAX*(floor(percent/100))));  //&& ii <=  INCREMENT_POUBELLE_MAX
   Serial.println(ii);   
   motor.goalVelocity(motor_IDs, 0);
   return ii;
@@ -155,11 +157,13 @@ bool tourne_continu_Torque_goBack(DynamixelWorkbench&  motor, uint8_t motor_IDs,
     Serial.print(dataC);
     Serial.print(" sur ");
     Serial.println(dataCM);
+    Serial.print(" ii = ");
+    Serial.println(ii); 
     ii --;  
     //SWITCH ????????
     SwitchActive = false;
     
-  } while ((int32_t)(dataC) <= (int32_t)((dataCM)*PERCENT_MAX_CURRENT) && ii >= -10 && SwitchActive == false);
+  } while ((int32_t)(dataC) <= (int32_t)((dataCM)*0.9) && ii >= 0 && SwitchActive == false);
   
   motor.goalVelocity(motor_IDs, 0);
 
