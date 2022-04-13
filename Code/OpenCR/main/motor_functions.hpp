@@ -44,9 +44,9 @@ const int32_t HOME_TRAPPES = 0;
 const int32_t HOME_POUBELLE = 0;
 const int32_t ELMT_TRAPPES = 2;
 const int32_t ELMT_POUBELLE = 1;
-const int INCREMENT_POUBELLE_MAX = 60;
+const int INCREMENT_POUBELLE_MAX = 500;
 
-const float PERCENT_MAX_CURRENT = 0.1;
+const float PERCENT_MAX_CURRENT = 0.07;
 
 // ========= Functions prototype ========
 

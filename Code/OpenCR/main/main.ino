@@ -241,15 +241,15 @@ void loop()
     } 
     if (msg == "HomePoubelle")
     {
-      home_motorAction1();
+     //home_motorAction1();
     }
     if (msg == "HomeTrappes")
     {
-      home_motorAction2();
+      //home_motorAction2();
     }
     if (msg == "ReadVis")
     {
-      read_MotorVisCurrent();
+      //read_MotorVisCurrent();
     }
     
     if (msg == "Off")
