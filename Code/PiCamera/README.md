@@ -18,7 +18,7 @@ Si vous utiliser la même caméra que nous utilisons, c'est à dire la Raspberry
 
 ## 3. Paramètres modifiables
 ### 3.1 Couleurs des zones
-Puisque nous utilisons les couleurs afin de détecter tout ce que nous avons à détecter, la luminosité à beaucoup d'impact sur la réussite oul'échec de la détection. Nous avons donc ajouter une bande DEL afin de rendre l'environnement stable. Par contre, si vous décider d'utiliser des couleurs différentes ou si la luminausité extérieur à trop d'impact sur la couleur, il est possible de changer ces lignes de code afin de changer ou peaufiner les couleurs à détecter:![image](https://user-images.githubusercontent.com/72098230/163251666-02f7357d-6e6e-4e52-b679-5f276fce0069.png) 
+Puisque nous utilisons les couleurs afin de détecter tout ce que nous avons à détecter, la luminosité à beaucoup d'impact sur la réussite oul'échec de la détection. Nous avons donc ajouter une bande DEL afin de rendre l'environnement stable. Par contre, si vous décider d'utiliser des couleurs différentes ou si la luminausité extérieur à trop d'impact sur la couleur, il est possible de changer ces lignes de code afin de changer ou peaufiner les couleurs à détecter:![image](https://user-images.githubusercontent.com/72098230/163255745-bb7e8cb8-a2a5-4ed7-a0d4-7b9e5fdd7af1.png)
 
 ### 3.2 Aires des zones
 Il est aussi possible de changer les dimenssions des objet à trouver afin de filtrer les résidus involontaires. Pour ce faire, vous pouvez changer les valeurs suivantes pour augmenter ou diminuer l'aire des zones à trouver: ![image](https://user-images.githubusercontent.com/72098230/163252441-32740975-1bd8-4aa3-b7c9-2250f7ee5540.png) 
