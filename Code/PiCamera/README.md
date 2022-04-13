@@ -10,3 +10,9 @@ Si vous utiliser la même caméra que nous utilisons, c'est à dire la Raspberry
 2. Ensuite, il faut exécuter le code PatternCapture.py qui prend une photo toute les 3 secondes. Changer l'orientation et la position de la grille pour chacune des photo.
 3. Une fois les photos prisent, exécuter le code CalibrationCam.py afin d'obtenir les variables de calibration de votre FishEye comme suit: ![image](https://user-images.githubusercontent.com/72098230/161605262-c62785ff-352e-4e21-ada1-8853365c203e.png)
 4. Changer ensuite les valeurs présente dans la fonction undistort du code FonctionsCam.py
+
+## Peaufinage des couleurs à trouver et de l'aire des objet à trouver
+Puisque nous utilisons les couleurs afin de détecter tout ce que nous avons à détecter, la luminosité à beaucoup d'impact sur la réussite oul'échec de la détection. Nous avons donc ajouter une bande DEL afin de rendre l'environnement stable. Par contre, si vous décider d'utiliser des couleurs différentes ou si la luminausité extérieur à trop d'impact sur la couleur, il est possible de changer ces lignes de code:![image](https://user-images.githubusercontent.com/72098230/163251666-02f7357d-6e6e-4e52-b679-5f276fce0069.png) afin de changer ou peaufiner les couleurs à détecter.
+
+Il est aussi possible de changer les dimenssions des objet à trouver afin de filtrer les résidus involontaires. Pour ce faire, vous pouvez changer les valeurs suivantes: ![image](https://user-images.githubusercontent.com/72098230/163252441-32740975-1bd8-4aa3-b7c9-2250f7ee5540.png) pour augmenter ou diminuer l'aire des zones à trouver.
+
