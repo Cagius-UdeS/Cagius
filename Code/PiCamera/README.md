@@ -21,7 +21,11 @@ Si vous utiliser la même caméra que nous utilisons, c'est à dire la Raspberry
 Puisque nous utilisons les couleurs afin de détecter tout ce que nous avons à détecter, la luminosité à beaucoup d'impact sur la réussite oul'échec de la détection. Nous avons donc ajouter une bande DEL afin de rendre l'environnement stable. Par contre, si vous décider d'utiliser des couleurs différentes ou si la luminausité extérieur à trop d'impact sur la couleur, il est possible de changer ces lignes de code afin de changer ou peaufiner les couleurs à détecter:![image](https://user-images.githubusercontent.com/72098230/163255912-d203a798-7fc6-4f1e-9b2a-50470546e7dd.png)
 
 ### 3.2 Aires des zones
-Il est aussi possible de changer les dimenssions des objet à trouver afin de filtrer les résidus involontaires. Pour ce faire, vous pouvez changer les valeurs suivantes pour augmenter ou diminuer l'aire des zones à trouver:![image](https://user-images.githubusercontent.com/72098230/163256289-5e120028-6ef1-4f03-8c61-63f407774081.png) 
+Il est aussi possible de changer les dimenssions des objet à trouver afin de filtrer les résidus involontaires. Pour ce faire, vous pouvez changer les valeurs suivantes pour augmenter ou diminuer l'aire des zones à trouver:![image](https://user-images.githubusercontent.com/72098230/163256289-5e120028-6ef1-4f03-8c61-63f407774081.png)
+
+### 3.3 Pourcentage des zones souillées pour vider
+Cette valeurs permet de changer le seuil que les zones souillées doivent atteindre au total avant de nécéssité un vidage de la litière:![image](https://user-images.githubusercontent.com/72098230/163257047-ad308acc-94f3-4990-a199-06c5187182b2.png)
+ 
 
 ## 4. Valeurs de retour
-Ce code est une fonctions que l'on peut appeller soit Scan() qui retourne la fraction sur 3 donc (0,1,2 ou 3) ainsi que le nombre de lapin présent dans la zone.
+Ce code est une fonctions que l'on peut appeller soit Scan() qui retourne la fraction sur 3 donc (0,1,2 ou 3) ainsi que le nombre de lapin présent dans la zone. Ne pas oublier d'ajouter la foncion InitGPIO afin d'activer les I/O de la Pi.
