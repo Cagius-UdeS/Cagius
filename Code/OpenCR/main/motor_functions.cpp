@@ -122,7 +122,7 @@ int tourne_continu_Torque(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb
     Serial.print(" ii = ");
     Serial.println(ii); 
     ii ++;  
-  } while ((int32_t)(UINT16_MAX-dataC) <= (int32_t)((dataCM)*PERCENT_MAX_CURRENT) && ii <=  (INCREMENT_POUBELLE_MAX*(floor(percent/100))));  //&& ii <=  INCREMENT_POUBELLE_MAX
+  } while ((int32_t)(UINT16_MAX-dataC) <= (int32_t)((dataCM)*PERCENT_MAX_CURRENT) && ii <=  floor(INCREMENT_POUBELLE_MAX*((percent/100.0))));  //&& ii <=  INCREMENT_POUBELLE_MAX
   Serial.println(ii);   
   motor.goalVelocity(motor_IDs, 0);
   return ii;
@@ -184,7 +184,12 @@ bool tourne_Xrad_and_Stop(DynamixelWorkbench&  motor, uint8_t motor_IDs, float n
   int32_t pos = PI_SUR_2*nmb_rad;
 
   motor.goalPosition(motor_IDs, pos); 
- 
+
+  if (nmb_rad == 0)
+  {
+    delay(DELAY_PI_SUR_2*1);
+  }
+  
   delay(DELAY_PI_SUR_2*nmb_rad);
   Serial.println("Mouvement fini");
   
