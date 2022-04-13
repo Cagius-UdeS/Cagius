@@ -104,9 +104,7 @@ def Scan():
   "Démarage du scan de l'image"
   #Code pour tests sans cam
   # path = r'/home/pi/Documents/Cagius/Code/PiCamera/Object_Detection_Files/Litiere.jpg'
-  #im = cv.imread("Litiere.jpg",1)
   # im = cv.imread(path,1)
-  #im = undistort(im)
   
   #Prise de la photo de la litière
   result, img = cam.read()
