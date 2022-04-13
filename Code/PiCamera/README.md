@@ -17,3 +17,5 @@ Puisque nous utilisons les couleurs afin de détecter tout ce que nous avons à 
 
 Il est aussi possible de changer les dimenssions des objet à trouver afin de filtrer les résidus involontaires. Pour ce faire, vous pouvez changer les valeurs suivantes pour augmenter ou diminuer l'aire des zones à trouver: ![image](https://user-images.githubusercontent.com/72098230/163252441-32740975-1bd8-4aa3-b7c9-2250f7ee5540.png) 
 
+## Valeurs de retour
+Ce code est une fonctions que l'on peut appeller soit Scan() qui retourne la fraction sur 3 donc (0,1,2 ou 3) ainsi que le nombre de lapin présent dans la zone.
