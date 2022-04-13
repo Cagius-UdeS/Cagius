@@ -25,8 +25,8 @@ const uint8_t MOTOR_CONVOYEUR_ID_Action = 3;
 const uint8_t MOTOR_VIS_ID_Action = 4;
 
 //----------utilisateion--------------
-const float RAD_TRAPPES_Action = 2;           // nombre de pi/2 necessaire pour l'ouverture des trappes
-const float RAD_POUBELLE_Action = 2.5;
+const float RAD_TRAPPES_Action = 2.5;           // nombre de pi/2 necessaire pour l'ouverture des trappes
+const float RAD_POUBELLE_Action = 4;
 const int NMB_TOURS_CONVOYEUR_10percent = 1;  // nombre de tour nécessaire au convoyeur pour faire 10%  
 
 const float NMB_TORQUE_Retour = 0.02;
@@ -54,6 +54,7 @@ int compression_litiere(int percent);
 // etape 6: retour de la pelle
 void home_litiere(int percen, int ii);
 
+void read_MotorVisCurrent(void);
 
 void home_motorAction1();
 void home_motorAction2();

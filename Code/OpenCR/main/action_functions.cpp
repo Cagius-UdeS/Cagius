@@ -81,7 +81,7 @@ void close_poubelle()
  * @param { } 
  * @return { void }
  */
-  tourne_Xrad_ReturnPos(dyna, MOTOR_POUBELLE_ID_Action, RAD_POUBELLE_Action, 1);
+  tourne_Xrad_ReturnPos(dyna, MOTOR_POUBELLE_ID_Action, 0, 1);
   Serial.println("Poubelle fermee");
 }
 // etape 5: compression de la litiere
@@ -106,6 +106,13 @@ void home_litiere(int percent, int ii)
  */
   tourne_continu_Torque_goBack(dyna, MOTOR_VIS_ID_Action, NMB_TORQUE_Retour, percent, ii);
   Serial.println("Compresseur de litiere home");
+}
+
+
+void read_MotorVisCurrent(void)
+{
+  readCurrent(dyna, MOTOR_VIS_ID);
+  
 }
 
 void home_motorAction1()

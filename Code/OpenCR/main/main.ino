@@ -213,7 +213,7 @@ void loop()
     }
     if (msg == "ClosePoubelle")
     {
-      close_trappes();
+      close_poubelle();
     }
     if (msg == "Convoyeur10")
     {
@@ -246,6 +246,10 @@ void loop()
     if (msg == "HomeTrappes")
     {
       home_motorAction2();
+    }
+    if (msg == "ReadVis")
+    {
+      read_MotorVisCurrent();
     }
     
     if (msg == "Off")

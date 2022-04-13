@@ -1,6 +1,6 @@
 import sys
 
-sys.path.insert(0, '/home/pi/Documents/Cagius/Code/Main')
+sys.path.insert(0, '/home/pi/Cagius/Code/Main')
 import init_stop_Sequences as iss
 import threading
 import time
@@ -73,17 +73,28 @@ class MyWindow(QMainWindow):
         
 
         self.numAnimals()
+        self.buttonstartCage(ser)
         self.buttonactiveCage(ser)
         self.buttonclean(ser)
         self.buttonstopCage(ser)
         self.buttontrash(ser)
+
+    def buttonstartCage(self, ser):
+        """ Actions tied to the Lancement button
+        """
+        self.ui.Lancement.clicked.connect(lambda:self.startCage(ser))
+
+    
+    def startCage(self, ser):
+        """ Get the cage in the starting state
+        """
+        iss.start_state(ser)
 
 
     def buttonactiveCage(self, ser):
         """ Actions tied to the Activation button
         """
         self.ui.Activation.clicked.connect(lambda:self.activeCage(ser))
-
 
     
     def activeCage(self, ser):
