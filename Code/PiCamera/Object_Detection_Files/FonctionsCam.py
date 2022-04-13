@@ -81,7 +81,7 @@ def findZones(contours,LimiteAireMin,LimiteAireMax,image):
 def Scan():
   print("Scan en cours...")
   "Ouverture des LED:"
-  GPIO.output(LED, GPIO.HIGH)
+  GPIO.output(LED, GPIO.LOW)
   time.sleep(1)
   "Variables:"
   #Assignation de la caméra pi
@@ -103,9 +103,11 @@ def Scan():
   
   "Démarage du scan de l'image"
   #Code pour tests sans cam
-  im = cv.imread("Litiere.jpg",1)
+  # path = r'/home/pi/Documents/Cagius/Code/PiCamera/Object_Detection_Files/Litiere.jpg'
+  #im = cv.imread("Litiere.jpg",1)
+  # im = cv.imread(path,1)
   #im = undistort(im)
-
+  
   #Prise de la photo de la litière
   result, img = cam.read()
   #Nom de l'image
@@ -114,13 +116,15 @@ def Scan():
   im = undistort(img) 
 
   # Enregistrement de l'image pour observation
-  #cv.imwrite(filename, im) 
+  cv.imwrite(filename, im) 
 
+  #Resize de l'image
+  im = im[80:350,150:450]
   
 
   #Application de filtre sur l'image pour facilité la recherche de zones souillées
   #image = cv.GaussianBlur(im, (5,5),1)
-  #image = cv.medianBlur(im,5)
+  #image = c  v.medianBlur(im,5)
   #kernel = np.ones((5,5),np.float32)/25
   #image = cv.filter2D(im,-1,kernel)
 
@@ -170,7 +174,7 @@ def Scan():
       YAncrageMax = z.getCentreY()
     if z.getCentreY() < YAncrageMin:
       YAncrageMin = z.getCentreY() 
-    # print('CentreX : {}, CentreY : {}'.format(z.getCentreX(),z.getCentreY()))
+    #print('CentreX : {}, CentreY : {}'.format(z.getCentreX(),z.getCentreY()))
   
 
   #Affiche la zone la plus loin de la poubelle
@@ -194,13 +198,13 @@ def Scan():
     Vidange = 0    
   
   #Affiche les images pour débugage
-  # cv.imshow('Image Mask Ancrage', maskAncrage)
-  # cv.imshow('Image Mask Lapin', maskLapin)
-  # cv.imshow('Image Mask Souille', maskSouille)
-  # cv.imshow('Image HSV', hsv)
-  # cv.imshow('Image Contour', im)
-  # cv.waitKey(0)
-  # cv.destroyAllWindows()
+  cv.imshow('Image Mask Ancrage', maskAncrage)
+  cv.imshow('Image Mask Lapin', maskLapin)
+  cv.imshow('Image Mask Souille', maskSouille)
+  cv.imshow('Image HSV', hsv)
+  cv.imshow('Image Contour', im)
+  cv.waitKey(0)
+  cv.destroyAllWindows()
   "Fermeture des LED:"
   GPIO.output(LED, GPIO.LOW)
 
