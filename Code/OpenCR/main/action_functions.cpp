@@ -70,7 +70,7 @@ void close_trappes()
  * @param { } 
  * @return { void }
  */
-  tourne_Xrad_ReturnPos(dyna, MOTOR_TRAPPES_ID_Action, RAD_TRAPPES_Action, 2);
+  tourne_Xrad_and_Stop(dyna, MOTOR_TRAPPES_ID_Action, RAD_TRAPPES_Action);
   Serial.println("Trappes fermees");
 }
 // etape 4: fermeture trape de la poubelle
@@ -81,7 +81,7 @@ void close_poubelle()
  * @param { } 
  * @return { void }
  */
-  tourne_Xrad_ReturnPos(dyna, MOTOR_POUBELLE_ID_Action, 0, 1);
+  tourne_Xrad_and_Stop(dyna, MOTOR_POUBELLE_ID_Action, 0);
   Serial.println("Poubelle fermee");
 }
 // etape 5: compression de la litiere
