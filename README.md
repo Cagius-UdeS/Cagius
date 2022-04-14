@@ -2,6 +2,8 @@
 
 Cagius est un projet open source ayant comme objectif de concevoir et construire le mécanisme de gestion de la litière pour une cage à petits animaux automatisée et créer un interface programmable pour gérer les cycles de nettoyages.
 
+<img src="Documentation/Images/cageSW.png">
+
 ## Table des matieres
 
 1. [Composantes mecaniques et electroniques](#composantes-mecaniques-et-electroniques)
@@ -22,6 +24,8 @@ Cagius est un projet open source ayant comme objectif de concevoir et construire
 - 2 x Dynamixel XL-430-w250-t
 - 2 x Dynamixel XM-430-w350-t
 - Module à relais IDUINO - 1 Canal - 5V (ST1080)
+
+<img src="Documentation/Images/electronique.png">
 
 ## Assemblage
 
