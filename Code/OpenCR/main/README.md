@@ -9,9 +9,17 @@ Le dossier main est celui à exécuter sur la carte Open CR àpartir de l'applic
 - **motor_functions.cpp**: Fichier contenant les fonctions des mouvements de moteurs et des constantes touchant directement les moteurs, exemple: vitesse, délai, position pour x nmb de tours. 
 - **action_functions.cpp**: Fichier contenant les fonctions de nettoyages utilisant les moteurs et des constantes, l'id des moteurs, des positions et mouvements propre aux actions . Ces fonctions séfinissent ce que sont les differents actions de la cage, exemple: ouvrir les trappes et partir le convoyeur. Le fonctions appellent les fonctions générales d'utilisation de moteur (*motor_functions.cpp*). Ce fichier appelle les fonctions de *motor_functions.cpp*
 
-## Structure du programe
+## Notes 
+
+Lors de l'initialisation des moteurs dynamixel, s'assurer que tous les moteurs ont une id differentes, le tout peut etre possible grace au code du fabricant retrouvé dans les exemples (p_monitor). 
+
+### Structure du programe
 
 <img src="../../../Documentation/Images/hierarchieOpenCr.png">
+
+## Communication Pi et OpenCR
+
+<img src="../../../Documentation/Images/flowchartcode.png">
 
 ## Structure de la séquence de nettoyage
 

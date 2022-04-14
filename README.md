@@ -100,15 +100,7 @@ il suffit de suivre le guide **Setting Up Open-CV for Object Detection** sur ce 
 
 ## Initialisation de la cage
 
-//*********************************************************
-À FAIRE (BIBI ???????)
-//*********************************************************
-
-## Autres informations
-
-//*********************************************************
-À FAIRE (???????)
-//*********************************************************
+Les differents dossiers de code et ou les compiler se retrouve [Ici](Code/README.md)
 
 ## License
 

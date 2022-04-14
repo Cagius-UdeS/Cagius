@@ -8,3 +8,5 @@ Les fichiers de ce dossier assurent la communication entre le Pi, la carte OpenC
 - **init_stop_Sequences** : Fichier contenant les différentes fonctions d'initialisation de composantes ou de séquences, de lancements d'états.
 
 ## Structure du programme
+
+<img src="../../Documentation/Images/HierarcheMain.png">

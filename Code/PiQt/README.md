@@ -19,3 +19,9 @@ Les fenêtres de l'interface utilisateur sont initialement conçues dans QT 5 De
 ```
 
 ## Structure du programme
+
+<img src="../../Documentation/Images/HierarcheHMI.png">
+
+### Communication Pi et OpenCR
+
+<img src="../../../Documentation/Images/flowchartcode.png">
