@@ -7,5 +7,5 @@ Le programme contenu dans le dossier PiQt est a compiler sur le Raspberry-Pi et 
 
 ## Communication Pi et OpenCR
 
-<img src="../Documentation/Images/flowchartcode.png">
+<img src="../Documentation/Images/flowchart.png">
 
