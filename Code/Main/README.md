@@ -9,4 +9,4 @@ Les fichiers de ce dossier assurent la communication entre le Pi, la carte OpenC
 
 ## Structure du programme
 
-<img src="../../Documentation/Images/HierarcheMain.png">
+<img src="../../Documentation/Images/HierarchieMain.png">
