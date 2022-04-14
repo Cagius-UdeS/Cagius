@@ -54,10 +54,9 @@ def init_opencr(ser):
 
 
 def init_camera():
-    """Initialize the OpenCR
+    """Initialize the camera
 
-    Send initilization commands
-    Wait for message for confirmation
+    Call function to initialize GPIOs
     """
 
     print("Initialization the camera\n")
@@ -84,6 +83,7 @@ def activate_state(ser):
 
     Send starting commands to the OpenCR.
     Wait for messages for confirmation
+    Return True to activate the thread
     """
 
     print_sent_data(send_data(ser, "START"))
@@ -101,6 +101,7 @@ def clean_state(ser):
 
     Send cleaning commands to the OpenCR.
     Wait for messages for confirmation
+    Return boolean to verify to washing process is over and percentage of ... pushed
     """
     V,N = funCam.Scan()
     global qteP

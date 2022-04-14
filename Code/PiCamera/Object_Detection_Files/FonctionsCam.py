@@ -74,7 +74,7 @@ def findZones(contours,LimiteAireMin,LimiteAireMax,image):
       Liste.append(Z)
 
       #Affiche les zones sur l'image
-      cv.rectangle(image, (x, y), (x+w, y+h),(0,255,0),5)
+      cv.rectangle(image, (x, y), (x+h, y+w),(0,255,0),5)
       cv.circle(image,(x+(w//2),y+(h//2)),1,(0,0,255),10)
   return Liste
 
@@ -82,7 +82,7 @@ def Scan():
   print("Scan en cours...")
   "Ouverture des LED:"
   GPIO.output(LED, GPIO.HIGH)
-  time.sleep(0.5)
+  time.sleep(1)
   "Variables:"
   #Assignation de la caméra pi
   cam = cv.VideoCapture(0)
@@ -141,7 +141,7 @@ def Scan():
 
   #Trouver toute les zones souilées qui dépasse un aire minimum
   # print("Aire Souille")
-  ListeSouille = findZones(contoursSouille,120,8000,im)
+  ListeSouille = findZones(contoursSouille,200,8000,im)
 
   #Trouver toute les Ancrages qui dépasse un aire minimum
   # print("Aire Ancrage")
@@ -183,8 +183,8 @@ def Scan():
   # print('AireSouille : {}'.format(AireSouille))
 
   AireTotale = 30000
-  # print('PourHMI: {}'.format((AireSouille*100/AireTotale)))
-  if((AireSouille*100/AireTotale) >= 20):
+  print('PourHMI: {}'.format((AireSouille*100/AireTotale)))
+  if((AireSouille*100/AireTotale) >= 0):
     # Vidage de la cage
     if(Pourcentage <= 40):
       Vidange = 1
@@ -196,18 +196,19 @@ def Scan():
     Vidange = 0    
   
   print('BitVidange : {}, NbrLapin : {}'.format(Vidange,nbrLapin))
+  "Fermeture des LED:"
+  GPIO.output(LED, GPIO.LOW)
   #Affiche les images pour débugage
-  # cv.imshow('Image Mask Ancrage', maskAncrage)
-  # cv.imshow('Image Mask Lapin', maskLapin)
-  # cv.imshow('Image Mask Souille', maskSouille)
-  # cv.imshow('Image HSV', hsv)
+  #cv.imshow('Image Mask Ancrage', maskAncrage)
+  #cv.imshow('Image Mask Lapin', maskLapin)
+  #cv.imshow('Image Mask Souille', maskSouille)
+  #cv.imshow('Image HSV', hsv)
   #cv.imshow('Image Contour', im)
   #cv.waitKey(0)
   #cv.destroyAllWindows()
   filenameC = 'LitiereContours' + '.jpg'
   cv.imwrite(filenameC, im) 
-  "Fermeture des LED:"
-  GPIO.output(LED, GPIO.LOW)
+  
 
   print("Scan terminé!")
   "Retourne la valeur en % à vider"
