@@ -237,7 +237,7 @@ void loop()
     }
     if (msg == "LitiereRetour100")
     {
-      ii = 470;
+      ii = 468;
       home_litiere(100, ii);
     } 
     if (msg == "HomePoubelle")

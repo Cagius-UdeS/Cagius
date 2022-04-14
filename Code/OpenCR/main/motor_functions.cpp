@@ -107,7 +107,7 @@ int tourne_continu_Torque(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb
   uint16_t model_number = 0;
   motor.ping(motor_IDs, &model_number, &log);
   delay(DELAY_POUBELLE_FREQCALCUL);
-  percent = 15; //valeur Hardcode pour la demo
+  percent = 5; //valeur Hardcode pour la demo
   
   do {
     // statement block 
@@ -164,7 +164,7 @@ bool tourne_continu_Torque_goBack(DynamixelWorkbench&  motor, uint8_t motor_IDs,
     //SWITCH ????????
     SwitchActive = false;
     
-  } while ((int32_t)(dataC) <= (int32_t)((dataCM)*0.9) && ii >= 0 && SwitchActive == false);
+  } while ((int32_t)(dataC) <= (int32_t)((dataCM)*0.9) && ii >= 3 && SwitchActive == false);
   
   motor.goalVelocity(motor_IDs, 0);
 
@@ -185,9 +185,13 @@ bool tourne_Xrad_and_Stop(DynamixelWorkbench&  motor, uint8_t motor_IDs, float n
 
   motor.goalPosition(motor_IDs, pos); 
 
-  if (nmb_rad == 0)
+  if (nmb_rad == 0 &&  motor_IDs == MOTOR_POUBELLE_ID)
   {
-    delay(DELAY_PI_SUR_2*1);
+    delay(DELAY_PI_SUR_2*2.5);
+  }
+  if (nmb_rad == 0 &&  motor_IDs == MOTOR_TRAPPES_ID)
+  {
+    delay(DELAY_PI_SUR_2*4);
   }
   
   delay(DELAY_PI_SUR_2*nmb_rad);
@@ -210,7 +214,7 @@ bool tourne_Xrad_ReturnPos(DynamixelWorkbench&  motor, uint8_t motor_IDs, float 
   Serial.println("Mouvement fini");
   if (nmb_rad == 0)
   {
-    delay(DELAY_PI_SUR_2*4);
+    delay(DELAY_PI_SUR_2*1);
   }
   else 
   {

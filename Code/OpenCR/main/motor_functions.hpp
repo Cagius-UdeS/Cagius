@@ -38,15 +38,15 @@ const int32_t V_Poubelle = -350;    // vitesse rotation de la vis sans fin (Vite
 const int TIME_PER_TROURS = 5500; // temps nécessaire pour effectuer un demi tour de convoyeur
 const int32_t PI_SUR_2 = 1000;          // position de pi/2 rad
 const unsigned long DELAY_PI_SUR_2 = 1000;  // temps nécessaire a faire PI/2 avec vitesse des trappes
-const unsigned long DELAY_CONV_10Percent = 5500;  // temps nécessaire a faire 10 pourcentde l'allé du convoyeur
+const unsigned long DELAY_CONV_10Percent = 6500;  // temps nécessaire a faire 10 pourcentde l'allé du convoyeur
 const unsigned long DELAY_POUBELLE_FREQCALCUL = 1000;  // delay calcul
 const int32_t HOME_TRAPPES = 0;
 const int32_t HOME_POUBELLE = 0;
 const int32_t ELMT_TRAPPES = 2;
 const int32_t ELMT_POUBELLE = 1;
-const int INCREMENT_POUBELLE_MAX = 464;
+const int INCREMENT_POUBELLE_MAX = 466;
 
-const float PERCENT_MAX_CURRENT = 0.3;
+const float PERCENT_MAX_CURRENT = 0.41;
 
 // ========= Functions prototype ========
 
