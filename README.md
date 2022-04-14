@@ -23,12 +23,6 @@ Cagius est un projet open source ayant comme objectif de concevoir et construire
 - 2 x Dynamixel XM-430-w350-t
 - Module à relais IDUINO - 1 Canal - 5V (ST1080)
 
-## Composantes informatiques
-
-//*********************************************************
-À FAIRE (FLORENCE ???????)
-//*********************************************************
-
 ## Assemblage
 
 Pour ce qui est de l'assemblage de la structure de base, il suffit de respecter l'assemblage de la pièce [PoubelleV3.sldrpt](https://github.com/Cagius-UdeS/Cagius/blob/main/CADs/Poubelle.SLDPRT). En fait, un mélange de colle et de clou à finition ont été utilisé pour avoir un structure solide. De plus, le prototype actuelle est fait avec des planche de bois 1/4" découpé au laser et assembler par la suite. Ensuite, la pièce rail.sldprt et trape_horizontal.sldprt sont collé ensemble et forme la trappe en avant de la poubelle au niveau du plancher médian.
@@ -64,7 +58,7 @@ Afin de pouvoir compiler le code de la carte OpenCR, il est nécessaire d'instal
 
 2. Rentrer *Dynamixel* dans la barre de recherche
 
-3. Installer les libraires À COMPLÉTER
+3. Installer les libraires
 
 ### Installation sur Pi
 
