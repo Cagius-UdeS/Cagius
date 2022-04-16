@@ -168,7 +168,7 @@ class MyWindow(QMainWindow):
         Call function opening the pop-up window
         """
 
-        self.dialogbox()
+        self.dialogbox
         iss.trash_state(ser)
 
 
