@@ -12,7 +12,7 @@ Le programme contenu dans le dossier OpenCR/main doit etre compilé par un ordin
 
 ## 2. Raspberry Pi
 
-Le [programme] (PyQt/userInterface.py) contenu dans le dossier PyQt doit être compilé sur le Raspberry Pi et celui-ci utilise les fichiers dans PiCamera et Main. L'installation du Rapberry Pi est décrite [Ici](../README.md). Le code est défini dans ces trois documents: [PyQt](PyQt/README.md), [Main](Main/README.md) et [PiCamera](PiCamera/README.md).
+Le [programme](PyQt/userInterface.py) contenu dans le dossier PyQt doit être compilé sur le Raspberry Pi et celui-ci utilise les fichiers dans PiCamera et Main. L'installation du Rapberry Pi est décrite [Ici](../README.md). Le code est défini dans ces trois documents: [PyQt](PyQt/README.md), [Main](Main/README.md) et [PiCamera](PiCamera/README.md).
 
 
 ## 3. Algorithme d'éxécution des séquences
