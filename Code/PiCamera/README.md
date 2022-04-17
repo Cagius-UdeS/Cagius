@@ -2,10 +2,11 @@
 
 Ce présent document comporte les détails paramétrables et les informations pertinentes sur la caméra.
 
-1.  [Support mécanique](#1-supports)
-2.  [Calibration](#2-étapes-de-calibration-fisheye)
-3.  [Modifications des paramètres](#3-paramètres-modifiables)
-4.  [Valeurs de retour](#4-valeurs-de-retour)
+1. [Supports](#1-supports)
+2. [Étapes de calibration FishEye](#2-étapes-de-calibration-fisheye)
+3. [Paramètres modifiables](#3-paramètres-modifiables)
+4. [Valeurs de retour](#4-valeurs-de-retour)
+5. [Algorithme de fonctionnement de la caméra](#5-algorithme-de-fonctionnement-de-la-caméra)
 
 ## 1. Supports
 
@@ -41,3 +42,7 @@ Cette valeurs permet de changer le seuil que les zones souillées doivent attein
 ## 4. Valeurs de retour
 
 Ce code est une fonction que l'on peut appeller soit Scan() qui retourne la fraction sur 3 donc (0,1,2 ou 3) ainsi que le nombre de lapins présents dans la zone. Ne pas oublier d'ajouter la fonction InitGPIO afin d'activer les I/O du Raspberry Pi.
+
+## 5. Algorithme de fonctionnement de la caméra
+
+<img src="../../Documentation/Images/AlgoCamera.jpg">
