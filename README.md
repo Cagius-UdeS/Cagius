@@ -6,21 +6,20 @@ Cagius est un projet open source ayant pour objectif de concevoir et construire 
 
 ## Table des matieres
 
-1. [Composantes mécaniques et électroniques](#composantes-mecaniques-et-electroniques)
-2. [Assemblage](#assemblage)
-3. [Installation logiciel](#installation-logiciel)
-4. [Initialisation de la cage](#initialisation-de-la-cage)
-5. [Autres informations](#autres-informations)
-6. [License](#license)
+1. [Composantes mécaniques et électroniques](#1-composantes-mécaniques-et-électroniques)
+2. [Assemblage](#2-assemblage)
+3. [Installation logiciel](#3-installation-logiciel)
+4. [Initialisation de la cage](#4-initialisation-de-la-cage)
+5. [License](#5-license)
 
-## Composantes mécaniques et électroniques
+## 1. Composantes mécaniques et électroniques
 
-### Composantes mécaniques
+### 1.1 Composantes mécaniques
 
 - Courroie Synchrone : McMaster **1679K55** 
 - Tige Filletée : Mcmaster **98957A154**
 
-### Composantes électroniques
+### 1.2 Composantes électroniques
 
 - Raspberry Pi 4
 - Raspberry Pi Camera
@@ -30,7 +29,7 @@ Cagius est un projet open source ayant pour objectif de concevoir et construire 
 
 <img src="Documentation/Images/electronique.png">
 
-## Assemblage
+## 2. Assemblage
 
 Pour ce qui est de l'assemblage de la structure de base, il suffit de respecter l'assemblage de la pièce [PoubelleV3.sldrpt](https://github.com/Cagius-UdeS/Cagius/blob/main/CADs/Poubelle.SLDPRT). En fait, un mélange de colle et de clou à finition a été utilisé pour avoir une structure solide. De plus, le prototype actuelle est fait avec des planches de bois 1/4" découpées au laser et assemblées par la suite. Enfin, les pièces [rail.sldprt](https://github.com/Cagius-UdeS/Cagius/blob/main/CADs/Poubelle.SLDPRT) et [trape_horizontal.sldprt](https://github.com/Cagius-UdeS/Cagius/blob/main/CADs/trappe_horizontal.SLDPRT) sont collées ensemble et forme la trappe à l'avant de la poubelle au niveau du plancher médian.
 
@@ -38,15 +37,15 @@ Pour ce qui est de l'assemblage du convoyeur, des tubes de PVC de 1" ont été u
 
 [Pour les détails concernants les CADs et leurs pertinances](https://github.com/Cagius-UdeS/Cagius/blob/main/Documentation/Hierarchie_pieces.md)
 
-## Installation logiciel
+## 3. Installation logiciel
 
 La section suivante couvre l'installation des logiciels et des librairies nécessaires à la compilation du code.
 
-### Installation sur ordinateur
+### 3.1 Installation sur ordinateur
 
 Il est nécessaire de compiler et d'envoyer le code à la carte OpenCR à partir d'un ordinateur, car le Raspberry Pi ne prend pas en charge les librairies de la carte OpenCR et des moteurs Dynamixel.
 
-#### Installation de Arduino IDE
+#### 3.1.1 Installation de Arduino IDE
 
 Afin d'installer Arduino IDE et les librairies nécessaires pour coder les moteurs, il suffit de suivre les étapes suivantes :
 
@@ -57,7 +56,7 @@ Afin d'installer Arduino IDE et les librairies nécessaires pour coder les moteu
 4. Confirmer les changements en pressant *OK* dans le bas à droite de l'écran.
 5. Enfin, installer les librairies Motorcontrole dans la section *Outils* puis *Type de carte* et *Gestionnaire de carte*. Taper OpenCR dans la barre de recherche et installer les librairies.
 
-#### Installation des librairies pour OpenCR
+#### 3.1.2 Installation des librairies pour OpenCR
 
 Afin de pouvoir compiler le code de la carte OpenCR, il est nécessaire d'installer quelques librairies selon les étapes suivantes :
 
@@ -67,11 +66,11 @@ Afin de pouvoir compiler le code de la carte OpenCR, il est nécessaire d'instal
 
 3. Installer les libraires
 
-### Installation sur Raspberry Pi
+### 3.2 Installation sur Raspberry Pi
 
 Le Raspberry Pi agit comme le cerveau de la cage. En effet, le Raspberry Pi analyse la caméra et l'interface utilisateur.
 
-#### Installation de Qt designer
+#### 3.2.1 Installation de Qt designer
 
 Si vous voulez modifier l'interface utilisateur (modifier les fichiers .ui), vous devez télécharger Qt 5 Designer, qui fait parti de Qt Creator. Pour cela, éxecutez les lignes de commandes suivantes dans le terminal :
 
@@ -80,7 +79,7 @@ Si vous voulez modifier l'interface utilisateur (modifier les fichiers .ui), vou
   $ sudo apt-get install qttools5-dev
   ```
 
-#### Installation de PyQt
+#### 3.2.2 Installation de PyQt
 
 Pour concevoir le HMI, nous avons utilisé PyQt qui est un module libre permettant de lier le langage Python avec la bibliothèque Qt. 
 L'installation se fait sur le Raspberry Pi et consiste à faire rouler la ligne de commande suivante :
@@ -94,16 +93,16 @@ Si votre Rapsberry Pi n'est pas à jour, rouler ces lignes de commande au préal
 
 À partir de là, pour coder l'interphace graphique on utilise Qt 5 Designer avec le PyQt intégré.
 
-#### Installation des librairies Open CV
+#### 3.2.3 Installation des librairies Open CV
 
 Afin d'installer les librairies OpenCV sur votre Raspberry Pi, 
 il suffit de suivre le guide **Setting Up Open-CV for Object Detection** sur ce site:
 [Guide d'installation OpenCV](https://core-electronics.com.au/tutorials/object-identify-raspberry-pi.html)
 
-## Initialisation de la cage
+## 4. Initialisation de la cage
 
 Les differents dossiers de code et ou les compiler se retrouve [Ici](Code/README.md)
 
-## License
+## 5. License
 
 License de [Apache](LICENSE).

@@ -2,10 +2,10 @@
 
 Ce présent document comporte les détails paramétrables et les informations pertinentes sur la caméra.
 
-1.  [Support mécanique](#Supports)
-2.  [Calibration](#Étapes-de-calibration-FishEye)
-3.  [Modifications des paramètres](#Paramètres-modifiables)
-4.  [Valeurs de retour](#Valeurs-de-retour)
+1.  [Support mécanique](#1-supports)
+2.  [Calibration](#2-étapes-de-calibration-fisheye)
+3.  [Modifications des paramètres](#3-paramètres-modifiables)
+4.  [Valeurs de retour](#4-valeurs-de-retour)
 
 ## 1. Supports
 
@@ -20,8 +20,7 @@ Si vous utilisez la même caméra que nous utilisons, c'est-a-dire la Raspberry 
 
 2. Ensuite, il faut exécuter le code PatternCapture.py qui prend une photo toute les 3 secondes. Changer l'orientation et la position de la grille pour chacune des photo.
 
-3. Une fois les photos prisent, exécuter le code CalibrationCam.py afin d'obtenir les variables de calibration de votre FishEye comme suit : 
-![image](https://user-images.githubusercontent.com/72098230/161605262-c62785ff-352e-4e21-ada1-8853365c203e.png).
+3. Une fois les photos prisent, exécuter le code CalibrationCam.py afin d'obtenir les variables de calibration de votre FishEye comme suit : ![image](https://user-images.githubusercontent.com/72098230/161605262-c62785ff-352e-4e21-ada1-8853365c203e.png).
 
 4. Changer ensuite les valeurs présente dans la fonction undistort du code FonctionsCam.py.
 
@@ -29,18 +28,15 @@ Si vous utilisez la même caméra que nous utilisons, c'est-a-dire la Raspberry 
 
 ### 3.1 Couleurs des zones
 
-Puisque nous utilisons les couleurs afin de détecter tout ce que nous avons à détecter, la luminosité a beaucoup d'impact sur la réussite ou l'échec de la détection. Nous avons donc ajouté une bande DEL afin de rendre l'environnement stable. Par contre, si vous décidez d'utiliser des couleurs différentes ou si la luminosité extérieure a trop d'impact sur la couleur, il est possible de changer ces lignes de code afin de changer ou peaufiner les couleurs à détecter : 
-![image](https://user-images.githubusercontent.com/72098230/163255912-d203a798-7fc6-4f1e-9b2a-50470546e7dd.png)
+Puisque nous utilisons les couleurs afin de détecter tout ce que nous avons à détecter, la luminosité a beaucoup d'impact sur la réussite ou l'échec de la détection. Nous avons donc ajouté une bande DEL afin de rendre l'environnement stable. Par contre, si vous décidez d'utiliser des couleurs différentes ou si la luminosité extérieure a trop d'impact sur la couleur, il est possible de changer ces lignes de code afin de changer ou peaufiner les couleurs à détecter : ![image](https://user-images.githubusercontent.com/72098230/163255912-d203a798-7fc6-4f1e-9b2a-50470546e7dd.png)
 
 ### 3.2 Aires des zones
 
-Il est aussi possible de changer les dimenssions des objets à trouver afin de filtrer les résidus involontaires. Pour ce faire, vous pouvez changer les valeurs suivantes pour augmenter ou diminuer l'aire des zones à trouver :
-![image](https://user-images.githubusercontent.com/72098230/163256289-5e120028-6ef1-4f03-8c61-63f407774081.png)
+Il est aussi possible de changer les dimenssions des objets à trouver afin de filtrer les résidus involontaires. Pour ce faire, vous pouvez changer les valeurs suivantes pour augmenter ou diminuer l'aire des zones à trouver : ![image](https://user-images.githubusercontent.com/72098230/163256289-5e120028-6ef1-4f03-8c61-63f407774081.png)
 
 ### 3.3 Pourcentage des zones souillées pour vider
 
-Cette valeurs permet de changer le seuil que les zones souillées doivent atteindre au total avant de nécéssité un vidage de la litière :
-![image](https://user-images.githubusercontent.com/72098230/163257047-ad308acc-94f3-4990-a199-06c5187182b2.png)
+Cette valeurs permet de changer le seuil que les zones souillées doivent atteindre au total avant de nécéssité un vidage de la litière : ![image](https://user-images.githubusercontent.com/72098230/163257047-ad308acc-94f3-4990-a199-06c5187182b2.png)
  
 ## 4. Valeurs de retour
 
