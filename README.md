@@ -31,9 +31,9 @@ Cagius est un projet open source ayant pour objectif de concevoir et construire 
 
 ## 2. Assemblage
 
-Pour ce qui est de l'assemblage de la structure de base, il suffit de respecter l'assemblage de la pièce [PoubelleV3.sldrpt](https://github.com/Cagius-UdeS/Cagius/blob/main/CADs/Poubelle.SLDPRT). En fait, un mélange de colle et de clou à finition a été utilisé pour avoir une structure solide. De plus, le prototype actuelle est fait avec des planches de bois 1/4" découpées au laser et assemblées par la suite. Enfin, les pièces [rail.sldprt](https://github.com/Cagius-UdeS/Cagius/blob/main/CADs/Poubelle.SLDPRT) et [trape_horizontal.sldprt](https://github.com/Cagius-UdeS/Cagius/blob/main/CADs/trappe_horizontal.SLDPRT) sont collées ensemble et forme la trappe à l'avant de la poubelle au niveau du plancher médian.
+Pour ce qui est de l'assemblage de la structure de base, il suffit de respecter l'assemblage de la pièce [PoubelleV3.sldrpt](https://github.com/Cagius-UdeS/Cagius/blob/main/CADs/Poubelle.SLDPRT). En fait, un mélange de colle et de clou à finition a été utilisé pour avoir une structure solide. De plus, le prototype actuelle est fait avec des planches de bois 1/4" découpées au laser et assemblées par la suite.
 
-Pour ce qui est de l'assemblage du convoyeur, des tubes de PVC de 1" ont été utilisé accompagnés d'adaptateurs imprimés en 3D pour les assembler avec la cage et le moteur. De plus, des bandes élastiques d'entrainements sont utilisées comme courroie pour transmettre le mouvement d'une poulie à l'autre.
+Pour ce qui est de l'assemblage du convoyeur, des tubes de PVC de 1" ont été utilisé, accompagnés d'adaptateurs imprimés en 3D pour les assembler avec la cage et le moteur. De plus, des bandes élastiques d'entrainements sont utilisées comme courroie pour transmettre le mouvement d'une poulie à l'autre.
 
 [Pour les détails concernants les CADs et leurs pertinances](https://github.com/Cagius-UdeS/Cagius/blob/main/Documentation/Hierarchie_pieces.md)
 
