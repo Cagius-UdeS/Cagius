@@ -2,7 +2,6 @@ Il est à noter que tous les DXF et PDF pour découper au laser les pièces sont
 
 Voici la liste des pièces importantes pour l'assemblage de la poubelle :
 - [Poubelle](https://github.com/Cagius-UdeS/Cagius/blob/main/CADs/Poubelle.SLDPRT)
-- [tappe horizontale](https://github.com/Cagius-UdeS/Cagius/blob/main/CADs/trappe_horizontal.SLDPRT)
 - [poulie et crémaillère](https://github.com/Cagius-UdeS/Cagius/tree/main/CADs/Poulie%20et%20cr%C3%A9maill%C3%A8re)
 - [Vis sans fin](https://github.com/Cagius-UdeS/Cagius/tree/main/CADs/Vis%20sans%20fin)
 
