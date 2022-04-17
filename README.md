@@ -35,7 +35,7 @@ Pour ce qui est de l'assemblage de la structure de base, il suffit de respecter 
 
 Pour ce qui est de l'assemblage du convoyeur, des tubes de PVC de 1" ont été utilisé, accompagnés d'adaptateurs imprimés en 3D pour les assembler avec la cage et le moteur. De plus, des bandes élastiques d'entrainements sont utilisées comme courroie pour transmettre le mouvement d'une poulie à l'autre.
 
-[Pour les détails concernants les CADs et leurs pertinances](https://github.com/Cagius-UdeS/Cagius/blob/main/Documentation/Hierarchie_pieces.md)
+[Pour les détails concernants les CADs et leurs pertinences](https://github.com/Cagius-UdeS/Cagius/blob/main/Documentation/Hierarchie_pieces.md)
 
 ## 3. Installation logiciel
 
