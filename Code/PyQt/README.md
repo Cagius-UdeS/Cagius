@@ -4,6 +4,7 @@ Le présent document comporte des informations pertinentes sur l'interface utili
 
 1. [Description des fichiers](#1-description-des-fichiers)
 2. [Structure du programme](#2-structure-du-programme)
+3. [Fenêtre principal de l'interface utilisateur](#3-fenêtre-principal-de-linterface-utilisateur)
 
 ## 1. Description des fichiers
 
@@ -26,3 +27,7 @@ Les fenêtres de l'interface utilisateur sont initialement conçues dans QT 5 De
 ## 2. Structure du programme
 
 <img src="../../Documentation/Images/HierarchieHMI.png">
+
+## 3. Fenêtre principal de l'interface utilisateur
+
+<img src="../../Documentation/Images/HMI.jpg">
