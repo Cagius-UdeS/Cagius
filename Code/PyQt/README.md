@@ -1,4 +1,4 @@
-# Dossier *PiQt*
+# Dossier *PyQt*
 
 Il y a deux types de fichiers dans ce dossier, des .py et des .ui. Les fichiers .ui peuvent être ouverts avec QT 5 Designer sur le Pi et les fichiers .py avec Visual Studio Code. 
 
@@ -21,7 +21,3 @@ Les fenêtres de l'interface utilisateur sont initialement conçues dans QT 5 De
 ## Structure du programme
 
 <img src="../../Documentation/Images/HierarchieHMI.png">
-
-### Communication Pi et OpenCR
-
-<img src="../../Documentation/Images/flowchart.png">

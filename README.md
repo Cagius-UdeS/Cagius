@@ -1,24 +1,25 @@
 # Cagius
 
-Cagius est un projet open source ayant comme objectif de concevoir et construire le mécanisme de gestion de la litière pour une cage à petits animaux automatisée et créer un interface programmable pour gérer les cycles de nettoyages.
+Cagius est un projet open source ayant pour objectif de concevoir et construire le mécanisme de gestion de la litière pour une cage à petits animaux automatisée et créer un interface programmable pour gérer les cycles de nettoyage.
 
 <img src="Documentation/Images/cageSW.png">
 
 ## Table des matieres
 
-1. [Composantes mecaniques et electroniques](#composantes-mecaniques-et-electroniques)
-2. [Composantes informatiques](#composantes-informatiques)
-3. [Assemblage](#assemblage)
-4. [Installation logiciel](#installation-logiciel)
-5. [Initialisation de la cage](#initialisation-de-la-cage)
-6. [Autres informations](#autres-informations)
-7. [License](#license)
+1. [Composantes mécaniques et électroniques](#composantes-mecaniques-et-electroniques)
+  1. [Composantes mécaniques](#composantes-mécaniques)
+  2. [Composantes électroniques](#composantes-électroniques)
+2. [Assemblage](#assemblage)
+3. [Installation logiciel](#installation-logiciel)
+4. [Initialisation de la cage](#initialisation-de-la-cage)
+5. [Autres informations](#autres-informations)
+6. [License](#license)
 
 ## Composantes mecaniques et electroniques
-### Mécaniques
+### Composantes mécaniques
 - Courroie Synchrone : McMaster **1679K55** 
 - Tige Filletée : Mcmaster **98957A154**
-### Électroniques
+### Composantes électroniques
 - RaspberryPi 4
 - RaspberryPi Caméra
 - 2 x Dynamixel XL-430-w250-t
@@ -29,9 +30,9 @@ Cagius est un projet open source ayant comme objectif de concevoir et construire
 
 ## Assemblage
 
-Pour ce qui est de l'assemblage de la structure de base, il suffit de respecter l'assemblage de la pièce [PoubelleV3.sldrpt](https://github.com/Cagius-UdeS/Cagius/blob/main/CADs/Poubelle.SLDPRT). En fait, un mélange de colle et de clou à finition ont été utilisé pour avoir un structure solide. De plus, le prototype actuelle est fait avec des planche de bois 1/4" découpé au laser et assembler par la suite. Ensuite, la pièce rail.sldprt et trape_horizontal.sldprt sont collé ensemble et forme la trappe en avant de la poubelle au niveau du plancher médian.
+Pour ce qui est de l'assemblage de la structure de base, il suffit de respecter l'assemblage de la pièce [PoubelleV3.sldrpt](https://github.com/Cagius-UdeS/Cagius/blob/main/CADs/Poubelle.SLDPRT). En fait, un mélange de colle et de clou à finition a été utilisé pour avoir une structure solide. De plus, le prototype actuelle est fait avec des planches de bois 1/4" découpées au laser et assemblées par la suite. Enfin, les pièces [rail.sldprt](https://github.com/Cagius-UdeS/Cagius/blob/main/CADs/Poubelle.SLDPRT) et [trape_horizontal.sldprt](https://github.com/Cagius-UdeS/Cagius/blob/main/CADs/trappe_horizontal.SLDPRT) sont collées ensemble et forme la trappe à l'avant de la poubelle au niveau du plancher médian.
 
-Pour ce qui est de l'assemblage du convoyeur, des tubes de PVC de 1 po on été utilisé accompagné d'adaptateur imprimé en 3D pour les assemblé avec la cage et le moteur. De plus, des bandes élastiques d'entrainements sont utilisé comme courroie pour transmettre le mouvement à l'autre poulie.
+Pour ce qui est de l'assemblage du convoyeur, des tubes de PVC de 1" ont été utilisé accompagnés d'adaptateurs imprimés en 3D pour les assembler avec la cage et le moteur. De plus, des bandes élastiques d'entrainements sont utilisées comme courroie pour transmettre le mouvement d'une poulie à l'autre.
 
 [Pour les détails concernants les CADs et leurs pertinances](https://github.com/Cagius-UdeS/Cagius/blob/main/Documentation/Hierarchie_pieces.md)
 
@@ -39,7 +40,7 @@ Pour ce qui est de l'assemblage du convoyeur, des tubes de PVC de 1 po on été 
 
 La section suivante couvre l'installation des logiciels et des librairies nécessaires à la compilation du code.
 
-### Installation sur Ordinateur
+### Installation sur ordinateur
 
 Il est nécessaire de compiler et d'envoyer le code de la carte OpenCR a partir d'un ordinateur, car le Pi ne prend pas en charge les librairies de la carte OpenCR et des moteurs Dynamixel.
 
