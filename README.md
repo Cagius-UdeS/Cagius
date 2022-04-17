@@ -114,7 +114,7 @@ Les étapes pour initialiser la cage et la lancer sont les suivantes :
 - Indiquer le nombre d'animaux présents dans la cage, rentrer les heures d'activités souhaitées de la cage et appuyer sur le bouton **Lancement**
 - La cage est prête à être utilisée !
 
-<ins><b> Notez bien </b></ins> : Si jamais vous fermez la fenêtre de l'interface ou si vous souhaitez changez les paramètres rentrés initialement (nombre d'animaux, heures d'activités), il faut absolument désalimenter complétement la carte OpenCR et la réalimenter.
+<ins><b>Notez bien</b></ins> : Si jamais vous fermez la fenêtre de l'interface ou si vous souhaitez changez les paramètres rentrés initialement (nombre d'animaux, heures d'activités), il faut absolument désalimenter complétement la carte OpenCR et la réalimenter.
 
 ## 5. License
 
