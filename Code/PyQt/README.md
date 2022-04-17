@@ -7,7 +7,7 @@ Le présent document comporte des informations pertinentes sur l'interface utili
 
 ## 1. Description des fichiers
 
-Il y a deux types de fichiers dans ce dossier, des .py et des .ui. Les fichiers .ui peuvent être ouverts avec QT 5 Designer sur le Pi et les fichiers .py avec Visual Studio Code. 
+Il y a deux types de fichiers dans ce dossier, des .py et des .ui. Les fichiers .ui peuvent être ouverts avec QT 5 Designer, dont l'installation est expliquée [ici](../../README.md/#321-installation-de-qt-designer), sur le Pi et les fichiers .py avec Visual Studio Code. 
 
 - **mainWindow_geometry.py** : Fichier contenant la fenêtre principale du HMI en Python.
 - **mainWindow_geometry.ui** : Fichier représentant graphiquement la fenêtre principale du HMI.

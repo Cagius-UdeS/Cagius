@@ -8,7 +8,7 @@ Le présent document comporte les informations pertinentes sur le programme prin
 
 ## 1. Description des fichiers
 
-Le dossier main est celui à exécuter sur la carte Open CR à partir du logiciel Arduino IDE dont l'installation est expliquée [ici](../../../README.md).
+Le dossier main est celui à exécuter sur la carte Open CR à partir du logiciel Arduino IDE dont l'installation est expliquée [ici](../../../README.md/#311-installation-de-arduino-ide).
 
 - **main.ino**: Fichier contenant la machine à état. Appelles les actions possibles, par exemple nettoyer la cage de *action_function.cpp*. Ce fichier appelle les fonctions de *action_functions.cpp* et *serialcomm_functions.cpp*.
 - **serialcomm_functions.cpp**: Fichier contenant les fonctions de communications par port série avec le Rapsberry Pi.
