@@ -6,22 +6,24 @@ Cagius est un projet open source ayant pour objectif de concevoir et construire 
 
 ## Table des matieres
 
-1\. [Composantes mécaniques et électroniques](#composantes-mecaniques-et-electroniques)
-1. [Composantes mécaniques](#composantes-mécaniques)
-2. [Composantes électroniques](#composantes-électroniques)
-2\. [Assemblage](#assemblage)
-3\. [Installation logiciel](#installation-logiciel)
-4\. [Initialisation de la cage](#initialisation-de-la-cage)
-5\. [Autres informations](#autres-informations)
-6\. [License](#license)
+1. [Composantes mécaniques et électroniques](#composantes-mecaniques-et-electroniques)
+2. [Assemblage](#assemblage)
+3. [Installation logiciel](#installation-logiciel)
+4. [Initialisation de la cage](#initialisation-de-la-cage)
+5. [Autres informations](#autres-informations)
+6. [License](#license)
 
-## Composantes mecaniques et electroniques
+## Composantes mécaniques et électroniques
+
 ### Composantes mécaniques
+
 - Courroie Synchrone : McMaster **1679K55** 
 - Tige Filletée : Mcmaster **98957A154**
+
 ### Composantes électroniques
-- RaspberryPi 4
-- RaspberryPi Caméra
+
+- Raspberry Pi 4
+- Raspberry Pi Camera
 - 2 x Dynamixel XL-430-w250-t
 - 2 x Dynamixel XM-430-w350-t
 - Module à relais IDUINO - 1 Canal - 5V (ST1080)
@@ -42,7 +44,7 @@ La section suivante couvre l'installation des logiciels et des librairies néces
 
 ### Installation sur ordinateur
 
-Il est nécessaire de compiler et d'envoyer le code de la carte OpenCR a partir d'un ordinateur, car le Pi ne prend pas en charge les librairies de la carte OpenCR et des moteurs Dynamixel.
+Il est nécessaire de compiler et d'envoyer le code à la carte OpenCR à partir d'un ordinateur, car le Raspberry Pi ne prend pas en charge les librairies de la carte OpenCR et des moteurs Dynamixel.
 
 #### Installation de Arduino IDE
 
@@ -65,13 +67,13 @@ Afin de pouvoir compiler le code de la carte OpenCR, il est nécessaire d'instal
 
 3. Installer les libraires
 
-### Installation sur Pi
+### Installation sur Raspberry Pi
 
-Le Pi agit comme le cerveau de la cage. En effet, le Pi analyse la caméra et l'interface utilisateur.
+Le Raspberry Pi agit comme le cerveau de la cage. En effet, le Raspberry Pi analyse la caméra et l'interface utilisateur.
 
 #### Installation de Qt designer
 
-Si vous voulez modifier l'interface utilisateur (modifier les fichiers .ui), vous devez télécharger Qtdesigner (fait parti de Qtcreator)
+Si vous voulez modifier l'interface utilisateur (modifier les fichiers .ui), vous devez télécharger Qt 5 Designer, qui fait parti de Qt Creator. Pour cela, éxecutez les lignes de commandes suivantes dans le terminal :
 
   ```
   $ sudo apt-get install qttools5-dev-tools
@@ -80,20 +82,21 @@ Si vous voulez modifier l'interface utilisateur (modifier les fichiers .ui), vou
 
 #### Installation de PyQt
 
-Pour concevoir le HMI nous avons utilisé PyQt qui est un module libre qui permet de lier le langage Python avec la bibliothèque Qt. 
+Pour concevoir le HMI, nous avons utilisé PyQt qui est un module libre permettant de lier le langage Python avec la bibliothèque Qt. 
 L'installation se fait sur le Raspberry Pi et consiste à faire rouler la ligne de commande suivante :
 
 	$ sudo apt-get install python3-pyqt5
 
-Si votre Pi n'est pas à jour, rouler ces lignes de commande au préalable :
+Si votre Rapsberry Pi n'est pas à jour, rouler ces lignes de commande au préalable :
 
 	$ sudo apt-get update
 	$ sudo apt-get upgrade
 
-À partir de là, pour coder l'interphase graphique on utilise Qt 5 Designer avec le PyQt intégré.
+À partir de là, pour coder l'interphace graphique on utilise Qt 5 Designer avec le PyQt intégré.
 
 #### Installation des librairies Open CV
-Afin d'installer OpenCV sur votre RaspberryPi, 
+
+Afin d'installer les librairies OpenCV sur votre Raspberry Pi, 
 il suffit de suivre le guide **Setting Up Open-CV for Object Detection** sur ce site:
 [Guide d'installation OpenCV](https://core-electronics.com.au/tutorials/object-identify-raspberry-pi.html)
 

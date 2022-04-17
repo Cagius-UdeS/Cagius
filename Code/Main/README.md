@@ -1,6 +1,6 @@
 # Dossier *Main*
 
-Les fichiers de ce dossier assurent la communication entre le Raspberry Pi, la carte OpenCR et la caméra Pi et contiennent la machine à état général du code, en d'autres termes la séquence d'éxécution.
+Les fichiers de ce dossier assurent la communication entre le Raspberry Pi, la carte OpenCR et la caméra Pi et contiennent la machine à état générale du code, en d'autres termes la séquence d'éxécution.
 
 ## Fichiers
 
