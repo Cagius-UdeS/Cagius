@@ -9,11 +9,11 @@ Cagius est un projet open source ayant pour objectif de concevoir et construire 
 1\. [Composantes mécaniques et électroniques](#composantes-mecaniques-et-electroniques)
 1. [Composantes mécaniques](#composantes-mécaniques)
 2. [Composantes électroniques](#composantes-électroniques)
-2. [Assemblage](#assemblage)
-3. [Installation logiciel](#installation-logiciel)
-4. [Initialisation de la cage](#initialisation-de-la-cage)
-5. [Autres informations](#autres-informations)
-6. [License](#license)
+2\. [Assemblage](#assemblage)
+3\. [Installation logiciel](#installation-logiciel)
+4\. [Initialisation de la cage](#initialisation-de-la-cage)
+5\. [Autres informations](#autres-informations)
+6\. [License](#license)
 
 ## Composantes mecaniques et electroniques
 ### Composantes mécaniques
