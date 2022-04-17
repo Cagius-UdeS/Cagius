@@ -101,7 +101,20 @@ il suffit de suivre le guide **Setting Up Open-CV for Object Detection** sur ce 
 
 ## 4. Initialisation de la cage
 
-Les differents dossiers de code et où les compiler se retrouve [ici](Code/README.md)
+Les differents dossiers de code et où les compiler se retrouve [ici](Code/README.md).
+
+Les étapes pour initialiser la cage et la lancer sont les suivantes :
+
+- Remplir le réservoir de litière
+- Si premier cycle d'utilisation, mettre une couche de litière sur le convoyeur
+- S'assurer que la carte OpenCR, le Raspberry et les bandes LED sont alimentés
+- S'assurer que la caméra est branchée sur le Raspberry Pi
+- S'assurer que tous les moteurs sont branchés à la carte OpenCR
+- Compiler le programme *[userInterface](Code/PyQt/userInterface.py)* sur le Raspberry Pi et attendre que l'initialisation soit complétée et que la fenêtre s'ouvre
+- Indiquer le nombre d'animaux présents dans la cage, rentrer les heures d'activités souhaitées de la cage et appuyer sur le bouton *Lancement*
+- La cage est prête à être utilisée !
+
+<u><b> Notez bien </b></u> : Si jamais vous fermez la fenêtre de l'interface ou si vous souhaitez changez les paramètres rentrés initialement (nombre d'animaux, heures d'activités), il faut absolument désalimenter complétement la carte OpenCR et la réalimenter.
 
 ## 5. License
 
