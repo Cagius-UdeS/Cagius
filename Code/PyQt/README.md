@@ -30,4 +30,4 @@ Les fenêtres de l'interface utilisateur sont initialement conçues dans QT 5 De
 
 ## 3. Fenêtre principal de l'interface utilisateur
 
-<img src="../../Documentation/Images/HMI.jpg">
+<img src="../../Documentation/Images/HMI.png">
