@@ -39,7 +39,7 @@ DEBUT = 0
 """
 FIN = 0
 
-""" Value of the quantity of ... to trash (1, 2, 3)
+""" Value of the quantity of litter to trash (1, 2, 3)
 """
 POURCENTAGE = 0
 
@@ -64,13 +64,11 @@ class MyDialog(QDialog):
     def change(self):
         """ Function for transition between pop-up window and main window
 
-        Close pop-up window and open the main one
+        Close pop-up window
         Put the counter variable at 0
         """
 
         self.close()
-        #self.mywindow = MyWindow.__new__(MyWindow)
-        #self.mywindow.show()
 
         
         global COMPTEUR
@@ -96,7 +94,6 @@ class MyWindow(QMainWindow):
         port, ser = iss.init_sequence()
         
         
-        # self.initAnimals()
         self.commWindows(ser)
         self.getActivityHours()
         self.numAnimals()
@@ -132,6 +129,8 @@ class MyWindow(QMainWindow):
     
     def activeCage(self, ser):
         """ Get the cage in the activated state
+
+        Put the return value of the function AUTO to activate the thread
         """
 
         global AUTO
@@ -147,6 +146,8 @@ class MyWindow(QMainWindow):
     
     def stopCage(self, ser):
         """ Get the cage in the stop state
+
+        Change the value AUTO to stop the thread
         """
 
         iss.stop_state(ser)
@@ -183,6 +184,7 @@ class MyWindow(QMainWindow):
         """ Get the cage in the clean state
 
         Increment the counter variable and print it
+        Call the function commWindows
         """
 
         global COMPTEUR, POURCENTAGE
@@ -193,14 +195,6 @@ class MyWindow(QMainWindow):
         print("Nettoyage numéro " + str(COMPTEUR) + "\n")
 
         lambda:self.commWindows(ser)
-
-
-    # def initAnimals(self):
-    #     """ Initialize the animals check-boxes
-    #     """
-    #     self.ui.Animal1.setChecked(0)
-    #     self.ui.Animal2.setChecked(0)
-    #     self.ui.Animal3.setChecked(0)
 
 
     def numAnimals(self):
@@ -232,10 +226,9 @@ class MyWindow(QMainWindow):
     def dialogbox(self):
         """ Function for transition between main window and pop-up window
 
-        Hide the main window and open the pop-up window
+        Open the pop-up window on top of the main one
         """
 
-        #self.hide()
         self.myDialog = MyDialog()
         self.myDialog.show()
 
@@ -257,7 +250,13 @@ class MyWindow(QMainWindow):
 
 
 def thread_function(name):
-    """ Get the number of animals set by the user
+    """ Thread used for the Activiation button to repeat the sequence if there are animals in the cage
+
+    Verify the time respect the activity hours set
+    Verify the starting command was received (AUTO)
+    Verify the cage has not already been cleaned (VERIF) 
+    Sleep 15 seconds if the previous conditions were not met
+    Increment the counter variable and print it if conditions are met
     """
 
     ser = serial.Serial("/dev/ttyACM0", 57600)
@@ -268,7 +267,6 @@ def thread_function(name):
     while(True):
 
         DTime = dt.datetime.now().time()
-        #print("L'heure actuelle est " + str(DTime.hour) + " et les intervalles sont " + str(DEBUT) + " et " + str(FIN))
         
         if(AUTO and DTime.hour >= DEBUT and DTime.hour <= FIN and not VERIF):
             

@@ -63,21 +63,6 @@ def init_camera():
     funCam.InitGPIO()
 
 
-def start_state(ser):
-    """Start the cage
-
-    Send starting commands to the OpenCR.
-    Wait for messages for confirmation
-    """
-
-    #print_sent_data(send_data(ser, "START"))
-    # Confirm the cage is ready to start 
-    #msg1 = wait_for_data(ser, "Cage armee")
-    # Confirm the cage is waiting for instructions
-    #msg2 = wait_for_data(ser, "En attente dinstruction")
-
-
-
 def activate_state(ser):
     """Activate the cage
 
@@ -92,7 +77,7 @@ def activate_state(ser):
     # Confirm the cage is waiting for instructions
     msg2 = wait_for_data(ser, "En attente dinstruction")
 
-    return True
+    return True                         
 
 
 
@@ -101,8 +86,9 @@ def clean_state(ser):
 
     Send cleaning commands to the OpenCR.
     Wait for messages for confirmation
-    Return boolean to verify to washing process is over and percentage of ... pushed
+    Return boolean to verify to washing process is over and percentage of trash used
     """
+
     V,N = funCam.Scan()
     global qteP
     qteP = qteP + (V/3)                            # Quantité en fractions de l'usure de la litière
@@ -120,9 +106,6 @@ def clean_state(ser):
         return True, V
     else:
         return False, V
-    
-
-
     
 
 def trash_state(ser):
