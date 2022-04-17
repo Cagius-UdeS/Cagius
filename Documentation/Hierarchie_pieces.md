@@ -1,4 +1,4 @@
-Il est à noter que tous les DXF et PDF pour découper au laser les pièces sont disponibles dans le dossier [découpe laser](https://github.com/Cagius-UdeS/Cagius/tree/main/CADs/Laser%20cutting)
+Il est à noter que tous les DXF et PDF pour découper au laser les pièces sont disponibles dans le dossier [découpe laser](https://github.com/Cagius-UdeS/Cagius/tree/main/CADs/Laser%20cutting) et que la majorité des STL sont présents dans le dossier [CAD's](https://github.com/Cagius-UdeS/Cagius/tree/main/CADs)
 
 Voici la liste des pièces importantes pour l'assemblage de la poubelle :
 - [Assemblage Finale](https://github.com/Cagius-UdeS/Cagius/blob/main/CADs/Assemblage_finale.SLDASM)
