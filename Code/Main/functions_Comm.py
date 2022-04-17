@@ -14,10 +14,14 @@ class SerialError(Exception):
 
 
 def print_received_data(data):
+    """Print received data in the terminal
+    """
     print("Received : '{0}'\n".format(data))
 
 
 def print_sent_data(data):
+    """Print sent data in the terminal
+    """
     print("Sent : '{0}'\n".format(data))
 
 
@@ -46,6 +50,7 @@ def send_data(ser, data):
     message = "{0}{1}".format(ID_PI, data)
     ser.write(message.encode())
     return message
+
 
 def wait_for_data(ser, wanted):
     """Wait in this function until a wanted string is read.
