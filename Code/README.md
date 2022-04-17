@@ -13,5 +13,5 @@ Le [programme] (PyQt/userInterface.py) contenu dans le dossier PyQt doit être c
 
 <img src="../Documentation/Images/flowchart.png">
 
-<img src="../../Documentation/Images/Algo_PI_Camera.png">
+<img src="../Documentation/Images/Algo_PI_Camera.png">
 
