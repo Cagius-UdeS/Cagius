@@ -107,7 +107,7 @@ int tourne_continu_Torque(DynamixelWorkbench&  motor, uint8_t motor_IDs, int nmb
   uint16_t model_number = 0;
   motor.ping(motor_IDs, &model_number, &log);
   delay(DELAY_POUBELLE_FREQCALCUL);
-  percent = 5; //valeur Hardcode pour la demo
+  //percent = 5; //valeur Hardcode pour la demo
   
   do {
     // statement block 
